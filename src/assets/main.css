@@ -1,0 +1,168 @@
+@import './animations.css';
+@import './header-overrides.css';
+
+
+/* Modern Design System inspired by MarcomMate - Single Theme */
+:root {
+  /* Color Palette - MarcomMate Inspired */
+  --primary-blue: #1E3A8A;        /* MarcomMate primary blue */
+  --primary-blue-light: #3B82F6;  /* MarcomMate secondary blue */
+  --accent-orange: #F59E0B;       /* MarcomMate accent orange */
+  --accent-green: #10B981;        /* MarcomMate success green */
+  --text-primary: #1F2937;        /* Primary text - dark gray */
+  --text-secondary: #6B7280;      /* Secondary text - medium gray */
+  --text-muted: #9CA3AF;          /* Muted text - light gray */
+  --background: #FFFFFF;          /* Main background - white */
+  --surface: #F8FAFC;             /* Surface background - light gray */
+  --border: #E2E8F0;              /* Border color - light gray */
+  
+  /* Spacing System */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+  --spacing-2xl: 5rem;    /* 80px */
+  --spacing-3xl: 7.5rem;  /* 120px */
+  
+  /* Typography - MarcomMate Inspired */
+  --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-accent: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+  --font-size-5xl: 3rem;     /* 48px */
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-body);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background);
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+}
+
+h1 { font-size: var(--font-size-5xl); }
+h2 { font-size: var(--font-size-4xl); }
+h3 { font-size: var(--font-size-3xl); }
+h4 { font-size: var(--font-size-2xl); }
+h5 { font-size: var(--font-size-xl); }
+h6 { font-size: var(--font-size-lg); }
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+/* Typography Utility Classes */
+.font-heading { font-family: var(--font-family-heading); }
+.font-body { font-family: var(--font-family-body); }
+.font-accent { font-family: var(--font-family-accent); }
+
+.font-accent-italic { 
+  font-family: var(--font-family-accent); 
+  font-weight: 300; 
+  font-style: italic; 
+}
+
+.text-primary { color: var(--primary-blue); }
+.text-accent { color: var(--accent-orange); }
+.text-success { color: var(--accent-green); }
+.text-muted { color: var(--text-muted); }
+
+/* Animation Classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  h1 { font-size: var(--font-size-4xl); }
+  h2 { font-size: var(--font-size-3xl); }
+  h3 { font-size: var(--font-size-2xl); }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: var(--font-size-3xl); }
+  h2 { font-size: var(--font-size-2xl); }
+  h3 { font-size: var(--font-size-xl); }
+}
+
+/* Single Theme - No Dark/Light Mode Switching */

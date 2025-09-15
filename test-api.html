@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Gemini API</title>
+</head>
+<body>
+    <h1>Test Gemini API</h1>
+    <button onclick="testAPI()">Test API</button>
+    <div id="result"></div>
+
+    <script type="module">
+        import { GoogleGenerativeAI } from 'https://esm.sh/@google/generative-ai'
+        
+        const API_KEY = 'AIzaSyDRbmB1j6idm_H4RzUxi3F3JsbA-wgJjdw'
+        
+        async function testAPI() {
+            try {
+                document.getElementById('result').innerHTML = 'Đang test...'
+                
+                const genAI = new GoogleGenerativeAI(API_KEY)
+                const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+                
+                const result = await model.generateContent('Xin chào, hãy trả lời ngắn gọn: "API hoạt động tốt!"')
+                const response = await result.response
+                const text = response.text()
+                
+                document.getElementById('result').innerHTML = `✅ Thành công: ${text}`
+            } catch (error) {
+                document.getElementById('result').innerHTML = `❌ Lỗi: ${error.message}`
+                console.error('Error:', error)
+            }
+        }
+        
+        window.testAPI = testAPI
+    </script>
+</body>
+</html>
