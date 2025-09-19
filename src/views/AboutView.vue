@@ -59,54 +59,67 @@
     <section class="team-section">
       <div class="container">
         <h2 class="section-title text-center fade-in-up">Đội ngũ nhân sự MATECOM</h2>
-        <div class="team-grid">
-          <div class="team-member fade-in-up">
-            <div class="member-avatar">
-              <img src="@/assets/img/aboutmatecom/Khuất Duy Anh.jpg" alt="Khuất Duy Anh" />
-            </div>
-            <div class="member-info">
-              <h3 class="member-name">Khuất Duy Anh</h3>
-              <p class="member-position">CFO - Chief Financial Officer</p>
-            </div>
-          </div>
-          
-          <div class="team-member fade-in-up">
-            <div class="member-avatar">
-              <img src="@/assets/img/aboutmatecom/Chu Thị Quỳnh.jpg" alt="Chu Thị Quỳnh" />
-            </div>
-            <div class="member-info">
-              <h3 class="member-name">Chu Thị Quỳnh</h3>
-              <p class="member-position">CEO - Chief Executive Officer</p>
+        
+        <!-- Sơ đồ tổ chức -->
+        <div class="org-chart fade-in-up">
+          <!-- Giám đốc điều hành -->
+          <div class="ceo-level">
+            <div class="ceo-card">
+              <div class="ceo-avatar">
+                <img src="@/assets/img/aboutmatecom/Chu Thị Quỳnh.jpg" alt="Chu Thị Quỳnh" />
+              </div>
+              <div class="ceo-info">
+                <h3 class="ceo-name">Chu Thị Quỳnh</h3>
+                <p class="ceo-position">Giám đốc điều hành</p>
+                <p class="ceo-title">CEO - Chief Executive Officer</p>
+              </div>
             </div>
           </div>
           
-          <div class="team-member fade-in-up">
-            <div class="member-avatar">
-              <img src="@/assets/img/aboutmatecom/Đào Thị Thơm - CTO.jpg" alt="Đào Thị Thơm" />
+          <!-- Các phòng ban -->
+          <div class="departments-level">
+            <div class="department-card fade-in-up">
+              <div class="department-avatar">
+                <img src="@/assets/img/aboutmatecom/Nguyễn Thị Huyền My.jpg" alt="Nguyễn Thị Huyền My" />
+              </div>
+              <div class="department-info">
+                <h4 class="department-name">Marketing</h4>
+                <p class="department-head">Nguyễn Thị Huyền My</p>
+                <p class="department-title">CMO - Chief Marketing Officer</p>
+              </div>
             </div>
-            <div class="member-info">
-              <h3 class="member-name">Đào Thị Thơm</h3>
-              <p class="member-position">CTO - Chief Technology Officer</p>
+            
+            <div class="department-card fade-in-up">
+              <div class="department-avatar">
+                <img src="@/assets/img/aboutmatecom/Khuất Duy Anh.jpg" alt="Khuất Duy Anh" />
+              </div>
+              <div class="department-info">
+                <h4 class="department-name">Tài chính</h4>
+                <p class="department-head">Khuất Duy Anh</p>
+                <p class="department-title">CFO - Chief Financial Officer</p>
+              </div>
             </div>
-          </div>
-          
-          <div class="team-member fade-in-up">
-            <div class="member-avatar">
-              <img src="@/assets/img/aboutmatecom/Nguyễn Ngọc Quỳnh.JPG" alt="Nguyễn Ngọc Quỳnh" />
+            
+            <div class="department-card fade-in-up">
+              <div class="department-avatar">
+                <img src="@/assets/img/aboutmatecom/Đào Thị Thơm - CTO.jpg" alt="Đào Thị Thơm" />
+              </div>
+              <div class="department-info">
+                <h4 class="department-name">Sản xuất</h4>
+                <p class="department-head">Đào Thị Thơm</p>
+                <p class="department-title">CTO - Chief Technology Officer</p>
+              </div>
             </div>
-            <div class="member-info">
-              <h3 class="member-name">Nguyễn Ngọc Quỳnh</h3>
-              <p class="member-position">COO - Chief Operating Officer</p>
-            </div>
-          </div>
-          
-          <div class="team-member fade-in-up">
-            <div class="member-avatar">
-              <img src="@/assets/img/aboutmatecom/Nguyễn Thị Huyền My.jpg" alt="Nguyễn Thị Huyền My" />
-            </div>
-            <div class="member-info">
-              <h3 class="member-name">Nguyễn Thị Huyền My</h3>
-              <p class="member-position">CMO - Chief Marketing Officer</p>
+            
+            <div class="department-card fade-in-up">
+              <div class="department-avatar">
+                <img src="@/assets/img/aboutmatecom/Nguyễn Ngọc Quỳnh.JPG" alt="Nguyễn Ngọc Quỳnh" />
+              </div>
+              <div class="department-info">
+                <h4 class="department-name">Nhân sự</h4>
+                <p class="department-head">Nguyễn Ngọc Quỳnh</p>
+                <p class="department-title">COO - Chief Operating Officer</p>
+              </div>
             </div>
           </div>
         </div>
@@ -189,10 +202,29 @@ onMounted(async () => {
   justify-content: center;
   text-align: center;
   
-  /* Custom gradient background with radial highlight */
-  background:
-    radial-gradient(600px at 85% 15%, rgba(13,68,150,0.45), transparent 60%),
-    linear-gradient(to top right, #060F2A 0%, #072845 40%, #0D4496 100%);
+  /* Background image with overlay */
+  background-image: url('@/assets/img/aboutmatecom/aboutmatecomhero.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 15, 42, 0.8) 0%,
+    rgba(7, 40, 69, 0.7) 25%,
+    rgba(13, 68, 150, 0.6) 50%,
+    rgba(30, 58, 138, 0.8) 75%,
+    rgba(15, 23, 42, 0.9) 100%
+  );
+  z-index: 1;
 }
 
 /* Network animations removed - file deleted */
@@ -200,7 +232,7 @@ onMounted(async () => {
 /* Hero Content */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 1000px;
   padding: 0 24px;
 }
@@ -385,46 +417,51 @@ onMounted(async () => {
   margin-bottom: 60px;
 }
 
-.team-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  max-width: 600px;
+/* Sơ đồ tổ chức */
+.org-chart {
+  max-width: 1000px;
   margin: 0 auto;
+  text-align: center;
 }
 
-.team-member {
+/* CEO Level */
+.ceo-level {
+  margin-bottom: 40px;
+}
+
+.ceo-card {
   background: var(--team-member-bg);
-  padding: 32px 40px;
+  padding: 40px;
   border-radius: 20px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 32px;
   transition: all 0.3s ease;
   border: 1px solid var(--team-member-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.team-member:hover {
+.ceo-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   border-color: var(--primary-blue);
 }
 
-.member-avatar {
-  width: 180px;
-  height: 240px;
+.ceo-avatar {
+  width: 200px;
+  height: 260px;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
-  border: 4px solid rgba(59, 130, 246, 0.3);
+  border: 4px solid rgba(245, 158, 11, 0.6);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
-.member-avatar img {
+.ceo-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -432,26 +469,135 @@ onMounted(async () => {
   border-radius: 16px;
 }
 
-.member-avatar:hover {
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+.ceo-avatar:hover {
+  border-color: rgba(245, 158, 11, 0.8);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
   transform: scale(1.05);
 }
 
-.member-name {
+.ceo-name {
   font-family: var(--font-family-heading);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #F8FAFC;
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
 }
 
-.member-position {
+.ceo-position {
   font-family: var(--font-family-body);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
+  color: #F59E0B;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.ceo-title {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
   color: #CBD5E1;
   margin: 0;
   font-weight: 500;
+}
+
+/* Connection Line */
+.connection-line {
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(to bottom, #F59E0B, #3B82F6);
+  margin: 0 auto 40px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.connection-line::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #3B82F6;
+}
+
+/* Departments Level */
+.departments-level {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.department-card {
+  background: var(--team-member-bg);
+  padding: 24px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--team-member-border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.department-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-blue);
+}
+
+.department-avatar {
+  width: 180px;
+  height: 240px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  overflow: hidden;
+  border: 3px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.department-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 12px;
+}
+
+.department-avatar:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+  transform: scale(1.05);
+}
+
+.department-name {
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.department-head {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  color: #CBD5E1;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.department-title {
+  font-family: var(--font-family-body);
+  font-size: 0.875rem;
+  color: #94A3B8;
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
 }
 
 /* Scroll Animation */
@@ -547,32 +693,52 @@ onMounted(async () => {
     font-size: 1rem;
   }
   
-  .team-grid {
+  .org-chart {
     max-width: 100%;
+  }
+  
+  .ceo-card {
+    padding: 32px;
     gap: 24px;
   }
   
-  .team-member {
-    padding: 24px 32px;
-    gap: 24px;
+  .ceo-avatar {
+    width: 160px;
+    height: 200px;
   }
   
-  .member-avatar {
-    width: 140px;
-    height: 180px;
-    border-radius: 16px;
+  .ceo-name {
+    font-size: 1.5rem;
   }
   
-  .member-avatar img {
-    border-radius: 8px;
+  .ceo-position {
+    font-size: 1.125rem;
   }
   
-  .member-name {
-    font-size: 1.375rem;
+  .departments-level {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   
-  .member-position {
-    font-size: 1.0625rem;
+  .department-card {
+    padding: 20px;
+  }
+  
+  .department-avatar {
+    width: 100px;
+    height: 120px;
+  }
+  
+  .department-name {
+    font-size: 1.125rem;
+  }
+  
+  .department-head {
+    font-size: 0.9rem;
+  }
+  
+  .department-title {
+    font-size: 0.8rem;
   }
 }
 

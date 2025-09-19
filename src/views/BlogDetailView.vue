@@ -277,11 +277,11 @@ onMounted(async () => {
 /* CSS Variables */
 :root {
   --blog-header-bg: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
-  --blog-content-bg: #FFFFFF;
-  --blog-text-dark: #1F2937;
-  --blog-text-light: #6B7280;
-  --blog-border: #E5E7EB;
-  --blog-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --blog-content-bg: #1E293B;
+  --blog-text-dark: #FFFFFF;
+  --blog-text-light: #E2E8F0;
+  --blog-border: #475569;
+  --blog-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 .blog-detail-view {
@@ -306,6 +306,7 @@ onMounted(async () => {
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  color: #FFFFFF !important;
 }
 
 .blog-meta {
@@ -314,13 +315,19 @@ onMounted(async () => {
   gap: 2rem;
   margin-bottom: 2rem;
   font-size: 1rem;
-  opacity: 0.9;
+  opacity: 1;
+  color: #FFFFFF !important;
 }
 
 .blog-excerpt {
   font-size: 1.25rem;
   line-height: 1.6;
-  opacity: 0.9;
+  opacity: 1;
+  color: #FFFFFF !important;
+}
+
+.blog-excerpt p {
+  color: #FFFFFF !important;
 }
 
 /* Blog Content Section */
@@ -336,38 +343,95 @@ onMounted(async () => {
   margin-bottom: 3rem;
 }
 
+/* Global styles for HTML content rendered via v-html */
+.blog-content :deep(p) {
+  color: #FFFFFF !important;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.blog-content :deep(h1) {
+  color: #FFFFFF !important;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.blog-content :deep(h2) {
+  color: #60A5FA !important;
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem 0;
+  border-left: 4px solid #60A5FA;
+  padding-left: 1rem;
+}
+
+.blog-content :deep(h3) {
+  color: #93C5FD !important;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+}
+
+.blog-content :deep(strong) {
+  color: #60A5FA !important;
+  font-weight: 700;
+}
+
+.blog-content :deep(ul), .blog-content :deep(ol) {
+  color: #FFFFFF !important;
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.blog-content :deep(li) {
+  color: #FFFFFF !important;
+  margin-bottom: 0.5rem;
+}
+
+/* Legacy styles - keeping for compatibility */
 .blog-content h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: var(--blog-text-dark);
+  color: #FFFFFF;
 }
 
 .blog-content h2 {
   font-size: 1.875rem;
   font-weight: 600;
   margin: 2.5rem 0 1rem 0;
-  color: #1E3A8A;
-  border-left: 4px solid #1E3A8A;
+  color: #60A5FA;
+  border-left: 4px solid #60A5FA;
   padding-left: 1rem;
 }
 
+.blog-content h3 {
+  color: #93C5FD;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+}
+
 .blog-content p {
+  color: #FFFFFF;
   margin-bottom: 1.5rem;
   line-height: 1.8;
 }
 
 .blog-content strong {
-  color: #1E3A8A;
-  font-weight: 600;
+  color: #60A5FA;
+  font-weight: 700;
 }
 
 .blog-content ul, .blog-content ol {
+  color: #FFFFFF;
   margin: 1rem 0;
   padding-left: 2rem;
 }
 
 .blog-content li {
+  color: #FFFFFF;
   margin-bottom: 0.5rem;
 }
 
@@ -375,7 +439,7 @@ onMounted(async () => {
 .social-share {
   margin: 3rem 0;
   padding: 2rem;
-  background: #F8FAFC;
+  background: #334155;
   border-radius: 12px;
   text-align: center;
 }
@@ -424,7 +488,7 @@ onMounted(async () => {
 }
 
 .related-post-card {
-  background: white;
+  background: #334155;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--blog-shadow);
@@ -458,9 +522,9 @@ onMounted(async () => {
 }
 
 .read-more {
-  color: #1E3A8A;
+  color: #60A5FA;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.875rem;
 }
 
@@ -470,10 +534,10 @@ onMounted(async () => {
 
 /* Dark Theme Support */
 :deep(.v-theme--dark) {
-  --blog-content-bg: #1E293B;
-  --blog-text-dark: #F8FAFC;
-  --blog-text-light: #CBD5E1;
-  --blog-border: #334155;
+  --blog-content-bg: #0F172A;
+  --blog-text-dark: #FFFFFF;
+  --blog-text-light: #E2E8F0;
+  --blog-border: #475569;
 }
 
 :deep(.v-theme--dark) .blog-content {
@@ -508,12 +572,19 @@ onMounted(async () => {
     font-size: 1rem;
   }
   
-  .blog-content h1 {
+  .blog-content h1,
+  .blog-content :deep(h1) {
     font-size: 2rem;
   }
   
-  .blog-content h2 {
+  .blog-content h2,
+  .blog-content :deep(h2) {
     font-size: 1.5rem;
+  }
+  
+  .blog-content h3,
+  .blog-content :deep(h3) {
+    font-size: 1.25rem;
   }
   
   .share-buttons {
@@ -550,5 +621,6 @@ onMounted(async () => {
   color: var(--blog-text-light);
   font-style: italic;
   text-align: center;
+  font-weight: 500;
 }
 </style>

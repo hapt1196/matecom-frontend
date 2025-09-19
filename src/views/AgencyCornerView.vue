@@ -64,7 +64,7 @@
         </v-row>
 
         <!-- Load More Button -->
-        <v-row>
+        <v-row justify="center">
           <v-col cols="12" class="text-center">
             <v-btn 
               color="primary" 
@@ -91,28 +91,24 @@
             </p>
             
             <v-form @submit.prevent="subscribeNewsletter" class="newsletter-form fade-in-up">
-              <v-row justify="center" no-gutters>
-                <v-col cols="12" sm="8" md="6">
-                  <v-text-field
-                    v-model="email"
-                    placeholder="Nhập email của bạn"
-                    variant="outlined"
-                    density="compact"
-                    hide-details
-                    class="newsletter-input"
-                  />
-                </v-col>
-                <v-col cols="12" sm="4" md="3">
-                  <v-btn 
-                    color="primary" 
-                    type="submit"
-                    class="newsletter-btn"
-                    :loading="isSubscribing"
-                  >
-                    Đăng ký
-                  </v-btn>
-                </v-col>
-              </v-row>
+              <div class="newsletter-input-group">
+                <v-text-field
+                  v-model="email"
+                  placeholder="Nhập email của bạn"
+                  variant="outlined"
+                  density="compact"
+                  hide-details
+                  class="newsletter-input"
+                />
+                <v-btn 
+                  color="primary" 
+                  type="submit"
+                  class="newsletter-btn"
+                  :loading="isSubscribing"
+                >
+                  Đăng ký
+                </v-btn>
+              </div>
             </v-form>
           </v-col>
         </v-row>
@@ -353,8 +349,7 @@ onMounted(async () => {
 
 .blog-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -432,12 +427,15 @@ onMounted(async () => {
 
 /* Load More Button */
 .load-more-btn {
-  margin-top: var(--spacing-2xl);
+  margin: var(--spacing-2xl) auto 0 auto !important;
   padding: var(--spacing-md) var(--spacing-2xl) !important;
   font-weight: 600 !important;
   font-family: var(--font-family-heading) !important;
   border-color: var(--agency-accent) !important;
   color: var(--agency-accent) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .load-more-btn:hover {
@@ -472,8 +470,15 @@ onMounted(async () => {
   margin: 0 auto;
 }
 
+.newsletter-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
 .newsletter-input {
   border-radius: 8px;
+  flex: 1;
 }
 
 :deep(.newsletter-input .v-field) {
@@ -491,13 +496,18 @@ onMounted(async () => {
 }
 
 .newsletter-btn {
-  width: 100%;
-  padding: var(--spacing-md) var(--spacing-xl) !important;
+  padding: 0 !important;
   font-weight: 600 !important;
   font-family: var(--font-family-heading) !important;
-  border-radius: 8px !important;
+  border-radius: 0 !important;
   background: linear-gradient(135deg, var(--agency-accent), #F97316) !important;
   color: white !important;
+  white-space: nowrap;
+  height: 40px;
+  min-width: 100px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .newsletter-btn:hover {
@@ -550,6 +560,15 @@ onMounted(async () => {
   
   .blog-title {
     font-size: 1.125rem;
+  }
+  
+  .newsletter-input-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .newsletter-btn {
+    width: 100%;
   }
 }
 </style>

@@ -14,12 +14,12 @@
           elevation="2"
           @click="goToBlogDetail(post.slug)"
         >
-          <v-img 
+          <img 
             :src="post.featuredImage" 
             :alt="post.title"
             height="200px" 
-            cover
-          ></v-img>
+            class="blog-img"
+          ></img>
           
           <v-card-title class="blog-title">{{ post.title }}</v-card-title>
           
@@ -150,6 +150,7 @@ const goToAgencyCorner = () => {
   background: transparent;
 }
 
+
 .section-title {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-5xl);
@@ -208,6 +209,10 @@ const goToAgencyCorner = () => {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.blog-img{
+  width: 100%;
 }
 
 /* Dark mode support */

@@ -24,7 +24,7 @@
               <div class="chat-header">
                 <div class="chat-header-content">
                   <div class="ai-avatar">
-                    <Bot class="w-8 h-8 text-white" />
+                    <img src="@/assets/img/Mascot.png" alt="MATECOM AI" class="ai-avatar-img" />
                   </div>
                   <div class="ai-info">
                     <h3 class="ai-name">MATECOM AI</h3>
@@ -63,7 +63,7 @@
                   <div class="message-content">
                     <div class="message-avatar">
                       <User v-if="message.isUser" class="w-6 h-6 text-primary" />
-                      <Bot v-else class="w-6 h-6 text-success" />
+                      <img v-else src="@/assets/img/Mascot.png" alt="MATECOM AI" class="message-avatar-img" />
                     </div>
                     <div class="message-bubble" :class="{ 'error': message.isError, 'warning': message.isWarning }">
                       <div class="message-text" v-html="formatMessage(message.text)"></div>
@@ -78,7 +78,7 @@
                 <div v-if="isTyping" class="message-wrapper ai-message">
                   <div class="message-content">
                     <div class="message-avatar">
-                      <Bot class="w-6 h-6 text-success" />
+                      <img src="@/assets/img/Mascot.png" alt="MATECOM AI" class="message-avatar-img" />
                     </div>
                     <div class="message-bubble">
                       <div class="typing-indicator">
@@ -189,7 +189,7 @@ import {
 
 const messages = ref([
   {
-    text: 'Xin chào! Tôi là trợ lý AI của MATECOM. Tôi có thể giúp gì cho bạn?',
+    text: 'Xin chào! Tôi là trợ lý AI của MATECOM. Tôi có thể giúp bạn tìm hiểu về các gói dịch vụ và tư vấn gói phù hợp với quy mô doanh nghiệp của bạn. Bạn cần hỗ trợ gì?',
     isUser: false,
     timestamp: new Date()
   }
@@ -256,7 +256,7 @@ const sendMessage = async () => {
 
 const clearChat = () => {
   messages.value = [{
-    text: 'Xin chào! Tôi là trợ lý AI của MATECOM. Tôi có thể giúp gì cho bạn?',
+    text: 'Xin chào! Tôi là trợ lý AI của MATECOM. Tôi có thể giúp bạn tìm hiểu về các gói dịch vụ và tư vấn gói phù hợp với quy mô doanh nghiệp của bạn. Bạn cần hỗ trợ gì?',
     isUser: false,
     timestamp: new Date()
   }]
@@ -269,11 +269,32 @@ const scrollToBottom = () => {
 }
 
 const formatMessage = (text) => {
+  let formattedText = text
+  
+  // Convert markdown bold **text** to <strong>text</strong>
+  formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  
+  // Convert markdown italic *text* to <em>text</em>
+  formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>')
+  
+  // Convert markdown lists with - to HTML lists
+  formattedText = formattedText.replace(/^-\s(.+)$/gm, '<li>$1</li>')
+  
+  // Wrap consecutive <li> elements in <ul>
+  formattedText = formattedText.replace(/(<li>.*<\/li>)/gs, (match) => {
+    return `<ul>${match}</ul>`
+  })
+  
+  // Convert line breaks to <br> tags
+  formattedText = formattedText.replace(/\n/g, '<br>')
+  
   // Convert URLs to clickable links
-  return text.replace(
+  formattedText = formattedText.replace(
     /(https?:\/\/[^\s]+)/g,
     '<a href="$1" target="_blank" class="message-link">$1</a>'
   )
+  
+  return formattedText
 }
 
 const formatTime = (timestamp) => {
@@ -446,6 +467,14 @@ watch(messages, () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.ai-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .ai-info h3 {
@@ -524,6 +553,14 @@ watch(messages, () => {
 
 .user-message .message-avatar {
   background: var(--primary-blue);
+}
+
+.message-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }
 
 .message-bubble {
@@ -658,11 +695,11 @@ watch(messages, () => {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 16px;
-  color: var(--primary-blue);
+  color: var(--text-white);
 }
 
 .feature-description {
-  color: var(--text-light);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
@@ -673,6 +710,27 @@ watch(messages, () => {
 
 .message-link:hover {
   opacity: 0.8;
+}
+
+/* Message formatting styles */
+.message-text ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.message-text li {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.message-text strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+.message-text em {
+  font-style: italic;
+  color: inherit;
 }
 
 /* Dark Theme Support */

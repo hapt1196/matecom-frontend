@@ -228,10 +228,14 @@ onUnmounted(() => {
   z-index: 1;
 }
 
-/* Hide logo on mobile when menu button is visible */
+/* Center logo on mobile */
 @media (max-width: 768px) {
   .logo-container {
-    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block !important;
   }
 }
 
@@ -473,8 +477,11 @@ onUnmounted(() => {
   }
   
   .logo-container {
-    left: 20px;
-    display: none; /* Hide logo on mobile */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block !important;
+    z-index: 2;
   }
   
   .mobile-menu-btn {
@@ -487,8 +494,8 @@ onUnmounted(() => {
   }
   
   .logo-image {
-    width: 150px;
-    height: 60px;
+    width: 200px;
+    height: 80px;
   }
 }
 
@@ -498,8 +505,11 @@ onUnmounted(() => {
   }
   
   .logo-container {
-    left: 16px;
-    display: none; /* Hide logo on small mobile */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block !important;
+    z-index: 2;
   }
   
   .mobile-menu-btn {
@@ -512,8 +522,8 @@ onUnmounted(() => {
   }
   
   .logo-image {
-    width: 120px;
-    height: 50px;
+    width: 160px;
+    height: 65px;
   }
 }
 

@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { API_CONFIG } from './api.js'
+import { getSystemPrompt } from './company-context.js'
 
 // Lấy API key từ config hoặc environment variable
 const getApiKey = () => {
@@ -29,11 +30,24 @@ export const generateGeminiResponse = async (prompt, conversationHistory = []) =
       throw new Error('Vui lòng cấu hình API key Gemini trong file config/api.js')
     }
 
-    // Tạo chat session
+    // Tạo system prompt với context công ty
+    const systemPrompt = getSystemPrompt()
+    
+    // Tạo chat session với system prompt
     const chat = geminiModel.startChat({
-      history: conversationHistory,
+      history: [
+        {
+          role: 'user',
+          parts: [{ text: systemPrompt }]
+        },
+        {
+          role: 'model', 
+          parts: [{ text: 'Tôi đã hiểu rõ thông tin về MATECOM và sẵn sàng hỗ trợ khách hàng. Tôi sẽ trả lời các câu hỏi về sản phẩm, dịch vụ và tư vấn gói phù hợp.' }]
+        },
+        ...conversationHistory
+      ],
       generationConfig: {
-        maxOutputTokens: 1000,
+        maxOutputTokens: 1500,
         temperature: 0.7,
         topP: 0.8,
         topK: 40,

@@ -233,11 +233,10 @@
                   <v-select
                     v-model="formData.position"
                     :items="positionOptions"
-                    placeholder="---"
+                    label="Vị trí ứng tuyển"
                     variant="outlined"
-                    class="form-field"
                     hide-details
-                    required
+                    clearable
                   />
                 </div>
                 
@@ -256,21 +255,14 @@
                 
                 <!-- File Upload -->
                 <div class="form-row">
-                  <div class="file-upload-section">
                     <v-file-input
                       v-model="formData.cvFile"
-                      placeholder="Chọn tệp"
+                      label="Tải lên cv ứng tuyển của bạn"
                       variant="outlined"
-                      class="file-input"
                       accept=".pdf,.doc,.docx"
                       show-size
                       hide-details
                     />
-                    <div class="upload-hint">
-                      <v-icon class="cloud-icon">mdi-cloud-upload</v-icon>
-                      <span>Tải lên cv ứng tuyển của bạn</span>
-                    </div>
-                  </div>
                 </div>
                 
                 <!-- Submit Button -->
@@ -982,6 +974,19 @@ const submitApplication = async () => {
   opacity: 0.8 !important;
 }
 
+/* Ensure placeholder shows for v-select */
+.form-field :deep(.v-field__input::placeholder) {
+  color: #FFFFFF !important;
+  opacity: 0.8 !important;
+  display: block !important;
+}
+
+/* Force placeholder visibility when no value selected */
+.form-field :deep(.v-field--empty .v-field__input::placeholder) {
+  opacity: 1 !important;
+  color: #FFFFFF !important;
+}
+
 .form-field :deep(.v-label) {
   color: #FFFFFF !important;
   font-weight: 500 !important;
@@ -999,39 +1004,9 @@ const submitApplication = async () => {
   width: 100%;
 }
 
-.file-input :deep(.v-field) {
-  background-color: transparent !important;
-  border: 2px solid #FFFFFF !important;
-  border-radius: 8px !important;
-}
-
-.file-input :deep(.v-field__input) {
-  color: #FFFFFF !important;
-}
-
-.file-input :deep(.v-field__input::placeholder) {
-  color: #FFFFFF !important;
-  opacity: 0.8 !important;
-}
-
-.file-input :deep(.v-label) {
-  color: #FFFFFF !important;
-  font-weight: 500 !important;
-}
-
-.upload-hint {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  color: #FFFFFF;
-  font-size: 0.875rem;
-  opacity: 0.8;
-}
-
-.cloud-icon {
-  color: #FFFFFF !important;
-  font-size: 1.25rem !important;
+/* Hide file input prepend icon */
+.form-field :deep(.v-input__prepend) {
+  display: none !important;
 }
 
 .submit-btn {

@@ -7,7 +7,7 @@
         <v-col cols="12" md="4" class="footer-left">
           <div class="company-info">
             <div class="logo-section">
-              <img src="@/assets/matecom_logo_transparent.png" alt="MATECOM Logo" height="120" class="footer-logo" />
+              <img src="@/assets/matecom_logo_transparent.png" alt="MATECOM Logo" height="160" class="footer-logo" />
               <div class="company-name">MATECOM Agency</div>
             </div>
             <p class="company-description">
@@ -23,9 +23,6 @@
               <v-btn icon href="https://www.tiktok.com/@matecomeagency" target="_blank" class="social-btn">
                 <span class="tiktok-icon">T</span>
               </v-btn>
-              <v-btn icon href="https://www.youtube.com" target="_blank" class="social-btn">
-                <Youtube class="w-5 h-5" />
-              </v-btn>
             </div>
           </div>
         </v-col>
@@ -37,30 +34,22 @@
 
         <!-- Right Column - Contact Information -->
         <v-col cols="12" md="4" class="footer-right">
-          <div class="contact-info">
-            <h3 class="contact-title">Liên hệ</h3>
-            <div class="contact-item">
-              <span class="contact-label">Hotline:</span>
-              <span class="contact-value">0339265203</span>
+          <div class="contact-info-wrapper">
+            <div class="contact-info">
+              <h3 class="contact-title">Liên hệ</h3>
+              <div class="contact-item">
+                <span class="contact-label">Hotline:</span>
+                <span class="contact-value">0339265203</span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Email:</span>
+                <span class="contact-value">MATECOMagencymarketing@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Địa chỉ:</span>
+                <span class="contact-address">283 Khuất Duy Tiến, Hanoi, Vietnam</span>
+              </div>
             </div>
-            <div class="contact-item">
-              <span class="contact-label">Email:</span>
-              <span class="contact-value">MATECOMagencymarketing@gmail.com</span>
-            </div>
-            <div class="contact-item">
-              <span class="contact-label">Địa chỉ:</span>
-              <span class="contact-address">283 Khuất Duy Tiến, Hanoi, Vietnam</span>
-            </div>
-            <v-btn 
-              class="call-btn" 
-              color="primary" 
-              size="large" 
-              rounded="pill"
-              href="tel:0339265203"
-            >
-              <Phone class="w-5 h-5 mr-2" />
-              Gọi ngay
-            </v-btn>
           </div>
         </v-col>
       </v-row>
@@ -78,7 +67,7 @@
 </template>
 
 <script setup>
-import { Facebook, Linkedin, Youtube, Phone } from 'lucide-vue-next'
+import { Facebook, Linkedin, Youtube, Phone, Mail } from 'lucide-vue-next'
 </script>
 
 <style scoped>
@@ -129,10 +118,13 @@ import { Facebook, Linkedin, Youtube, Phone } from 'lucide-vue-next'
 /* Left Column - Company Info */
 .footer-left {
   padding-right: 24px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .company-info {
   max-width: 100%;
+  margin-top: 0;
 }
 
 .logo-section {
@@ -145,7 +137,7 @@ import { Facebook, Linkedin, Youtube, Phone } from 'lucide-vue-next'
 .company-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--footer-accent);
+  color: white;
   line-height: 1.2;
 }
 
@@ -186,42 +178,56 @@ import { Facebook, Linkedin, Youtube, Phone } from 'lucide-vue-next'
 /* Right Column - Contact Info */
 .footer-right {
   padding-left: 24px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.contact-info-wrapper {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 10%;
 }
 
 .contact-info {
   max-width: 100%;
+  margin-top: 0;
 }
 
 .contact-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--footer-text);
-  margin-bottom: 15px;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .contact-item {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .contact-label {
   font-weight: 500;
   color: var(--footer-text);
   font-size: 0.9rem;
+  min-width: 60px;
 }
 
 .contact-value {
-  color: var(--footer-accent);
-  font-weight: 500;
+  color: var(--footer-text);
+  font-weight: 400;
   font-size: 0.95rem;
 }
 
 .contact-address {
-  color: var(--footer-text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  color: var(--footer-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 .call-btn {
@@ -242,6 +248,7 @@ import { Facebook, Linkedin, Youtube, Phone } from 'lucide-vue-next'
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
+
 
 /* Footer logo styling */
 .footer-logo {
@@ -280,6 +287,11 @@ import { Facebook, Linkedin, Youtube, Phone } from 'lucide-vue-next'
   .footer-right {
     padding: 0;
     margin-bottom: 30px;
+    display: block;
+  }
+  
+  .contact-info-wrapper {
+    display: block;
   }
   
   .logo-section {

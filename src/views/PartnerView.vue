@@ -517,6 +517,9 @@ onMounted(async () => {
 .cta-content {
   max-width: 600px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cta-title {
@@ -544,6 +547,9 @@ onMounted(async () => {
   padding: var(--spacing-lg) var(--spacing-2xl);
   border-radius: 12px;
   transition: all var(--transition-normal);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .cta-btn:hover {
