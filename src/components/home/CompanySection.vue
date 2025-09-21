@@ -151,7 +151,7 @@
 
 .card-image {
   width: 100%;
-  height: 200px;
+  height: 220px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: var(--spacing-lg);

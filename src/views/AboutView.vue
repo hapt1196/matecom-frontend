@@ -80,17 +80,6 @@
           <div class="departments-level">
             <div class="department-card fade-in-up">
               <div class="department-avatar">
-                <img src="@/assets/img/aboutmatecom/Nguyễn Thị Huyền My.jpg" alt="Nguyễn Thị Huyền My" />
-              </div>
-              <div class="department-info">
-                <h4 class="department-name">Marketing</h4>
-                <p class="department-head">Nguyễn Thị Huyền My</p>
-                <p class="department-title">CMO - Chief Marketing Officer</p>
-              </div>
-            </div>
-            
-            <div class="department-card fade-in-up">
-              <div class="department-avatar">
                 <img src="@/assets/img/aboutmatecom/Khuất Duy Anh.jpg" alt="Khuất Duy Anh" />
               </div>
               <div class="department-info">
@@ -99,7 +88,7 @@
                 <p class="department-title">CFO - Chief Financial Officer</p>
               </div>
             </div>
-            
+
             <div class="department-card fade-in-up">
               <div class="department-avatar">
                 <img src="@/assets/img/aboutmatecom/Đào Thị Thơm - CTO.jpg" alt="Đào Thị Thơm" />
@@ -110,7 +99,7 @@
                 <p class="department-title">CTO - Chief Technology Officer</p>
               </div>
             </div>
-            
+
             <div class="department-card fade-in-up">
               <div class="department-avatar">
                 <img src="@/assets/img/aboutmatecom/Nguyễn Ngọc Quỳnh.JPG" alt="Nguyễn Ngọc Quỳnh" />
@@ -119,6 +108,17 @@
                 <h4 class="department-name">Nhân sự</h4>
                 <p class="department-head">Nguyễn Ngọc Quỳnh</p>
                 <p class="department-title">COO - Chief Operating Officer</p>
+              </div>
+            </div>
+
+            <div class="department-card fade-in-up">
+              <div class="department-avatar">
+                <img src="@/assets/img/aboutmatecom/Nguyễn Thị Huyền My.jpg" alt="Nguyễn Thị Huyền My" />
+              </div>
+              <div class="department-info">
+                <h4 class="department-name">Marketing</h4>
+                <p class="department-head">Nguyễn Thị Huyền My</p>
+                <p class="department-title">CMO - Chief Marketing Officer</p>
               </div>
             </div>
           </div>

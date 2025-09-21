@@ -81,6 +81,11 @@
             <ProjectsTab />
           </div>
           
+          <!-- CMS Pages Tab -->
+          <div v-if="activeTab === 'cms-pages'" class="tab-content">
+            <CmsPagesTab />
+          </div>
+          
           <!-- Analytics Tab -->
           <div v-if="activeTab === 'analytics'" class="tab-content">
             <AnalyticsTab />
@@ -106,7 +111,8 @@ import {
   TrendingUp, 
   Settings,
   Phone,
-  LogOut
+  LogOut,
+  FileText
 } from 'lucide-vue-next'
 
 // Import tab components
@@ -116,6 +122,7 @@ import ProjectsTab from '@/components/business/ProjectsTab.vue'
 import AnalyticsTab from '@/components/business/AnalyticsTab.vue'
 import SettingsTab from '@/components/business/SettingsTab.vue'
 import ContactsTab from '@/components/business/ContactsTab.vue'
+import CmsPagesTab from '@/components/business/CmsPagesTab.vue'
 
 // Import auth service
 import { getUserInfo, logout } from '@/services/authService'
@@ -129,6 +136,7 @@ const navigationItems = [
   { id: 'leads', label: 'Leads', icon: Users },
   { id: 'contacts', label: 'Khách hàng tiềm năng', icon: Phone },
   { id: 'projects', label: 'Projects', icon: FolderOpen },
+  { id: 'cms-pages', label: 'CMS Pages', icon: FileText },
   { id: 'analytics', label: 'Analytics', icon: TrendingUp },
   { id: 'settings', label: 'Settings', icon: Settings }
 ]

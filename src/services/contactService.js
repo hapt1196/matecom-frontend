@@ -1,6 +1,6 @@
 // Contact API Service
-const API_BASE_URL = 'https://localhost:7265/api/contact';
-//const API_BASE_URL = 'https://api.MATECOM.org/api/contact';
+//const API_BASE_URL = 'https://localhost:7265/api/contact';
+const API_BASE_URL = 'https://api.MATECOM.org/api/contact';
 
 /**
  * Lấy token từ localStorage

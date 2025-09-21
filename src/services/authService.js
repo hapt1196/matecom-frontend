@@ -1,6 +1,6 @@
 // Auth API Service
-const API_BASE_URL = 'https://localhost:7265/api/auth';
-//const API_BASE_URL = 'https://api.MATECOM.org/api/auth';
+// const API_BASE_URL = 'https://localhost:7265/api/auth';
+const API_BASE_URL = 'https://api.MATECOM.org/api/auth';
 /**
  * Đăng nhập vào hệ thống
  * @param {string} username - Tên đăng nhập
