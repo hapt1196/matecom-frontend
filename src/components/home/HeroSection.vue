@@ -14,7 +14,7 @@
             </h1>
             
             <p class="hero-subtitle slide-up">
-              Your trusted partner in digital growth. We transform brands through innovative marketing strategies and creative solutions.
+              {{ t('home.hero.description') }}
             </p>
             
             <div class="hero-cta slide-up">
@@ -23,7 +23,7 @@
                 @click="scrollToServices"
               >
                 <Rocket class="w-5 h-5 btn-icon" />
-                <span>Bắt đầu ngay</span>
+                <span>{{ t('home.hero.ctaButton') }}</span>
               </button>
               
               <button
@@ -31,22 +31,22 @@
                 @click="scrollToAbout"
               >
                 <Info class="w-5 h-5 btn-icon" />
-                <span>Về chúng tôi</span>
+                <span>{{ t('home.hero.learnMore') }}</span>
               </button>
             </div>
             
             <div class="hero-stats slide-up">
               <div class="stat-item">
                 <div class="stat-number">500+</div>
-                <div class="stat-label">Happy Clients</div>
+                <div class="stat-label">{{ t('about.achievements.clients') }}</div>
               </div>
               <div class="stat-item">
                 <div class="stat-number">1000+</div>
-                <div class="stat-label">Projects Completed</div>
+                <div class="stat-label">{{ t('about.achievements.projects') }}</div>
               </div>
               <div class="stat-item">
                 <div class="stat-number">98%</div>
-                <div class="stat-label">Success Rate</div>
+                <div class="stat-label">{{ t('common.success') }} Rate</div>
               </div>
             </div>
           </div>
@@ -62,7 +62,10 @@
 
 <script setup>
 import { onMounted, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Rocket, Info } from 'lucide-vue-next'
+
+const { t } = useI18n()
 
 const scrollToServices = () => {
   const servicesSection = document.querySelector('.service-section')

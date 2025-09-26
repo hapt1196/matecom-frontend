@@ -46,14 +46,8 @@ onMounted(async () => {
 .home-view {
   min-height: 100vh;
   
-  /* Gradient background for entire view */
-  background: linear-gradient(180deg, 
-    #060F2A 0%, 
-    #072845 25%, 
-    #0D4496 50%, 
-    #1E3A8A 75%, 
-    #0F172A 100%
-  );
+  /* Updated background color as requested */
+  background: rgb(238, 245, 254);
 }
 
 /* Scroll Animation */

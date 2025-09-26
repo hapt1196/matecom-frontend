@@ -1,0 +1,22 @@
+export default {
+  learnMore: 'Learn More',
+  readMore: 'Read More',
+  viewAll: 'View All',
+  contact: 'Contact',
+  getStarted: 'Get Started',
+  learnMore: 'Learn More',
+  back: 'Back',
+  next: 'Next',
+  previous: 'Previous',
+  close: 'Close',
+  save: 'Save',
+  cancel: 'Cancel',
+  edit: 'Edit',
+  delete: 'Delete',
+  confirm: 'Confirm',
+  loading: 'Loading...',
+  error: 'Error',
+  success: 'Success',
+  warning: 'Warning',
+  info: 'Info'
+}

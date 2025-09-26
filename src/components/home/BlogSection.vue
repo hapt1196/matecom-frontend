@@ -1,7 +1,7 @@
 <template>
   <section class="blog-section">
     <v-container>
-      <h2 class="section-title text-center">Góc Agency</h2>
+      <h2 class="section-title text-center">{{ t('home.blog.title') }}</h2>
     <v-row>
       <v-col 
         v-for="post in featuredPosts" 
@@ -33,7 +33,7 @@
           </v-card-text>
           
           <v-card-actions>
-            <v-btn color="primary" variant="text">Đọc thêm</v-btn>
+            <v-btn color="primary" variant="text">{{ t('home.blog.readMore') }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -45,7 +45,7 @@
         color="primary"
         @click="goToAgencyCorner"
       >
-        Xem tất cả
+        {{ t('home.blog.viewAll') }}
       </v-btn>
     </div>
     </v-container>
@@ -55,8 +55,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 const router = useRouter()
+const { t } = useI18n()
 
 // Function to get image URL from public folder
 const getImageUrl = (imageName) => {
@@ -71,7 +73,7 @@ const blogPosts = ref([
     excerpt: 'Khám phá 6 xu hướng Marketing 2026 quan trọng: Hyper-Personalization, AI Content, Video ngắn, Social Commerce và hơn thế nữa. Năm 2026 sẽ mở ra một giai đoạn hoàn toàn mới cho ngành Marketing.',
     slug: 'marketing-2026-xu-huong-moi-dinh-hinh-tuong-lai-thuong-hieu',
     featuredImage: getImageUrl('image.png'),
-    publishedAt: new Date('2026-01-01'),
+    publishedAt: new Date('2025-07-15'),
     readTime: '15 phút đọc'
   },
   {
@@ -80,7 +82,7 @@ const blogPosts = ref([
     excerpt: 'Tổng hợp những xu hướng Digital Marketing nổi bật trong năm 2025 và cách các thương hiệu đã thích ứng với những thay đổi này.',
     slug: 'digital-marketing-trends-2025',
     featuredImage: getImageUrl('image1.png'),
-    publishedAt: new Date('2025-12-15'),
+    publishedAt: new Date('2025-08-15'),
     readTime: '12 phút đọc'
   },
   {
@@ -89,7 +91,7 @@ const blogPosts = ref([
     excerpt: 'Cách AI đang thay đổi ngành Marketing hiện đại và những ứng dụng thực tế mà các thương hiệu đang triển khai.',
     slug: 'ai-marketing-trend-reality',
     featuredImage: getImageUrl('image2.png'),
-    publishedAt: new Date('2025-11-20'),
+    publishedAt: new Date('2025-09-10'),
     readTime: '10 phút đọc'
   },
   {
@@ -98,7 +100,7 @@ const blogPosts = ref([
     excerpt: 'Khám phá xu hướng Social Commerce và cách các thương hiệu đang tận dụng mạng xã hội để tăng doanh số.',
     slug: 'social-commerce-mua-sam-giai-tri',
     featuredImage: getImageUrl('image3.png'),
-    publishedAt: new Date('2025-10-30'),
+    publishedAt: new Date('2025-09-12'),
     readTime: '8 phút đọc'
   },
   {
@@ -155,17 +157,17 @@ const goToAgencyCorner = () => {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-5xl);
   font-weight: 900;
-  color: #FFFFFF;
+  color: #03045e;
   margin-bottom: var(--spacing-2xl);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .blog-card {
   transition: all 0.3s ease;
   cursor: pointer;
   height: 100%;
-  background: rgba(30, 41, 59, 0.6) !important;
-  border: 1px solid rgba(51, 65, 85, 0.5) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(3, 4, 94, 0.2) !important;
   border-radius: 16px !important;
 }
 
@@ -179,7 +181,7 @@ const goToAgencyCorner = () => {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.4;
-  color: #1f2937;
+  color: #03045e;
   margin-bottom: 8px;
 }
 
@@ -188,12 +190,12 @@ const goToAgencyCorner = () => {
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #03045e;
   margin-bottom: 12px;
 }
 
 .publish-date {
-  color: #6b7280;
+  color: #03045e;
 }
 
 .read-time {
@@ -202,7 +204,7 @@ const goToAgencyCorner = () => {
 }
 
 .blog-excerpt {
-  color: #4b5563;
+  color: #03045e;
   line-height: 1.6;
   font-size: 0.95rem;
   display: -webkit-box;
@@ -217,19 +219,19 @@ const goToAgencyCorner = () => {
 
 /* Dark mode support */
 :deep(.v-theme--dark) .blog-card {
-  background: #1e293b;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 :deep(.v-theme--dark) .blog-title {
-  color: #f1f5f9;
+  color: #03045e;
 }
 
 :deep(.v-theme--dark) .blog-meta {
-  color: #94a3b8;
+  color: #03045e;
 }
 
 :deep(.v-theme--dark) .blog-excerpt {
-  color: #cbd5e1;
+  color: #03045e;
 }
 
 /* Responsive */

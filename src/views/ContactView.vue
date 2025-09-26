@@ -3,8 +3,8 @@
     <!-- Hero Banner -->
     <section class="contact-hero">
       <div class="hero-content">
-        <h1 class="hero-title">LIÊN HỆ VỚI</h1>
-        <h1 class="hero-title">CHÚNG TÔI</h1>
+        <h1 class="hero-title">{{ t('contact.hero.title1') }}</h1>
+        <h1 class="hero-title">{{ t('contact.hero.title2') }}</h1>
       </div>
     </section>
     
@@ -12,13 +12,13 @@
     <section class="contact-form-section">
       <div class="form-container">
         <div class="form-header">
-          <h2 class="form-title">MUỐN THƯƠNG HIỆU CỦA BẠN TẠO SỨC HÚT BÙNG NỔ?</h2>
-          <h3 class="form-subtitle">HÃY ĐỂ LẠI THÔNG TIN!</h3>
+          <h2 class="form-title">{{ t('contact.form.title') }}</h2>
+          <h3 class="form-subtitle">{{ t('contact.form.subtitle') }}</h3>
         </div>
         
         <form @submit.prevent="submitForm" class="contact-form">
           <div class="form-group">
-            <label for="fullName" class="form-label">Họ và tên *</label>
+            <label for="fullName" class="form-label">{{ t('contact.form.labels.fullName') }} {{ t('contact.form.required') }}</label>
             <input
               type="text"
               id="fullName"
@@ -29,7 +29,7 @@
           </div>
           
           <div class="form-group">
-            <label for="phone" class="form-label">Số điện thoại *</label>
+            <label for="phone" class="form-label">{{ t('contact.form.labels.phone') }} {{ t('contact.form.required') }}</label>
             <input
               type="tel"
               id="phone"
@@ -40,7 +40,7 @@
           </div>
           
           <div class="form-group">
-            <label for="email" class="form-label">Email *</label>
+            <label for="email" class="form-label">{{ t('contact.form.labels.email') }} {{ t('contact.form.required') }}</label>
             <input
               type="email"
               id="email"
@@ -51,7 +51,7 @@
           </div>
           
           <div class="form-group">
-            <label for="company" class="form-label">Tên công ty</label>
+            <label for="company" class="form-label">{{ t('contact.form.labels.company') }}</label>
             <input
               type="text"
               id="company"
@@ -61,7 +61,7 @@
           </div>
           
           <div class="form-group">
-            <label for="message" class="form-label">Ghi chú</label>
+            <label for="message" class="form-label">{{ t('contact.form.labels.message') }}</label>
             <textarea
               id="message"
               v-model="formData.message"
@@ -76,7 +76,7 @@
               class="submit-btn"
               :disabled="isLoading"
             >
-              {{ isLoading ? 'Đang gửi...' : 'Gửi thông tin' }}
+              {{ isLoading ? t('contact.form.submit.loading') : t('contact.form.submit.default') }}
             </button>
           </div>
         </form>
@@ -84,7 +84,7 @@
       
       <!-- Google Map Section -->
       <div class="map-section">
-        <h3 class="map-title">Vị trí của chúng tôi</h3>
+        <h3 class="map-title">{{ t('contact.map.title') }}</h3>
         <div class="map-container">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.740313308014!2d105.79040657575226!3d21.00304428866029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acaf92155555%3A0xdaf2cc1c7ff480de!2zMjgzIEtodeG6pXQgRHV5IFRp4bq_biwgVGjEg25nIExvbmcgTnVtYmVyIE9uZSwgVGhhbmggWHXDom4sIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1757698952245!5m2!1sen!2s" 
@@ -99,7 +99,7 @@
       </div>
       
       <!-- Phone Icon -->
-      <div class="phone-icon">
+      <div class="phone-icon" :title="t('contact.phone.tooltip')">
         <div class="phone-circle">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59531 1.99522 8.06679 2.16708 8.43376 2.48353C8.80073 2.79999 9.03996 3.23945 9.10999 3.72C9.23662 4.68007 9.47144 5.62273 9.80999 6.53C9.94454 6.88792 9.97366 7.27691 9.89391 7.65088C9.81415 8.02485 9.62886 8.36811 9.35999 8.64L8.08999 9.91C9.51355 12.4135 11.5865 14.4864 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9751 14.1858 16.3491 14.1061C16.7231 14.0263 17.1121 14.0555 17.47 14.19C18.3773 14.5286 19.3199 14.7634 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z" fill="white"/>
@@ -113,7 +113,10 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { createContact } from '@/services/contactService'
+
+const { t } = useI18n()
 
 const formData = reactive({
   fullName: '',
@@ -148,11 +151,11 @@ const submitForm = async () => {
     formData.message = ''
     
     // Show success message
-    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.')
+    alert(t('contact.form.messages.success'))
     
   } catch (error) {
     console.error('Submit error:', error)
-    alert('Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.')
+    alert(t('contact.form.messages.error'))
   } finally {
     isLoading.value = false
   }

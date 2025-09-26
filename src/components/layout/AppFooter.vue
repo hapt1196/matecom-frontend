@@ -2,54 +2,49 @@
   <v-footer class="app-footer">
     <div class="footer-background"></div>
     <v-container class="footer-content">
-      <v-row>
-        <!-- Left Column - Company Information -->
-        <v-col cols="12" md="4" class="footer-left">
-          <div class="company-info">
-            <div class="logo-section">
-              <img src="@/assets/matecom_logo_transparent.png" alt="MATECOM Logo" height="160" class="footer-logo" />
-              <div class="company-name">MATECOM Agency</div>
-            </div>
-            <p class="company-description">
-              MATECOM Agency chuyên cung cấp dịch vụ marketing toàn diện cho các doanh nghiệp về lĩnh vực công nghệ
-            </p>
-            <div class="social-icons">
-              <v-btn icon href="https://www.facebook.com/matecommarketing" target="_blank" class="social-btn">
-                <Facebook class="w-5 h-5" />
-              </v-btn>
-              <v-btn icon href="https://www.linkedin.com/in/matecom-agency" target="_blank" class="social-btn">
-                <Linkedin class="w-5 h-5" />
-              </v-btn>
-              <v-btn icon href="https://www.tiktok.com/@matecomeagency" target="_blank" class="social-btn">
-                <span class="tiktok-icon">T</span>
-              </v-btn>
+      <v-row class="footer-main-content">
+        <!-- Logo Section -->
+        <v-col cols="12" md="2" class="footer-logo-section">
+          <img src="@/assets/matecom_logo_transparent.png" alt="MATECOM Logo" height="120" class="footer-logo" />
+        </v-col>
+
+        <!-- Company Description + Address Section -->
+        <v-col cols="12" md="4" class="footer-description-section">
+          <div class="company-description">
+            {{ t('footer.company.description') }}
+          </div>
+          <div class="company-address">
+            <div class="address-item">
+              <span class="address-label">{{ t('footer.info.address') }}:</span>
+              <span class="address-text">283 Khuất Duy Tiến, Hanoi, Vietnam</span>
             </div>
           </div>
         </v-col>
 
-        <!-- Middle Column - Services (Empty for now) -->
-        <v-col cols="12" md="4" class="footer-center">
-          <!-- Temporarily empty as requested -->
+        <!-- Contact Information Section -->
+        <v-col cols="12" md="3" class="footer-contact-section">
+          <div class="contact-item">
+            <Mail class="contact-icon" />
+            <span class="contact-text">matecomagencymarketing@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <Phone class="contact-icon" />
+            <span class="contact-text">0339265203</span>
+          </div>
         </v-col>
 
-        <!-- Right Column - Contact Information -->
-        <v-col cols="12" md="4" class="footer-right">
-          <div class="contact-info-wrapper">
-            <div class="contact-info">
-              <h3 class="contact-title">Liên hệ</h3>
-              <div class="contact-item">
-                <span class="contact-label">Hotline:</span>
-                <span class="contact-value">0339265203</span>
-              </div>
-              <div class="contact-item">
-                <span class="contact-label">Email:</span>
-                <span class="contact-value">MATECOMagencymarketing@gmail.com</span>
-              </div>
-              <div class="contact-item">
-                <span class="contact-label">Địa chỉ:</span>
-                <span class="contact-address">283 Khuất Duy Tiến, Hanoi, Vietnam</span>
-              </div>
-            </div>
+        <!-- Social Media Section -->
+        <v-col cols="12" md="3" class="footer-social-section">
+          <div class="social-icons">
+            <v-btn icon href="https://www.facebook.com/matecommarketing" target="_blank" class="social-btn">
+              <Facebook class="w-5 h-5" />
+            </v-btn>
+            <v-btn icon href="https://www.linkedin.com/in/matecom-agency" target="_blank" class="social-btn">
+              <Linkedin class="w-5 h-5" />
+            </v-btn>
+            <v-btn icon href="https://www.tiktok.com/@matecomeagency" target="_blank" class="social-btn">
+              <span class="tiktok-icon">T</span>
+            </v-btn>
           </div>
         </v-col>
       </v-row>
@@ -58,7 +53,7 @@
       <v-row>
         <v-col cols="12" class="text-center">
           <div class="copyright">
-            &copy; {{ new Date().getFullYear() }} MATECOM Agency. All Rights Reserved.
+            {{ t('footer.copyright') }}
           </div>
         </v-col>
       </v-row>
@@ -67,14 +62,17 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { Facebook, Linkedin, Youtube, Phone, Mail } from 'lucide-vue-next'
+
+const { t } = useI18n()
 </script>
 
 <style scoped>
 .app-footer {
   position: relative;
   border-top: 1px solid var(--footer-border);
-  padding: 20px 0 15px;
+  padding: 40px 20px 0 15px;
   margin-top: auto;
   color: var(--footer-text);
   overflow: hidden;
@@ -115,42 +113,103 @@ import { Facebook, Linkedin, Youtube, Phone, Mail } from 'lucide-vue-next'
   --footer-accent: #F59E0B;
 }
 
-/* Left Column - Company Info */
-.footer-left {
-  padding-right: 24px;
+/* Footer Main Content Layout */
+.footer-main-content {
   display: flex;
   align-items: flex-start;
+  margin-bottom: 20px;
+  min-height: 120px;
 }
 
-.company-info {
-  max-width: 100%;
-  margin-top: 0;
-}
-
-.logo-section {
+/* Logo Section */
+.footer-logo-section {
   display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 15px;
+  padding-top: 0;
 }
 
-.company-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-  line-height: 1.2;
+/* Company Description + Address Section */
+.footer-description-section {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 0;
 }
 
 .company-description {
   color: var(--footer-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.company-address {
+  margin-top: 8px;
+}
+
+.address-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.address-label {
+  font-weight: 600;
+  color: var(--footer-text);
   font-size: 0.85rem;
+}
+
+.address-text {
+  color: var(--footer-text-secondary);
+  font-size: 0.8rem;
   line-height: 1.4;
-  margin-bottom: 15px;
+}
+
+/* Contact Information Section */
+.footer-contact-section {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 0;
+  gap: 12px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--footer-text);
+}
+
+.contact-text {
+  color: var(--footer-text);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+/* Social Media Section */
+.footer-social-section {
+  padding: 0 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0;
 }
 
 .social-icons {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .social-btn {
@@ -173,61 +232,6 @@ import { Facebook, Linkedin, Youtube, Phone, Mail } from 'lucide-vue-next'
 .tiktok-icon {
   font-weight: bold;
   font-size: 1.1rem;
-}
-
-/* Right Column - Contact Info */
-.footer-right {
-  padding-left: 24px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.contact-info-wrapper {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 10%;
-}
-
-.contact-info {
-  max-width: 100%;
-  margin-top: 0;
-}
-
-.contact-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--footer-text);
-  margin: 0 0 20px 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.contact-item {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.contact-label {
-  font-weight: 500;
-  color: var(--footer-text);
-  font-size: 0.9rem;
-  min-width: 60px;
-}
-
-.contact-value {
-  color: var(--footer-text);
-  font-weight: 400;
-  font-size: 0.95rem;
-}
-
-.contact-address {
-  color: var(--footer-text);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  font-weight: 400;
 }
 
 .call-btn {
@@ -283,25 +287,37 @@ import { Facebook, Linkedin, Youtube, Phone, Mail } from 'lucide-vue-next'
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .footer-left,
-  .footer-right {
-    padding: 0;
-    margin-bottom: 30px;
-    display: block;
-  }
-  
-  .contact-info-wrapper {
-    display: block;
-  }
-  
-  .logo-section {
+  .footer-main-content {
     flex-direction: column;
-    text-align: center;
-    gap: 8px;
+    gap: 20px;
+    min-height: auto;
+    align-items: center;
   }
   
-  .company-name {
-    font-size: 1.3rem;
+  .footer-logo-section,
+  .footer-description-section,
+  .footer-contact-section,
+  .footer-social-section {
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-logo-section {
+    order: 1;
+  }
+  
+  .footer-description-section {
+    order: 2;
+  }
+  
+  .footer-contact-section {
+    order: 3;
+  }
+  
+  .footer-social-section {
+    order: 4;
   }
   
   .social-icons {
@@ -309,11 +325,12 @@ import { Facebook, Linkedin, Youtube, Phone, Mail } from 'lucide-vue-next'
   }
   
   .contact-item {
-    text-align: center;
+    justify-content: center;
   }
   
-  .call-btn {
-    width: 100%;
+  .company-description,
+  .address-item {
+    text-align: center;
   }
 }
 
@@ -326,8 +343,12 @@ import { Facebook, Linkedin, Youtube, Phone, Mail } from 'lucide-vue-next'
     font-size: 0.8rem;
   }
   
-  .contact-title {
-    font-size: 1rem;
+  .contact-text {
+    font-size: 0.8rem;
+  }
+  
+  .address-text {
+    font-size: 0.75rem;
   }
 }
 </style>

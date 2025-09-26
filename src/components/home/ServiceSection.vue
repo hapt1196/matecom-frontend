@@ -2,9 +2,9 @@
   <section class="service-section">
     <v-container>
       <div class="section-header text-center">
-        <h2 class="section-title fade-in">Dịch Vụ Marketing</h2>
+        <h2 class="section-title fade-in">{{ t('home.services.title') }}</h2>
         <p class="section-subtitle slide-up">
-          Giải pháp marketing toàn diện, được thiết kế để trở thành 'bộ não' và 'cánh tay nối dài' của đội ngũ bạn
+          {{ t('home.services.subtitle') }}
         </p>
       </div>
       
@@ -34,7 +34,7 @@
                 :key="feature"
                 class="service-feature"
               >
-                <CheckCircle class="w-4 h-4 text-success" />
+                <CheckCircle class="w-4 h-4 text-success mr-2" />
                 <span>{{ feature }}</span>
               </div>
             </div>
@@ -45,7 +45,7 @@
               class="service-btn"
               @click="learnMore(service)"
             >
-              Tìm hiểu thêm
+              {{ t('common.learnMore') }}
               <ArrowRight class="w-4 h-4 ml-1" />
             </v-btn>
           </div>
@@ -56,38 +56,52 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { 
   CheckCircle,
   ArrowRight
 } from 'lucide-vue-next'
 
 const router = useRouter()
+const { t } = useI18n()
 
-const services = [
+const services = computed(() => [
   {
     id: 1,
-    name: 'Gói 1: Tư vấn & Xây dựng chiến lược Marketing',
-    description: 'Một bộ chiến lược được "đo ni đóng giày" riêng cho doanh nghiệp của bạn, giải quyết tận gốc các vấn đề.',
+    name: t('home.services.basic.title'),
+    description: t('home.services.basic.description'),
     badge: 'Basic',
-    features: ['Lý giải thị trường & khách hàng', 'Xây dựng định vị độc nhất', 'Xác định con đường tăng trưởng', 'Marketing Strategy Blueprint']
+    features: [
+      t('home.services.basic.features[0]'),
+      t('home.services.basic.features[1]'),
+      t('home.services.basic.features[2]')
+    ]
   },
   {
     id: 2,
-    name: 'Gói 2: Giải pháp Marketing Tích hợp',
-    description: 'Chúng tôi trở thành đội ngũ triển khai của bạn, đảm bảo các kênh marketing không còn hoạt động rời rạc.',
+    name: t('home.services.advanced.title'),
+    description: t('home.services.advanced.description'),
     badge: 'Advanced',
-    features: ['Phân tích dữ liệu & Big Idea', 'Triển khai kênh đa dạng', 'Giải pháp công nghệ chuyên sâu', 'IMC hoàn chỉnh']
+    features: [
+      t('home.services.advanced.features[0]'),
+      t('home.services.advanced.features[1]'),
+      t('home.services.advanced.features[2]')
+    ]
   },
   {
     id: 3,
-    name: 'Gói 3: Chiến Lược & Triển Khai Toàn Diện',
-    description: 'Đồng hành toàn diện từ hoạch định chiến lược đến xây dựng hệ thống đo lường hiệu quả.',
+    name: t('home.services.premium.title'),
+    description: t('home.services.premium.description'),
     badge: 'Premium',
-    features: ['Định vị sắc bén & Chiến lược tăng trưởng', 'Kế hoạch hành động chi tiết', 'Hệ thống vận hành và đo lường', 'Dashboard KPI thời gian thực']
+    features: [
+      t('home.services.premium.features[0]'),
+      t('home.services.premium.features[1]'),
+      t('home.services.premium.features[2]')
+    ]
   }
-]
+])
 
 const learnMore = (service) => {
   // Chuyển đến trang ServiceView
@@ -121,45 +135,42 @@ onMounted(async () => {
 <style scoped>
 .service-section {
   padding: var(--spacing-5xl) 0;
-  padding-bottom: 10vh;
   background: transparent;
   
   /* CSS Variables - MarcomMate Inspired Dark Theme */
   --service-section-bg: transparent;
-  --service-card-bg: rgba(30, 41, 59, 0.6);
-  --service-card-border: rgba(51, 65, 85, 0.5);
+  --service-card-bg: rgba(255, 255, 255, 0.9);
+  --service-card-border: rgba(3, 4, 94, 0.2);
   --service-icon-bg: rgba(30, 41, 59, 0.8);
-  --service-title-color: #F8FAFC;
-  --service-description-color: #CBD5E1;
-  --service-feature-color: #94A3B8;
+  --service-title-color: #03045e;
+  --service-description-color: #03045e;
+  --service-feature-color: #03045e;
 }
 
 .section-header {
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-1xl);
 }
 
 .section-title {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-5xl);
   font-weight: 900;
-  color: #FFFFFF;
+  color: #03045e;
   margin-bottom: var(--spacing-lg);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-subtitle {
   font-size: var(--font-size-xl);
-  color: var(--text-light);
+  color: #03045e;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.services-grid {
-  margin-top: var(--spacing-2xl);
-}
 
 .service-col {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-md);
 }
 
 .service-card {
@@ -168,12 +179,14 @@ onMounted(async () => {
   padding: var(--spacing-2xl);
   height: 100%;
   box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 1px solid var(--service-card-border);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transform-origin: center center;
+  transform: scale(0.9);
 }
 
 .service-card::before {
@@ -189,8 +202,9 @@ onMounted(async () => {
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-12px) scale(1.0);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 10;
 }
 
 .service-card:hover::before {
@@ -214,19 +228,23 @@ onMounted(async () => {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  width: 120px;
+  text-align: center;
+  display: inline-block;
 }
 
 .service-badge.basic {
-  background: linear-gradient(135deg, #10B981, #059669);
+  background: #90e0ef;
 }
 
 .service-badge.advanced {
-  background: linear-gradient(135deg, #3B82F6, #1E40AF);
+  background: #00b4d8;
 }
 
 .service-badge.premium {
-  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  background: #0077b6;
 }
+
 
 .service-name {
   font-size: var(--font-size-2xl);
@@ -266,13 +284,33 @@ onMounted(async () => {
   border-radius: 12px;
   font-weight: 600;
   text-transform: none;
-  transition: all var(--transition-normal);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   margin-top: auto;
 }
 
 .service-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: bounce 0.6s ease-in-out;
+}
+
+.service-btn:active {
+  transform: translateY(-4px) scale(1.02);
+  transition: all 0.1s ease;
+  animation: none;
+}
+
+/* Bounce animation keyframes */
+@keyframes bounce {
+  0% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.08);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.05);
+  }
 }
 
 /* Animation delays for staggered entrance */

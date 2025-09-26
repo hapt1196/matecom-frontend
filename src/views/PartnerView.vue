@@ -5,7 +5,7 @@
       <v-container>
         <div class="hero-content">
           <p class="hero-slogan">
-            "Hợp tác là chìa khóa cho sự phát triển lâu dài"
+            "{{ t('partners.hero.slogan') }}"
           </p>
         </div>
       </v-container>
@@ -15,8 +15,8 @@
     <section class="partners-section">
       <v-container>
         <div class="section-header fade-in-up">
-          <h2 class="section-title">Đối Tác Chiến Lược</h2>
-          <p class="section-subtitle">Chúng tôi tự hào hợp tác với các thương hiệu hàng đầu</p>
+          <h2 class="section-title">{{ t('partners.strategicPartners.title') }}</h2>
+          <p class="section-subtitle">{{ t('partners.strategicPartners.subtitle') }}</p>
         </div>
         
         <div class="partners-scroll-container fade-in-up">
@@ -53,8 +53,8 @@
     <section class="tech-partners-section">
       <v-container>
         <div class="section-header fade-in-up">
-          <h2 class="section-title">Đối Tác Công Nghệ</h2>
-          <p class="section-subtitle">Công nghệ tiên tiến cho giải pháp tối ưu</p>
+          <h2 class="section-title">{{ t('partners.techPartners.title') }}</h2>
+          <p class="section-subtitle">{{ t('partners.techPartners.subtitle') }}</p>
         </div>
         
         <div class="tech-partners-grid fade-in-up">
@@ -74,10 +74,10 @@
       <v-container>
         <div class="intro-content fade-in-up">
           <p class="intro-text">
-            MATECOM tin rằng hợp tác là chìa khóa cho sự phát triển lâu dài. Chúng tôi luôn tìm kiếm và xây dựng mối quan hệ đối tác chiến lược dựa trên niềm tin, sự minh bạch và mục tiêu cùng chiến thắng.
+            {{ t('partners.intro.text1') }}
           </p>
           <p class="intro-text">
-            Cùng với nhau, chúng ta sẽ tạo ra những chiến dịch tiếp thị đột phá, nguồn lực tối ưu và mở rộng cơ hội phát triển thị trường.
+            {{ t('partners.intro.text2') }}
           </p>
         </div>
       </v-container>
@@ -87,7 +87,7 @@
     <section class="benefits-section">
       <v-container>
         <div class="section-header fade-in-up">
-          <h2 class="section-title">Lợi ích khi hợp tác với MATECOM</h2>
+          <h2 class="section-title">{{ t('partners.benefits.title') }}</h2>
         </div>
         
         <div class="benefits-list">
@@ -111,18 +111,15 @@
     <section class="cta-section">
       <v-container>
         <div class="cta-content fade-in-up">
-          <h2 class="cta-title">Sẵn sàng hợp tác?</h2>
+          <h2 class="cta-title">{{ t('partners.cta.title') }}</h2>
           <p class="cta-text">
-            Hãy để chúng tôi cùng bạn xây dựng chiến lược marketing đột phá
+            {{ t('partners.cta.description') }}
           </p>
-          <v-btn
-            color="primary"
-            size="large"
-            class="cta-btn"
+          <ContactButton
+            :text="t('partners.cta.button')"
+            custom-class="cta-btn orange-accent"
             @click="contactUs"
-          >
-            Liên hệ ngay
-          </v-btn>
+          />
         </div>
       </v-container>
     </section>
@@ -130,7 +127,10 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import ContactButton from '@/components/common/ContactButton.vue'
 // Import partner logos
 import bingadsLogo from '@/assets/img/companion/bingads.png'
 import googlepartnerLogo from '@/assets/img/companion/googlepartner.png'
@@ -138,6 +138,9 @@ import metabusinessLogo from '@/assets/img/companion/metabusiness.png'
 import tiktokLogo from '@/assets/img/companion/tiktok.png'
 import zalobusinessLogo from '@/assets/img/companion/zalobusiness.png'
 import zohopartnerLogo from '@/assets/img/companion/zohopartner.png'
+
+const { t } = useI18n()
+const router = useRouter()
 
 const partners = [
   {
@@ -167,48 +170,50 @@ const partners = [
   }
 ]
 
-const benefits = [
-  {
-    id: 1,
-    number: '1',
-    title: 'Gia tăng nhận diện và giá trị thương hiệu',
-    description: 'MATECOM triển khai chiến dịch sáng tạo giúp đối tác nổi bật trong mắt khách hàng và trên thị trường.'
-  },
-  {
-    id: 2,
-    number: '2',
-    title: 'Tối ưu nguồn lực và chi phí marketing',
-    description: 'Chúng tôi tận dụng sức mạnh công nghệ, dữ liệu và kênh truyền thông để đạt hiệu quả cao với chi phí hợp lý.'
-  },
-  {
-    id: 3,
-    number: '3',
-    title: 'Mở rộng mạng lưới kinh doanh',
-    description: 'Kết nối với hệ sinh thái khách hàng, nhà cung cấp, và các đối tác khác của MATECOM để mở rộng cơ hội hợp tác.'
-  },
-  {
-    id: 4,
-    number: '4',
-    title: 'Tiếp cận công nghệ và giải pháp tiên tiến',
-    description: 'Ứng dụng các công cụ digital marketing hiện đại để tối ưu chiến dịch, tăng hiệu suất bán hàng.'
-  },
-  {
-    id: 5,
-    number: '5',
-    title: 'Hợp tác minh bạch, đôi bên cùng thắng',
-    description: 'Chúng tôi đặt sự minh bạch và kết quả thực tế lên hàng đầu, đảm bảo lợi ích cho cả hai bên.'
-  },
-  {
-    id: 6,
-    number: '6',
-    title: 'Hỗ trợ truyền thông chung',
-    description: 'Đối tác sẽ được tham gia các hoạt động truyền thông đồng thương hiệu (co-branding), sự kiện và workshop của MATECOM.'
-  }
-]
+// Computed property for benefits
+const benefits = computed(() => {
+  return [
+    {
+      id: 1,
+      number: '1',
+      title: t('partners.benefits.items.0.title'),
+      description: t('partners.benefits.items.0.description')
+    },
+    {
+      id: 2,
+      number: '2',
+      title: t('partners.benefits.items.1.title'),
+      description: t('partners.benefits.items.1.description')
+    },
+    {
+      id: 3,
+      number: '3',
+      title: t('partners.benefits.items.2.title'),
+      description: t('partners.benefits.items.2.description')
+    },
+    {
+      id: 4,
+      number: '4',
+      title: t('partners.benefits.items.3.title'),
+      description: t('partners.benefits.items.3.description')
+    },
+    {
+      id: 5,
+      number: '5',
+      title: t('partners.benefits.items.4.title'),
+      description: t('partners.benefits.items.4.description')
+    },
+    {
+      id: 6,
+      number: '6',
+      title: t('partners.benefits.items.5.title'),
+      description: t('partners.benefits.items.5.description')
+    }
+  ]
+})
 
 const contactUs = () => {
-  // TODO: Implement contact form or navigation
-  console.log('Contact us clicked')
+  router.push('/contact')
 }
 
 onMounted(async () => {
@@ -539,23 +544,7 @@ onMounted(async () => {
 }
 
 .cta-btn {
-  background: var(--cta-btn-bg) !important;
-  border: none !important;
-  color: white !important;
-  font-family: var(--font-family-heading);
-  font-weight: 600;
   padding: var(--spacing-lg) var(--spacing-2xl);
-  border-radius: 12px;
-  transition: all var(--transition-normal);
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.cta-btn:hover {
-  background: var(--cta-btn-hover) !important;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
 }
 
 /* Scroll Animation */

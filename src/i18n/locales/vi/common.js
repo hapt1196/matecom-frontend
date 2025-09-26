@@ -1,0 +1,22 @@
+export default {
+  learnMore: 'Tìm hiểu thêm',
+  readMore: 'Đọc thêm',
+  viewAll: 'Xem tất cả',
+  contact: 'Liên hệ',
+  getStarted: 'Bắt đầu',
+  learnMore: 'Tìm hiểu thêm',
+  back: 'Quay lại',
+  next: 'Tiếp theo',
+  previous: 'Trước',
+  close: 'Đóng',
+  save: 'Lưu',
+  cancel: 'Hủy',
+  edit: 'Chỉnh sửa',
+  delete: 'Xóa',
+  confirm: 'Xác nhận',
+  loading: 'Đang tải...',
+  error: 'Lỗi',
+  success: 'Thành công',
+  warning: 'Cảnh báo',
+  info: 'Thông tin'
+}

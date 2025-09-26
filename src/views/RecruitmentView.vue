@@ -8,15 +8,14 @@
       
       <div class="hero-content">
         <div class="hero-text">
-          <span class="hero-subtitle">Cơ hội nghề nghiệp</span>
-          <h1 class="hero-title">Trở thành mảnh ghép của MATECOM</h1>
-          <v-btn 
-            class="hero-cta-btn"
+          <span class="hero-subtitle">{{ t('recruitment.hero.subtitle') }}</span>
+          <h1 class="hero-title">{{ t('recruitment.hero.title') }}</h1>
+          <ContactButton
+            :text="t('recruitment.hero.ctaButton')"
+            custom-class="hero-cta-btn"
             size="large"
-            @click="scrollToPositions"
-          >
-            ỨNG TUYỂN NGAY
-          </v-btn>
+            @click="openApplicationForm"
+          />
         </div>
       </div>
     </section>
@@ -24,10 +23,10 @@
     <!-- Values Section -->
     <section class="values-section">
       <v-container>
-        <v-row justify="center">
+        <v-row>
           <v-col cols="12" lg="10">
             <div class="values-header">
-              <h2 class="values-title">Giá trị bạn nhận được tại MATECOM Agency</h2>
+              <h2 class="values-title">{{ t('recruitment.values.title') }}</h2>
               <div class="values-divider"></div>
             </div>
             
@@ -37,10 +36,10 @@
                 <div class="value-content-left">
                   <div class="value-number">01</div>
                   <div class="value-text">
-                    <h3 class="value-subtitle">Cơ hội học hỏi và phát triển không giới hạn</h3>
+                    <h3 class="value-subtitle">{{ t('recruitment.values.item1.title') }}</h3>
                     <div class="value-description">
-                      <p>Tại Matecom, bạn được làm việc trong môi trường Digital Marketing năng động, nơi tri thức luôn mở rộng và cơ hội học hỏi không bao giờ dừng lại. Với đồng hành động của đội ngũ luôn nhiệt huyết, chúng tôi không chỉ tạo ra các kết quả chiến dịch dịch vụ mà còn giúp bạn phát triển bản thân toàn diện.</p>
-                      <p>Matecom tin rằng sự phát triển của con người chính là nền tảng cho sức mạnh lớn nhất của tổ chức, vì vậy chúng tôi luôn ưu tiên đào tạo và hỗ trợ nhân sự phát triển lâu dài.</p>
+                      <p>{{ value1Description1 }}</p>
+                      <p>{{ value1Description2 }}</p>
                     </div>
                   </div>
                 </div>
@@ -57,10 +56,10 @@
                 <div class="value-content-right">
                   <div class="value-number">02</div>
                   <div class="value-text">
-                    <h3 class="value-subtitle">Thử luyện để trở thành phiên bản tốt nhất</h3>
+                    <h3 class="value-subtitle">{{ t('recruitment.values.item2.title') }}</h3>
                     <div class="value-description">
-                      <p>Làm việc tại một agency trẻ như Matecom đồng nghĩa với việc bạn sẽ phải đối mặt với những thử thách thực tế đòi hỏi sự hoạt động. Chúng tôi tìm kiếm những bạn trẻ có tinh thần cầu tiến, kỷ luật và bùng nổ từ vùng an toàn, để không ngừng hoàn thiện kỹ năng và nâng cao chất lượng công việc.</p>
-                      <p>Tại Matecom, chúng tôi đề nghị cao sự tập trung, chi tiết và đòi hỏi sự chất lượng, bởi mỗi dự án đều là cơ hội để bạn chứng minh bản lĩnh vực và sáng tạo.</p>
+                      <p>{{ value2Description1 }}</p>
+                      <p>{{ value2Description2 }}</p>
                     </div>
                   </div>
                 </div>
@@ -71,10 +70,10 @@
                 <div class="value-content-left">
                   <div class="value-number">03</div>
                   <div class="value-text">
-                    <h3 class="value-subtitle">Môi trường khuyến khích sáng tạo, chủ động và linh hoạt</h3>
+                    <h3 class="value-subtitle">{{ t('recruitment.values.item3.title') }}</h3>
                     <div class="value-description">
-                      <p>Matecom tin rằng ý tưởng đột phá chính là sức mạnh của Marketing hiện đại. Vì vậy, chúng tôi khuyến khích bạn tự động đưa ra quan điểm, chủ động trong công việc và luôn sẵn sàng đưa ra giải pháp mới.</p>
-                      <p>Tại đây, mỗi cá nhân đều được trao quyền để làm chủ công việc, đồng thời cam kết trách nhiệm về những gì mình tạo ra. Sáng tạo, trách nhiệm và tinh thần đồng đội là những cốt lõi giá trị giúp Matecom khác biệt và phát triển bền vững.</p>
+                      <p>{{ value3Description1 }}</p>
+                      <p>{{ value3Description2 }}</p>
                     </div>
                   </div>
                 </div>
@@ -94,7 +93,7 @@
         <v-row justify="center">
           <v-col cols="12" lg="10">
             <div class="positions-header">
-              <h2 class="section-title">Các vị trí tuyển dụng</h2>
+              <h2 class="section-title">{{ t('recruitment.positions.title') }}</h2>
               <div class="section-divider"></div>
             </div>
             
@@ -102,10 +101,10 @@
               <!-- Position 1: Graphic Design -->
               <div class="position-card">
                 <div class="position-header">
-                  <h3 class="company-title">MATECOM TUYỂN DỤNG</h3>
+                  <h3 class="company-title">{{ t('recruitment.positions.companyTitle') }}</h3>
                 </div>
                 <div class="position-content">
-                  <h4 class="job-title">CTV GRAPHIC DESIGN (THIẾT KẾ ĐỒ HỌA)</h4>
+                  <h4 class="job-title">{{ t('recruitment.positions.jobs.graphicDesign.title') }}</h4>
                 </div>
                 <div class="position-footer">
                   <v-btn 
@@ -113,47 +112,47 @@
                     variant="elevated"
                     @click="showJobDetails('graphic-design')"
                   >
-                    <span class="btn-text">THÔNG TIN ỨNG TUYỂN</span>
+                    <span class="btn-text">{{ t('recruitment.positions.jobs.graphicDesign.button') }}</span>
                     <v-icon class="btn-icon">mdi-file-edit-outline</v-icon>
                   </v-btn>
                 </div>
               </div>
 
-              <!-- Position 2: Truyền thông -->
+              <!-- Position 2: Communication -->
               <div class="position-card">
                 <div class="position-header">
-                  <h3 class="company-title">MATECOM TUYỂN DỤNG</h3>
+                  <h3 class="company-title">{{ t('recruitment.positions.companyTitle') }}</h3>
                 </div>
                 <div class="position-content">
-                  <h4 class="job-title">CTV TRUYỀN THÔNG</h4>
+                  <h4 class="job-title">{{ t('recruitment.positions.jobs.communication.title') }}</h4>
                 </div>
                 <div class="position-footer">
                   <v-btn 
                     class="apply-btn"
                     variant="elevated"
-                    @click="showJobDetails('truyen-thong')"
+                    @click="showJobDetails('communication')"
                   >
-                    <span class="btn-text">THÔNG TIN ỨNG TUYỂN</span>
+                    <span class="btn-text">{{ t('recruitment.positions.jobs.communication.button') }}</span>
                     <v-icon class="btn-icon">mdi-file-edit-outline</v-icon>
                   </v-btn>
                 </div>
               </div>
 
-              <!-- Position 3: Đại sứ truyền thông -->
+              <!-- Position 3: Ambassador -->
               <div class="position-card">
                 <div class="position-header">
-                  <h3 class="company-title">MATECOM TUYỂN DỤNG</h3>
+                  <h3 class="company-title">{{ t('recruitment.positions.companyTitle') }}</h3>
                 </div>
                 <div class="position-content">
-                  <h4 class="job-title">ĐẠI SỨ TRUYỀN THÔNG DỰ ÁN</h4>
+                  <h4 class="job-title">{{ t('recruitment.positions.jobs.ambassador.title') }}</h4>
                 </div>
                 <div class="position-footer">
                   <v-btn 
                     class="apply-btn"
                     variant="elevated"
-                    @click="showJobDetails('dai-su-truyen-thong')"
+                    @click="showJobDetails('ambassador')"
                   >
-                    <span class="btn-text">THÔNG TIN ỨNG TUYỂN</span>
+                    <span class="btn-text">{{ t('recruitment.positions.jobs.ambassador.button') }}</span>
                     <v-icon class="btn-icon">mdi-file-edit-outline</v-icon>
                   </v-btn>
                 </div>
@@ -162,10 +161,10 @@
               <!-- Position 4: Digital Marketing -->
               <div class="position-card">
                 <div class="position-header">
-                  <h3 class="company-title">MATECOM TUYỂN DỤNG</h3>
+                  <h3 class="company-title">{{ t('recruitment.positions.companyTitle') }}</h3>
                 </div>
                 <div class="position-content">
-                  <h4 class="job-title">CTV DIGITAL MARKETING</h4>
+                  <h4 class="job-title">{{ t('recruitment.positions.jobs.digitalMarketing.title') }}</h4>
                 </div>
                 <div class="position-footer">
                   <v-btn 
@@ -173,7 +172,7 @@
                     variant="elevated"
                     @click="showJobDetails('digital-marketing')"
                   >
-                    <span class="btn-text">THÔNG TIN ỨNG TUYỂN</span>
+                    <span class="btn-text">{{ t('recruitment.positions.jobs.digitalMarketing.button') }}</span>
                     <v-icon class="btn-icon">mdi-file-edit-outline</v-icon>
                   </v-btn>
                 </div>
@@ -185,109 +184,35 @@
       </v-container>
     </section>
 
-    <!-- Application Form Section -->
-    <section class="application-form-section">
-      <v-container>
-        <v-row justify="center">
-          <v-col cols="12" lg="8">
-            <div class="form-container">
-              <h2 class="form-title">NỘP ĐƠN ỨNG TUYỂN</h2>
-              
-              <v-form @submit.prevent="submitApplication" class="application-form">
-                <!-- Personal Information -->
-                <div class="form-row">
-                  <v-text-field
-                    v-model="formData.fullName"
-                    placeholder="Họ Tên"
-                    variant="outlined"
-                    class="form-field"
-                    hide-details
-                    required
-                  />
-                </div>
-                
-                <div class="form-row">
-                  <v-text-field
-                    v-model="formData.email"
-                    placeholder="Email"
-                    type="email"
-                    variant="outlined"
-                    class="form-field"
-                    hide-details
-                    required
-                  />
-                </div>
-                
-                <div class="form-row">
-                  <v-text-field
-                    v-model="formData.phone"
-                    placeholder="Số Điện Thoại"
-                    variant="outlined"
-                    class="form-field"
-                    hide-details
-                    required
-                  />
-                </div>
-                
-                <div class="form-row">
-                  <v-select
-                    v-model="formData.position"
-                    :items="positionOptions"
-                    label="Vị trí ứng tuyển"
-                    variant="outlined"
-                    hide-details
-                    clearable
-                  />
-                </div>
-                
-                <!-- Cover Letter -->
-                <div class="form-row">
-                  <v-textarea
-                    v-model="formData.coverLetter"
-                    placeholder="Thư ứng tuyển"
-                    variant="outlined"
-                    rows="6"
-                    class="form-field"
-                    hide-details
-                    required
-                  />
-                </div>
-                
-                <!-- File Upload -->
-                <div class="form-row">
-                    <v-file-input
-                      v-model="formData.cvFile"
-                      label="Tải lên cv ứng tuyển của bạn"
-                      variant="outlined"
-                      accept=".pdf,.doc,.docx"
-                      show-size
-                      hide-details
-                    />
-                </div>
-                
-                <!-- Submit Button -->
-                <div class="form-row">
-                  <v-btn
-                    type="submit"
-                    class="submit-btn"
-                    size="large"
-                    block
-                    :loading="isSubmitting"
-                  >
-                    GỬI ĐƠN ỨNG TUYỂN
-                  </v-btn>
-                </div>
-              </v-form>
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
+
+    <!-- Application Form Popup -->
+      <ApplicationFormPopup
+        v-model="showApplicationForm"
+        :position="selectedPosition"
+        @submitted="onApplicationSubmitted"
+      />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import ApplicationFormPopup from '@/components/common/ApplicationFormPopup.vue'
+import ContactButton from '@/components/common/ContactButton.vue'
+
+const { t, locale } = useI18n()
+
+// Computed properties for value descriptions
+const value1Description1 = computed(() => t('recruitment.values.item1.description1'))
+const value1Description2 = computed(() => t('recruitment.values.item1.description2'))
+const value2Description1 = computed(() => t('recruitment.values.item2.description1'))
+const value2Description2 = computed(() => t('recruitment.values.item2.description2'))
+const value3Description1 = computed(() => t('recruitment.values.item3.description1'))
+const value3Description2 = computed(() => t('recruitment.values.item3.description2'))
+
+// Application form popup state
+const showApplicationForm = ref(false)
+const selectedPosition = ref('')
 
 const scrollToPositions = () => {
   const positionsSection = document.getElementById('positions')
@@ -300,59 +225,31 @@ const scrollToPositions = () => {
 }
 
 const showJobDetails = (jobType) => {
-  // TODO: Implement job details modal or navigation
-  console.log('Show job details for:', jobType)
-  // Có thể mở modal hoặc chuyển đến trang chi tiết
+  // Set selected position and open form
+  selectedPosition.value = getPositionName(jobType)
+  openApplicationForm()
 }
 
-// Form data
-const formData = ref({
-  fullName: '',
-  email: '',
-  phone: '',
-  position: '',
-  coverLetter: '',
-  cvFile: null
-})
-
-const isSubmitting = ref(false)
-
-// Position options for dropdown
-const positionOptions = [
-  'CTV GRAPHIC DESIGN (THIẾT KẾ ĐỒ HỌA)',
-  'CTV TRUYỀN THÔNG',
-  'ĐẠI SỨ TRUYỀN THÔNG DỰ ÁN',
-  'CTV DIGITAL MARKETING'
-]
-
-// Submit application
-const submitApplication = async () => {
-  isSubmitting.value = true
-  
-  try {
-    // TODO: Implement actual form submission
-    console.log('Submitting application:', formData.value)
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Reset form after successful submission
-    formData.value = {
-      fullName: '',
-      email: '',
-      phone: '',
-      position: '',
-      coverLetter: '',
-      cvFile: null
-    }
-    
-    alert('Đơn ứng tuyển đã được gửi thành công!')
-  } catch (error) {
-    console.error('Error submitting application:', error)
-    alert('Có lỗi xảy ra khi gửi đơn ứng tuyển. Vui lòng thử lại.')
-  } finally {
-    isSubmitting.value = false
+const getPositionName = (jobType) => {
+  const positionMap = {
+    'graphic-design': locale.value === 'vi' ? 'CTV GRAPHIC DESIGN (THIẾT KẾ ĐỒ HỌA)' : 'FREELANCE GRAPHIC DESIGNER',
+    'communication': locale.value === 'vi' ? 'CTV TRUYỀN THÔNG' : 'FREELANCE COMMUNICATION',
+    'ambassador': locale.value === 'vi' ? 'ĐẠI SỨ TRUYỀN THÔNG DỰ ÁN' : 'PROJECT COMMUNICATION AMBASSADOR',
+    'digital-marketing': locale.value === 'vi' ? 'CTV DIGITAL MARKETING' : 'FREELANCE DIGITAL MARKETING'
   }
+  return positionMap[jobType] || ''
+}
+
+const openApplicationForm = () => {
+  selectedPosition.value = '' // Không pre-fill position khi click từ hero
+  showApplicationForm.value = true
+}
+
+const onApplicationSubmitted = (formData) => {
+  console.log('Application submitted:', formData)
+  // Handle successful submission
+  showApplicationForm.value = false
+  selectedPosition.value = ''
 }
 </script>
 
@@ -361,23 +258,24 @@ const submitApplication = async () => {
 :root {
   --hero-overlay-gradient: linear-gradient(
     135deg,
-    rgba(30, 58, 138, 0.8) 0%,
-    rgba(59, 130, 246, 0.6) 50%,
-    rgba(245, 158, 11, 0.4) 100%
+    rgba(30, 58, 138, 0.9) 0%,
+    rgba(30, 58, 138, 0.8) 50%,
+    rgba(30, 58, 138, 0.7) 100%
   );
-  --values-section-bg: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
-  --value-item-bg: #FFFFFF;
-  --value-item-border: rgba(226, 232, 240, 0.5);
-  --value-item-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --value-item-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --value-item-hover-border: rgba(59, 130, 246, 0.2);
-  --text-dark: #1F2937;
+  --values-section-bg: rgb(238, 245, 254);
+  --value-item-bg: rgba(15, 23, 42, 0.85);
+  --value-item-border: rgba(71, 85, 105, 0.3);
+  --value-item-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  --value-item-hover-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+  --value-item-hover-border: rgba(71, 85, 105, 0.5);
+  --text-dark: #03045e;
   --text-light: #6B7280;
-  --positions-section-bg: #F8FAFC;
+  --positions-section-bg: rgb(238, 245, 254);
 }
 
 .recruitment-view {
   min-height: 100vh;
+  background: rgb(238, 245, 254);
 }
 
 /* Hero Section */
@@ -388,6 +286,7 @@ const submitApplication = async () => {
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: transparent;
 }
 
 .hero-background {
@@ -408,7 +307,7 @@ const submitApplication = async () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--hero-overlay-gradient);
+  background: linear-gradient(135deg, rgba(15, 23, 42, .9) 0%, rgba(30, 58, 138, .8) 50%, rgba(59, 130, 246, .6) 100%);
 }
 
 .hero-content {
@@ -445,29 +344,19 @@ const submitApplication = async () => {
 }
 
 .hero-cta-btn {
-  background: linear-gradient(135deg, #EC4899 0%, #F97316 100%) !important;
+  background: #3B82F6 !important;
   color: white !important;
-  font-weight: 600 !important;
-  font-size: 0.875rem !important;
-  padding: 0.75rem 1.5rem !important;
-  border-radius: 8px !important;
-  text-transform: none !important;
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4) !important;
-  transition: all 0.3s ease !important;
-  text-align: center !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
 }
 
 .hero-cta-btn:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.6) !important;
+  background: #2563EB !important;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6) !important;
 }
 
 /* Values Section */
 .values-section {
-  padding: 6rem 0;
+  padding: 6rem 0 0 0;
   background: var(--values-section-bg);
   position: relative;
 }
@@ -485,12 +374,13 @@ const submitApplication = async () => {
 .values-header {
   text-align: center;
   margin-bottom: 4rem;
+  width: 1200px;
 }
 
 .values-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #03045e;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
@@ -507,6 +397,7 @@ const submitApplication = async () => {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  width: 1200px;
 }
 
 .value-item {
@@ -520,12 +411,29 @@ const submitApplication = async () => {
   border: 1px solid var(--value-item-border);
   align-items: center;
   margin-bottom: 4rem;
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.value-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.9);  
+  border-radius: 20px;
+  z-index: -1;
 }
 
 .value-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--value-item-hover-shadow);
   border-color: var(--value-item-hover-border);
+  
 }
 
 .value-content-left,
@@ -560,14 +468,10 @@ const submitApplication = async () => {
 .value-number {
   font-size: 3rem;
   font-weight: 800;
-  color: #1E3A8A;
+  color: #3B82F6;
   line-height: 1;
   min-width: 80px;
   text-align: center;
-  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .value-text {
@@ -610,7 +514,7 @@ const submitApplication = async () => {
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #03045e;
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -674,7 +578,7 @@ const submitApplication = async () => {
 .job-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1F2937;
+  color: #03045e;
   margin: 0;
   line-height: 1.3;
 }
@@ -862,53 +766,6 @@ const submitApplication = async () => {
   animation-delay: 1.1s;
 }
 
-/* Dark Theme Support */
-:deep(.v-theme--dark) {
-  --hero-overlay-gradient: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.9) 0%,
-    rgba(30, 58, 138, 0.8) 50%,
-    rgba(59, 130, 246, 0.6) 100%
-  );
-  --values-section-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  --value-item-bg: #1E293B;
-  --value-item-border: rgba(51, 65, 85, 0.5);
-  --value-item-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --value-item-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  --value-item-hover-border: rgba(59, 130, 246, 0.4);
-  --text-dark: #F8FAFC;
-  --text-light: #CBD5E1;
-  --positions-section-bg: #0F172A;
-}
-
-/* Ensure hero title stays white in dark mode */
-:deep(.v-theme--dark) .hero-title {
-  color: #FFFFFF !important;
-}
-
-/* Alternative dark mode selector */
-.v-theme--dark .recruitment-view {
-  --hero-overlay-gradient: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.9) 0%,
-    rgba(30, 58, 138, 0.8) 50%,
-    rgba(59, 130, 246, 0.6) 100%
-  );
-  --values-section-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  --value-item-bg: #1E293B;
-  --value-item-border: rgba(51, 65, 85, 0.5);
-  --value-item-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --value-item-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  --value-item-hover-border: rgba(59, 130, 246, 0.4);
-  --text-dark: #F8FAFC;
-  --text-light: #CBD5E1;
-  --positions-section-bg: #0F172A;
-}
-
-/* Ensure hero title stays white in alternative dark mode */
-.v-theme--dark .recruitment-view .hero-title {
-  color: #FFFFFF !important;
-}
 
 @keyframes fadeInUp {
   from {
@@ -921,149 +778,4 @@ const submitApplication = async () => {
   }
 }
 
-/* Application Form Section */
-.application-form-section {
-  padding: 5rem 0;
-  background: #1E3A8A;
-  position: relative;
-}
-
-.form-container {
-  background: #1E3A8A;
-  padding: 3rem;
-  border-radius: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  text-align: center;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.application-form {
-  width: 100%;
-}
-
-.form-row {
-  margin-bottom: 1.5rem;
-}
-
-.form-field {
-  width: 100%;
-}
-
-.form-field :deep(.v-field) {
-  background-color: transparent !important;
-  border: 2px solid #FFFFFF !important;
-  border-radius: 8px !important;
-}
-
-.form-field :deep(.v-field__input) {
-  color: #FFFFFF !important;
-  padding: 12px 16px !important;
-}
-
-.form-field :deep(.v-field__input::placeholder) {
-  color: #FFFFFF !important;
-  opacity: 0.8 !important;
-}
-
-/* Ensure placeholder shows for v-select */
-.form-field :deep(.v-field__input::placeholder) {
-  color: #FFFFFF !important;
-  opacity: 0.8 !important;
-  display: block !important;
-}
-
-/* Force placeholder visibility when no value selected */
-.form-field :deep(.v-field--empty .v-field__input::placeholder) {
-  opacity: 1 !important;
-  color: #FFFFFF !important;
-}
-
-.form-field :deep(.v-label) {
-  color: #FFFFFF !important;
-  font-weight: 500 !important;
-}
-
-.form-field :deep(.v-field__outline) {
-  color: #FFFFFF !important;
-}
-
-.form-field :deep(.v-field--focused .v-field__outline) {
-  color: #F59E0B !important;
-}
-
-.file-upload-section {
-  width: 100%;
-}
-
-/* Hide file input prepend icon */
-.form-field :deep(.v-input__prepend) {
-  display: none !important;
-}
-
-.submit-btn {
-  background: #F59E0B !important;
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
-  font-size: 1rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  padding: 1rem 2rem !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
-  transition: all 0.3s ease !important;
-  margin-top: 1rem !important;
-}
-
-.submit-btn:hover {
-  background: #D97706 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4) !important;
-}
-
-/* Dark theme form styling */
-:deep(.v-theme--dark) .application-form-section {
-  background: #0F172A;
-}
-
-:deep(.v-theme--dark) .form-container {
-  background: #0F172A;
-}
-
-/* Responsive form design */
-@media (max-width: 768px) {
-  .form-container {
-    padding: 2rem 1.5rem;
-  }
-  
-  .form-title {
-    font-size: 1.5rem;
-  }
-  
-  .form-row {
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .application-form-section {
-    padding: 3rem 0;
-  }
-  
-  .form-container {
-    padding: 1.5rem 1rem;
-  }
-  
-  .form-title {
-    font-size: 1.25rem;
-  }
-}
 </style>

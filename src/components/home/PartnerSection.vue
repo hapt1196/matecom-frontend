@@ -2,8 +2,8 @@
   <section class="partner-section">
     <v-container>
       <div class="section-header">
-        <h2 class="section-title">Đối Tác Của Chúng Tôi</h2>
-        <p class="section-subtitle">Chúng tôi tự hào hợp tác với các thương hiệu hàng đầu</p>
+        <h2 class="section-title">{{ t('home.partners.title') }}</h2>
+        <p class="section-subtitle">{{ t('home.partners.subtitle') }}</p>
       </div>
       
       <div class="partners-scroll-container">
@@ -39,6 +39,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 // Import ảnh trực tiếp
 import googlePartnerLogo from '@/assets/img/companion/googlepartner.png'
@@ -93,15 +96,15 @@ const partners = ref([
   font-family: var(--font-family-heading);
   font-size: var(--font-size-5xl);
   font-weight: 900;
-  color: #FFFFFF;
+  color: #03045e;
   margin-bottom: var(--spacing-sm);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-subtitle {
   font-family: var(--font-family-body);
   font-size: var(--font-size-lg);
-  color: #CBD5E1;
+  color: #03045e;
   max-width: 600px;
   margin: 0 auto;
 }

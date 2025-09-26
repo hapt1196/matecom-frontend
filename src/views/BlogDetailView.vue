@@ -164,7 +164,7 @@ onMounted(async () => {
         <p>Sự kết hợp giữa trí tuệ nhân tạo và công nghệ phân tích dữ liệu hiện đại giúp các kênh truyền thông như email marketing, website, chatbot hay ứng dụng di động hiển thị nội dung phù hợp ở mức độ tinh vi hơn bao giờ hết. Thay vì một thông điệp chung áp dụng cho tất cả, khách hàng sẽ được tiếp cận những nội dung linh hoạt, chính xác và mang tính cá nhân hóa cao, từ đó gia tăng đáng kể trải nghiệm và mức độ gắn kết.</p>
 
         <div class="blog-image">
-          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image.png" alt="Hyper-Personalization Marketing 2026" />
+          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image.png" alt="Hyper-Personalization Marketing 2026" style="width: 100% !important; max-width: 100% !important;" />
           <p class="image-caption">Hyper-Personalization: Tương lai của trải nghiệm khách hàng</p>
         </div>
 
@@ -176,7 +176,7 @@ onMounted(async () => {
         <p>Điểm cốt lõi của xu hướng này không nằm ở việc để AI tự động thay thế hoàn toàn người viết, mà ở cách con người tận dụng công nghệ như một công cụ gia tăng sức mạnh sáng tạo. AI giúp tăng tốc quá trình hình thành ý tưởng, phân tích dữ liệu thị trường và đối thủ cạnh tranh chính xác hơn, đồng thời hỗ trợ tạo ra những nội dung cá nhân hóa theo từng phân khúc khách hàng. Không dừng lại ở đó, AI còn có khả năng tối ưu SEO theo thời gian thực, giúp nội dung tiếp cận đúng đối tượng mục tiêu, cải thiện khả năng hiển thị trên công cụ tìm kiếm và gia tăng hiệu quả chuyển đổi.</p>
 
         <div class="blog-image">
-          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image1.png" alt="AI Content Marketing 2026" />
+          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image1.png" alt="AI Content Marketing 2026" style="width: 100% !important; max-width: 100% !important;" />
           <p class="image-caption">Human-AI Co-Creation: Sự kết hợp hoàn hảo giữa công nghệ và sáng tạo</p>
         </div>
 
@@ -190,7 +190,7 @@ onMounted(async () => {
         <p>Điểm nổi bật trong xu hướng Marketing 2026 là sự chuyển dịch từ việc sản xuất những video viral ngắn hạn sang xây dựng chiến lược nội dung bền vững. Các thương hiệu không còn chỉ tập trung vào lượt xem mà hướng đến việc tạo nên một hệ thống video ngắn có kế hoạch, được triển khai liên tục nhằm xây dựng hình ảnh thương hiệu lâu dài và tạo mối liên kết sâu sắc hơn với khách hàng. TikTok, YouTube Shorts và Instagram Reels sẽ giữ vai trò là những kênh trọng tâm giúp doanh nghiệp và cá nhân củng cố vị thế thương hiệu.</p>
 
         <div class="blog-image">
-          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image2.png" alt="Video ngắn Marketing 2026" />
+          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image2.png" alt="Video ngắn Marketing 2026" style="width: 100% !important; max-width: 100% !important;" />
           <p class="image-caption">Video ngắn: Phương tiện chủ đạo trong Marketing 2026</p>
         </div>
 
@@ -220,7 +220,7 @@ onMounted(async () => {
         <p>Một xu hướng khác không thể bỏ qua là entity-based SEO. Thay vì chỉ xoay quanh từ khóa truyền thống, phương pháp này tập trung vào các thực thể như thương hiệu, sản phẩm hoặc cá nhân. Việc xây dựng và quản lý thực thể giúp công cụ tìm kiếm hiểu rõ mối quan hệ giữa các yếu tố, từ đó nâng cao uy tín và thứ hạng của website trên kết quả tìm kiếm. Đây là bước tiến quan trọng giúp thương hiệu trở nên bền vững và có chiều sâu hơn trong chiến lược SEO dài hạn.</p>
 
         <div class="blog-image">
-          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image4.png" alt="SEO 2026 Trends" />
+          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image4.png" alt="SEO 2026 Trends" style="width: 100% !important; max-width: 100% !important;" />
           <p class="image-caption">SEO 2026: Trụ cột chiến lược với diện mạo mới</p>
         </div>
 
@@ -234,7 +234,7 @@ onMounted(async () => {
         <p>Khác với giai đoạn đầu chỉ tập trung vào quy mô, Marketing Automation thế hệ 2.0 khai thác sức mạnh của dữ liệu, trí tuệ nhân tạo và phân tích hành vi để đưa ra các thông điệp phù hợp vào đúng thời điểm. Hệ thống không chỉ "gửi đi" mà còn "thấu hiểu", từ đó giúp thương hiệu tạo ra sự kết nối gần gũi hơn với khách hàng. Đây chính là bước tiến lớn khiến tự động hóa trở thành một phần cốt lõi trong chiến lược Marketing hiện đại.</p>
 
         <div class="blog-image">
-          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image5.png" alt="Marketing Automation 2026" />
+          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image5.png" alt="Marketing Automation 2026" style="width: 100% !important; max-width: 100% !important;" />
           <p class="image-caption">Marketing Automation 2026: Tự động hóa thông minh</p>
         </div>
 
@@ -252,7 +252,7 @@ onMounted(async () => {
         <p>Để khai thác hiệu quả Social Commerce và Livestream, doanh nghiệp cần có sự phối hợp chặt chẽ giữa đội ngũ sáng tạo nội dung và bộ phận bán hàng. Mỗi video, mỗi buổi livestream không chỉ cần hấp dẫn mà còn phải phục vụ rõ ràng mục tiêu bán hàng. Bên cạnh đó, việc lựa chọn influencer cần dựa vào insight khách hàng thay vì chỉ tập trung vào lượng người theo dõi. Những micro-influencer và KOC tuy quy mô nhỏ hơn nhưng thường sở hữu tỷ lệ tương tác cao và ảnh hưởng thực tế lớn, góp phần mang lại hiệu quả bán hàng bền vững.</p>
 
         <div class="blog-image">
-          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image6.png" alt="Social Commerce 2026" />
+          <img src="/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image6.png" alt="Social Commerce 2026" style="width: 100% !important; max-width: 100% !important;" />
           <p class="image-caption">Social Commerce 2026: Khi mua sắm hòa cùng giải trí</p>
         </div>
 
@@ -341,6 +341,10 @@ onMounted(async () => {
   font-size: 1.125rem;
   color: var(--blog-text-dark);
   margin-bottom: 3rem;
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Global styles for HTML content rendered via v-html */
@@ -348,6 +352,15 @@ onMounted(async () => {
   color: #FFFFFF !important;
   margin-bottom: 1.5rem;
   line-height: 1.8;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Ensure all elements respect container width */
+.blog-content :deep(*) {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .blog-content :deep(h1) {
@@ -387,6 +400,87 @@ onMounted(async () => {
 .blog-content :deep(li) {
   color: #FFFFFF !important;
   margin-bottom: 0.5rem;
+}
+
+/* Images in blog content */
+.blog-content :deep(.blog-image) {
+  margin: 2rem 0;
+  text-align: center;
+  width: auto;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.blog-content :deep(.blog-image img) {
+  max-width: 100%;
+  width: 100% !important;
+  height: auto;
+  max-height: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.blog-content :deep(.blog-image img:hover) {
+  transform: scale(1.02);
+}
+
+.blog-content :deep(.image-caption) {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--blog-text-light);
+  font-style: italic;
+  text-align: center;
+  font-weight: 500;
+  width: 100%;
+  display: block;
+}
+
+/* Ensure all images in content respect container width */
+.blog-content :deep(img) {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Specific styling for blog-image containers */
+.blog-content :deep(.blog-image) {
+  margin: 2rem 0 !important;
+  text-align: center !important;
+  width: auto !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* Higher specificity for blog-image img */
+.blog-content :deep(.blog-image img) {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force width 100% for all images in blog content */
+.blog-content :deep(.blog-image img),
+.blog-content :deep(img) {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 /* Legacy styles - keeping for compatibility */
@@ -595,20 +689,35 @@ onMounted(async () => {
   .related-posts-grid {
     grid-template-columns: 1fr;
   }
+  
+  .blog-image img,
+  .blog-content :deep(.blog-image img) {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /* Blog Images */
 .blog-image {
   margin: 2rem 0;
   text-align: center;
+  width: auto;
+  display: block;
+  overflow: hidden;
 }
 
 .blog-image img {
   max-width: 100%;
+  width: 100% !important;
   height: auto;
+  max-height: 400px;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 .blog-image img:hover {
@@ -622,5 +731,7 @@ onMounted(async () => {
   font-style: italic;
   text-align: center;
   font-weight: 500;
+  width: 100%;
+  display: block;
 }
 </style>

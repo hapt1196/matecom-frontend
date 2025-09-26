@@ -4,7 +4,7 @@
     <section class="hero-section">
       <!-- Hero Content -->
       <div class="hero-content">
-        <p class="hero-subtitle">MATECOM - Agency Marketing sáng tạo, chuyên cung cấp giải pháp Digital Marketing toàn diện</p>
+        <p class="hero-subtitle">{{ t('about.hero.subtitle') }}</p>
       </div>
     </section>
 
@@ -13,12 +13,9 @@
       <div class="container">
         <div class="about-content">
           <div class="about-text fade-in-up">
-            <h2 class="section-title">Về MATECOM</h2>
+            <h2 class="section-title">{{ t('about.hero.title') }}</h2>
             <p class="about-description">
-              MATECOM là Agency Marketing sáng tạo, chuyên cung cấp giải pháp Digital Marketing toàn diện cho doanh nghiệp. Với đội ngũ trẻ trung, giàu kinh nghiệm và tư duy chiến lược, chúng tôi không chỉ tạo ra các chiến dịch hiệu quả mà còn đồng hành cùng thương hiệu trong hành trình xây dựng hình ảnh – tăng trưởng doanh thu – bứt phá thị trường.
-            </p>
-            <p class="about-description">
-              MATECOM cam kết mang đến giá trị thực thông qua sự kết hợp giữa chiến lược dữ liệu và ý tưởng sáng tạo, giúp doanh nghiệp dẫn đầu trong kỷ nguyên số.
+              {{ t('about.story.content') }}
             </p>
           </div>
           <div class="about-image fade-in-up">
@@ -36,9 +33,9 @@
             <div class="card-image">
               <img src="@/assets/img/aboutmatecom/Mission.jpg" alt="MATECOM Mission" />
             </div>
-            <h3 class="card-title">Mission</h3>
+            <h3 class="card-title">{{ t('about.values.mission.title') }}</h3>
             <p class="card-content">
-              "MATECOM mang đến giải pháp Marketing toàn diện kết hợp công nghệ và sáng tạo chiến lược giúp doanh nghiệp tối đa hiệu quả, cùng cam kết đồng hành như đối tác tin cậy và kết nối như người bạn tri kỷ."
+              "{{ t('about.values.mission.description') }}"
             </p>
           </div>
           
@@ -46,9 +43,9 @@
             <div class="card-image">
               <img src="@/assets/img/aboutmatecom/Vision.jpg" alt="MATECOM Vision" />
             </div>
-            <h3 class="card-title">Vision</h3>
+            <h3 class="card-title">{{ t('about.values.vision.title') }}</h3>
             <p class="card-content">
-              "Trở thành sự lựa chọn số 1 của doanh nghiệp trong tìm kiếm giải pháp marketing toàn diện"
+              "{{ t('about.values.vision.description') }}"
             </p>
           </div>
         </div>
@@ -58,7 +55,7 @@
     <!-- Đội ngũ nhân sự -->
     <section class="team-section">
       <div class="container">
-        <h2 class="section-title text-center fade-in-up">Đội ngũ nhân sự MATECOM</h2>
+        <h2 class="section-title text-center fade-in-up">{{ t('about.team.title') }}</h2>
         
         <!-- Sơ đồ tổ chức -->
         <div class="org-chart fade-in-up">
@@ -66,12 +63,12 @@
           <div class="ceo-level">
             <div class="ceo-card">
               <div class="ceo-avatar">
-                <img src="@/assets/img/aboutmatecom/Chu Thị Quỳnh.jpg" alt="Chu Thị Quỳnh" />
+                <img src="@/assets/img/aboutmatecom/Chu Thị Quỳnh.jpg" :alt="t('about.team.ceo.name')" />
               </div>
               <div class="ceo-info">
-                <h3 class="ceo-name">Chu Thị Quỳnh</h3>
-                <p class="ceo-position">Giám đốc điều hành</p>
-                <p class="ceo-title">CEO - Chief Executive Officer</p>
+                <h3 class="ceo-name">{{ t('about.team.ceo.name') }}</h3>
+                <p class="ceo-position">{{ t('about.team.ceo.position') }}</p>
+                <p class="ceo-title">{{ t('about.team.ceo.title') }}</p>
               </div>
             </div>
           </div>
@@ -80,45 +77,45 @@
           <div class="departments-level">
             <div class="department-card fade-in-up">
               <div class="department-avatar">
-                <img src="@/assets/img/aboutmatecom/Khuất Duy Anh.jpg" alt="Khuất Duy Anh" />
+                <img src="@/assets/img/aboutmatecom/Khuất Duy Anh.jpg" :alt="t('about.team.cfo.name')" />
               </div>
               <div class="department-info">
-                <h4 class="department-name">Tài chính</h4>
-                <p class="department-head">Khuất Duy Anh</p>
-                <p class="department-title">CFO - Chief Financial Officer</p>
+                <p class="department-head">{{ t('about.team.cfo.name') }}</p>
+                <p class="department-position">{{ t('about.team.cfo.position') }}</p>
+                <p class="department-title">{{ t('about.team.cfo.title') }}</p>
               </div>
             </div>
 
             <div class="department-card fade-in-up">
               <div class="department-avatar">
-                <img src="@/assets/img/aboutmatecom/Đào Thị Thơm - CTO.jpg" alt="Đào Thị Thơm" />
+                <img src="@/assets/img/aboutmatecom/Đào Thị Thơm - CTO.jpg" :alt="t('about.team.cto.name')" />
               </div>
               <div class="department-info">
-                <h4 class="department-name">Sản xuất</h4>
-                <p class="department-head">Đào Thị Thơm</p>
-                <p class="department-title">CTO - Chief Technology Officer</p>
+                <p class="department-head">{{ t('about.team.cto.name') }}</p>
+                <p class="department-position">{{ t('about.team.cto.position') }}</p>
+                <p class="department-title">{{ t('about.team.cto.title') }}</p>
               </div>
             </div>
 
             <div class="department-card fade-in-up">
               <div class="department-avatar">
-                <img src="@/assets/img/aboutmatecom/Nguyễn Ngọc Quỳnh.JPG" alt="Nguyễn Ngọc Quỳnh" />
+                <img src="@/assets/img/aboutmatecom/Nguyễn Ngọc Quỳnh.JPG" :alt="t('about.team.coo.name')" />
               </div>
               <div class="department-info">
-                <h4 class="department-name">Nhân sự</h4>
-                <p class="department-head">Nguyễn Ngọc Quỳnh</p>
-                <p class="department-title">COO - Chief Operating Officer</p>
+                <p class="department-head">{{ t('about.team.coo.name') }}</p>
+                <p class="department-position">{{ t('about.team.coo.position') }}</p>
+                <p class="department-title">{{ t('about.team.coo.title') }}</p>
               </div>
             </div>
 
             <div class="department-card fade-in-up">
               <div class="department-avatar">
-                <img src="@/assets/img/aboutmatecom/Nguyễn Thị Huyền My.jpg" alt="Nguyễn Thị Huyền My" />
+                <img src="@/assets/img/aboutmatecom/Nguyễn Thị Huyền My.jpg" :alt="t('about.team.cmo.name')" />
               </div>
               <div class="department-info">
-                <h4 class="department-name">Marketing</h4>
-                <p class="department-head">Nguyễn Thị Huyền My</p>
-                <p class="department-title">CMO - Chief Marketing Officer</p>
+                <p class="department-head">{{ t('about.team.cmo.name') }}</p>
+                <p class="department-position">{{ t('about.team.cmo.position') }}</p>
+                <p class="department-title">{{ t('about.team.cmo.title') }}</p>
               </div>
             </div>
           </div>
@@ -130,7 +127,10 @@
 
 <script setup>
 import { onMounted, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { MessageCircle } from 'lucide-vue-next'
+
+const { t } = useI18n()
 
 const scrollToContact = () => {
   // TODO: Implement scroll to contact section
@@ -165,23 +165,17 @@ onMounted(async () => {
 .about-view {
   min-height: 100vh;
   
-  /* Gradient background for entire view */
-  background: linear-gradient(180deg, 
-    #060F2A 0%, 
-    #072845 25%, 
-    #0D4496 50%, 
-    #1E3A8A 75%, 
-    #0F172A 100%
-  );
+  /* Light background matching home page */
+  background: rgb(238, 245, 254);
   
-  /* CSS Variables - Dark Theme like ServiceView */
+  /* CSS Variables - Light Theme matching home page */
   --about-section-bg: transparent;
-  --mission-vision-bg: rgba(30, 41, 59, 0.3);
-  --card-bg: rgba(30, 41, 59, 0.6);
-  --card-border: rgba(51, 65, 85, 0.5);
+  --mission-vision-bg: rgba(255, 255, 255, 0.8);
+  --card-bg: #FFFFFF;
+  --card-border: rgba(3, 4, 94, 0.1);
   --team-section-bg: transparent;
-  --team-member-bg: rgba(30, 41, 59, 0.6);
-  --team-member-border: rgba(51, 65, 85, 0.5);
+  --team-member-bg: #FFFFFF;
+  --team-member-border: rgba(3, 4, 94, 0.1);
 }
 
 /* Container */
@@ -218,11 +212,11 @@ onMounted(async () => {
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(6, 15, 42, 0.8) 0%,
-    rgba(7, 40, 69, 0.7) 25%,
-    rgba(13, 68, 150, 0.6) 50%,
-    rgba(30, 58, 138, 0.8) 75%,
-    rgba(15, 23, 42, 0.9) 100%
+    rgba(3, 4, 94, 0.3) 0%,
+    rgba(3, 4, 94, 0.2) 25%,
+    rgba(3, 4, 94, 0.1) 50%,
+    rgba(3, 4, 94, 0.2) 75%,
+    rgba(3, 4, 94, 0.3) 100%
   );
   z-index: 1;
 }
@@ -258,7 +252,7 @@ onMounted(async () => {
 }
 
 .hero-title .normal {
-  color: #FFFFFF;
+  color: #03045e;
   display: inline-block;
 }
 
@@ -275,12 +269,12 @@ onMounted(async () => {
   font-family: var(--font-family-heading);
   font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.95);
+  color: #FFFFFF;
   margin: 0;
   line-height: 1.4;
   max-width: 900px;
   margin: 0 auto;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Floating Contact Button */
@@ -295,14 +289,14 @@ onMounted(async () => {
   width: 56px !important;
   height: 56px !important;
   border-radius: 50% !important;
-  background: linear-gradient(135deg, #1E3A8A, #3B82F6) !important;  /* MarcomMate primary colors */
-  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4) !important;
+  background: linear-gradient(135deg, #03045e, #3B82F6) !important;  /* Updated primary colors */
+  box-shadow: 0 8px 25px rgba(3, 4, 94, 0.4) !important;
   transition: all var(--transition-normal) !important;
 }
 
 .contact-btn:hover {
   transform: scale(1.1) !important;
-  box-shadow: 0 12px 35px rgba(30, 58, 138, 0.6) !important;  /* MarcomMate primary color shadow */
+  box-shadow: 0 12px 35px rgba(3, 4, 94, 0.6) !important;  /* Updated primary color shadow */
 }
 
 /* About Section */
@@ -326,7 +320,7 @@ onMounted(async () => {
   font-family: var(--font-family-heading);
   font-size: 2.5rem;
   font-weight: 700;
-  color: #F8FAFC;
+  color: #03045e;
   margin: 0 0 32px 0;
 }
 
@@ -334,7 +328,7 @@ onMounted(async () => {
   font-family: var(--font-family-body);
   font-size: 1.125rem;
   line-height: 1.8;
-  color: #CBD5E1;
+  color: #03045e;
   margin: 0 0 24px 0;
 }
 
@@ -394,7 +388,7 @@ onMounted(async () => {
   font-family: var(--font-family-heading);
   font-size: 1.75rem;
   font-weight: 700;
-  color: #F8FAFC;
+  color: #03045e;
   margin: 0 0 20px 0;
 }
 
@@ -402,7 +396,7 @@ onMounted(async () => {
   font-family: var(--font-family-body);
   font-size: 1.125rem;
   line-height: 1.7;
-  color: #CBD5E1;
+  color: #03045e;
   margin: 0;
   font-style: italic;
 }
@@ -443,8 +437,8 @@ onMounted(async () => {
 
 .ceo-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  border-color: var(--primary-blue);
+  box-shadow: 0 15px 40px rgba(3, 4, 94, 0.15);
+  border-color: #03045e;
 }
 
 .ceo-avatar {
@@ -456,7 +450,7 @@ onMounted(async () => {
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
-  border: 4px solid rgba(245, 158, 11, 0.6);
+  border: 3px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
@@ -470,8 +464,8 @@ onMounted(async () => {
 }
 
 .ceo-avatar:hover {
-  border-color: rgba(245, 158, 11, 0.8);
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   transform: scale(1.05);
 }
 
@@ -479,14 +473,14 @@ onMounted(async () => {
   font-family: var(--font-family-heading);
   font-size: 1.75rem;
   font-weight: 700;
-  color: #F8FAFC;
+  color: #03045e;
   margin: 0 0 8px 0;
 }
 
 .ceo-position {
   font-family: var(--font-family-body);
   font-size: 1.25rem;
-  color: #F59E0B;
+  color: #3B82F6;
   margin: 0 0 8px 0;
   font-weight: 600;
 }
@@ -494,7 +488,7 @@ onMounted(async () => {
 .ceo-title {
   font-family: var(--font-family-body);
   font-size: 1rem;
-  color: #CBD5E1;
+  color: #03045e;
   margin: 0;
   font-weight: 500;
 }
@@ -541,8 +535,8 @@ onMounted(async () => {
 
 .department-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  border-color: var(--primary-blue);
+  box-shadow: 0 12px 30px rgba(3, 4, 94, 0.15);
+  border-color: #03045e;
 }
 
 .department-avatar {
@@ -577,7 +571,7 @@ onMounted(async () => {
   font-family: var(--font-family-heading);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #F8FAFC;
+  color: #03045e;
   margin: 0 0 8px 0;
   text-align: center;
 }
@@ -585,7 +579,16 @@ onMounted(async () => {
 .department-head {
   font-family: var(--font-family-body);
   font-size: 1rem;
-  color: #CBD5E1;
+  color: #03045e;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.department-position {
+  font-family: var(--font-family-body);
+  font-size: 0.9rem;
+  color: #3B82F6;
   margin: 0 0 4px 0;
   font-weight: 600;
   text-align: center;
@@ -594,7 +597,7 @@ onMounted(async () => {
 .department-title {
   font-family: var(--font-family-body);
   font-size: 0.875rem;
-  color: #94A3B8;
+  color: #03045e;
   margin: 0;
   font-weight: 500;
   text-align: center;

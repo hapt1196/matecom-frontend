@@ -5,9 +5,9 @@
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" md="8" class="text-center">
-            <h1 class="agency-title">Góc Agency</h1>
+            <h1 class="agency-title">{{ t('agency.hero.title') }}</h1>
             <p class="agency-subtitle">
-              Những insights, xu hướng và chia sẻ từ đội ngũ MATECOM
+              {{ t('agency.hero.subtitle') }}
             </p>
           </v-col>
         </v-row>
@@ -19,7 +19,7 @@
       <v-container>
         <v-row>
           <v-col cols="12">
-            <h2 class="section-title fade-in-up">Bài viết mới nhất</h2>
+            <h2 class="section-title fade-in-up">{{ t('agency.blog.title') }}</h2>
           </v-col>
         </v-row>
         
@@ -46,7 +46,7 @@
                     variant="elevated"
                     class="read-more-btn"
                   >
-                    Đọc thêm
+                    {{ t('agency.blog.readMore') }}
                   </v-btn>
                 </div>
               </div>
@@ -73,7 +73,7 @@
               class="load-more-btn fade-in-up"
               @click="loadMorePosts"
             >
-              Xem thêm bài viết
+              {{ t('agency.blog.loadMore') }}
             </v-btn>
           </v-col>
         </v-row>
@@ -81,47 +81,16 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter-section">
-      <v-container>
-        <v-row justify="center">
-          <v-col cols="12" md="8" class="text-center">
-            <h2 class="newsletter-title fade-in-up">Đăng ký nhận insights mới nhất</h2>
-            <p class="newsletter-subtitle fade-in-up">
-              Nhận những bài viết, xu hướng và tips marketing mới nhất từ MATECOM
-            </p>
-            
-            <v-form @submit.prevent="subscribeNewsletter" class="newsletter-form fade-in-up">
-              <div class="newsletter-input-group">
-                <v-text-field
-                  v-model="email"
-                  placeholder="Nhập email của bạn"
-                  variant="outlined"
-                  density="compact"
-                  hide-details
-                  class="newsletter-input"
-                />
-                <v-btn 
-                  color="primary" 
-                  type="submit"
-                  class="newsletter-btn"
-                  :loading="isSubscribing"
-                >
-                  Đăng ký
-                </v-btn>
-              </div>
-            </v-form>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 const router = useRouter()
+const { t } = useI18n()
 const email = ref('')
 const isSubscribing = ref(false)
 
@@ -217,11 +186,12 @@ const subscribeNewsletter = async () => {
     setTimeout(() => {
       isSubscribing.value = false
       email.value = ''
-      // Show success message
+      alert(t('agency.newsletter.success'))
     }, 1000)
   } catch (error) {
     console.error('Newsletter subscription error:', error)
     isSubscribing.value = false
+    alert(t('agency.newsletter.error'))
   }
 }
 

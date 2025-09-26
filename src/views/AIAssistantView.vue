@@ -6,9 +6,9 @@
         <v-container>
           <v-row align="center" justify="center">
             <v-col cols="12" md="8" class="text-center">
-              <h1 class="ai-title">Trợ lý AI MATECOM</h1>
+              <h1 class="ai-title">{{ t('aiAssistant.hero.title') }}</h1>
               <p class="ai-subtitle">
-                Hỏi đáp thông minh, hỗ trợ 24/7 với công nghệ Google Gemini AI tiên tiến
+                {{ t('aiAssistant.hero.subtitle') }}
               </p>
             </v-col>
           </v-row>
@@ -27,7 +27,7 @@
                     <img src="@/assets/img/Mascot.png" alt="MATECOM AI" class="ai-avatar-img" />
                   </div>
                   <div class="ai-info">
-                    <h3 class="ai-name">MATECOM AI</h3>
+                    <h3 class="ai-name">{{ t('aiAssistant.chat.header.title') }}</h3>
                     <span class="ai-status" :class="{ 'online': isOnline && isApiConfigured, 'offline': !isOnline || !isApiConfigured }">
                       {{ getStatusText() }}
                     </span>
@@ -37,7 +37,7 @@
                   icon 
                   @click="clearChat"
                   class="clear-btn"
-                  title="Xóa lịch sử chat"
+                  :title="t('aiAssistant.chat.buttons.clearChat')"
                 >
                   <Trash2 class="w-5 h-5" />
                 </v-btn>
@@ -45,7 +45,7 @@
                   icon 
                   @click="testAPI"
                   class="test-btn"
-                  title="Test API"
+                  :title="t('aiAssistant.chat.buttons.testAPI')"
                   :disabled="!isApiConfigured"
                 >
                   <TestTube class="w-5 h-5" />
@@ -98,7 +98,7 @@
                     <v-col>
                       <v-text-field
                         v-model="newMessage"
-                        placeholder="Nhập câu hỏi của bạn..."
+                        :placeholder="t('aiAssistant.chat.input.placeholder')"
                         variant="outlined"
                         density="compact"
                         hide-details
@@ -115,6 +115,7 @@
                         :disabled="!newMessage.trim() || !isOnline"
                         :loading="isTyping"
                         class="send-btn"
+                        :title="t('aiAssistant.chat.input.sendButton')"
                       >
                         <Send class="w-5 h-5" />
                       </v-btn>
@@ -136,9 +137,9 @@
                 <div class="feature-icon">
                   <Zap class="w-12 h-12 text-primary" />
                 </div>
-                <h3 class="feature-title">Phản hồi nhanh chóng</h3>
+                <h3 class="feature-title">{{ t('aiAssistant.features.fastResponse.title') }}</h3>
                 <p class="feature-description">
-                  Nhận câu trả lời tức thì với công nghệ Google Gemini AI
+                  {{ t('aiAssistant.features.fastResponse.description') }}
                 </p>
               </v-card>
             </v-col>
@@ -147,9 +148,9 @@
                 <div class="feature-icon">
                   <Brain class="w-12 h-12 text-success" />
                 </div>
-                <h3 class="feature-title">Thông minh vượt trội</h3>
+                <h3 class="feature-title">{{ t('aiAssistant.features.intelligent.title') }}</h3>
                 <p class="feature-description">
-                  Gemini AI hiểu và xử lý câu hỏi phức tạp một cách thông minh
+                  {{ t('aiAssistant.features.intelligent.description') }}
                 </p>
               </v-card>
             </v-col>
@@ -158,9 +159,9 @@
                 <div class="feature-icon">
                   <Clock class="w-12 h-12 text-info" />
                 </div>
-                <h3 class="feature-title">24/7</h3>
+                <h3 class="feature-title">{{ t('aiAssistant.features.available247.title') }}</h3>
                 <p class="feature-description">
-                  Hỗ trợ mọi lúc, mọi nơi với AI mạnh mẽ
+                  {{ t('aiAssistant.features.available247.description') }}
                 </p>
               </v-card>
             </v-col>
@@ -173,6 +174,7 @@
 
 <script setup>
 import { ref, onMounted, nextTick, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { generateGeminiResponse, convertChatHistory } from '@/config/gemini.js'
 import { API_CONFIG } from '@/config/api.js'
 import { debugChatHistory, debugRealMessages } from '@/config/debug.js'
@@ -187,13 +189,9 @@ import {
   Clock 
 } from 'lucide-vue-next'
 
-const messages = ref([
-  {
-    text: 'Xin chào! Tôi là trợ lý AI của MATECOM. Tôi có thể giúp bạn tìm hiểu về các gói dịch vụ và tư vấn gói phù hợp với quy mô doanh nghiệp của bạn. Bạn cần hỗ trợ gì?',
-    isUser: false,
-    timestamp: new Date()
-  }
-])
+const { t } = useI18n()
+
+const messages = ref([])
 
 const newMessage = ref('')
 const isTyping = ref(false)
@@ -240,7 +238,7 @@ const sendMessage = async () => {
     
     // Hiển thị lỗi cho người dùng
     messages.value.push({
-      text: `❌ Lỗi: ${error.message}`,
+      text: `${t('aiAssistant.chat.messages.error')} ${error.message}`,
       isUser: false,
       timestamp: new Date(),
       isError: true
@@ -256,7 +254,7 @@ const sendMessage = async () => {
 
 const clearChat = () => {
   messages.value = [{
-    text: 'Xin chào! Tôi là trợ lý AI của MATECOM. Tôi có thể giúp bạn tìm hiểu về các gói dịch vụ và tư vấn gói phù hợp với quy mô doanh nghiệp của bạn. Bạn cần hỗ trợ gì?',
+    text: t('aiAssistant.chat.messages.welcome'),
     isUser: false,
     timestamp: new Date()
   }]
@@ -311,7 +309,7 @@ const checkApiConfiguration = () => {
   
   if (!isApiConfigured.value) {
     messages.value.push({
-      text: '⚠️ Vui lòng cấu hình API key Gemini trong file config/api.js hoặc tạo file .env với VITE_GEMINI_API_KEY=your_key',
+      text: t('aiAssistant.chat.messages.apiNotConfigured'),
       isUser: false,
       timestamp: new Date(),
       isWarning: true
@@ -321,17 +319,17 @@ const checkApiConfiguration = () => {
 
 const getStatusText = () => {
   if (!isApiConfigured.value) {
-    return 'API chưa được cấu hình'
+    return t('aiAssistant.chat.header.status.notConfigured')
   }
   if (!isOnline.value) {
-    return 'Đang khởi động...'
+    return t('aiAssistant.chat.header.status.offline')
   }
-  return 'Đang hoạt động'
+  return t('aiAssistant.chat.header.status.online')
 }
 
 const testAPI = async () => {
   messages.value.push({
-    text: '🧪 Đang kiểm tra kết nối Gemini API...',
+    text: t('aiAssistant.chat.messages.testing'),
     isUser: false,
     timestamp: new Date()
   })
@@ -343,13 +341,13 @@ const testAPI = async () => {
     const response = await generateGeminiResponse('Xin chào, hãy trả lời ngắn gọn: "API hoạt động tốt!"')
     
     messages.value.push({
-      text: `✅ API kết nối thành công! Phản hồi: ${response}`,
+      text: `${t('aiAssistant.chat.messages.testSuccess')} ${response}`,
       isUser: false,
       timestamp: new Date()
     })
   } catch (error) {
     messages.value.push({
-      text: `❌ API kết nối thất bại: ${error.message}`,
+      text: `${t('aiAssistant.chat.messages.testError')} ${error.message}`,
       isUser: false,
       timestamp: new Date(),
       isError: true
@@ -361,6 +359,13 @@ const testAPI = async () => {
 }
 
 onMounted(() => {
+  // Thêm welcome message
+  messages.value.push({
+    text: t('aiAssistant.chat.messages.welcome'),
+    isUser: false,
+    timestamp: new Date()
+  })
+  
   // Kiểm tra cấu hình API
   checkApiConfiguration()
   

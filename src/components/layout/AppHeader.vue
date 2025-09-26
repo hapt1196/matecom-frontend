@@ -55,12 +55,12 @@
             </template>
             <v-list class="language-list">
               <v-list-item 
-                v-for="lang in languages" 
+                v-for="lang in languageStore.availableLanguages" 
                 :key="lang.code"
                 @click="changeLanguage(lang.code)"
                 :class="{ 'active': currentLanguage === lang.name }"
               >
-                <v-list-item-title>{{ lang.name }}</v-list-item-title>
+                <v-list-item-title>{{ lang.flag }} {{ lang.name }}</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -114,31 +114,30 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useLanguageStore } from '@/stores/language'
 import { Menu, X, ChevronDown } from 'lucide-vue-next'
 
 const route = useRoute()
+const { t } = useI18n()
+const languageStore = useLanguageStore()
 const drawer = ref(false)
 const isScrolled = ref(false)
 
 const currentRoute = computed(() => route.path)
 
-const menuItems = [
-  { path: '/', title: 'Trang chủ' },
-  { path: '/services', title: 'Dịch vụ' },
-  { path: '/about', title: 'Về chúng tôi' },
-  { path: '/partners', title: 'Đối tác' },
-  { path: '/agency', title: 'Góc Agency' },
-  { path: '/ai-assistant', title: 'Trợ lý AI' },
-  { path: '/recruitment', title: 'Tuyển dụng' },
-  { path: '/contact', title: 'Liên hệ' }
-]
+const menuItems = computed(() => [
+  { path: '/', title: t('header.home') },
+  { path: '/services', title: t('header.services') },
+  { path: '/about', title: t('header.about') },
+  { path: '/partners', title: t('header.partners') },
+  { path: '/agency', title: t('header.agencyCorner') },
+  { path: '/ai-assistant', title: t('header.aiAssistant') },
+  { path: '/recruitment', title: t('header.recruitment') },
+  { path: '/contact', title: t('header.contact') }
+])
 
-const languages = [
-  { code: 'vi', name: 'Tiếng Việt' },
-  { code: 'en', name: 'English' }
-]
-
-const currentLanguage = ref('Tiếng Việt')
+const currentLanguage = computed(() => languageStore.currentLanguageInfo.name)
 
 const openSearch = () => {
   // TODO: Implement search functionality
@@ -146,9 +145,7 @@ const openSearch = () => {
 }
 
 const changeLanguage = (code) => {
-  // TODO: Implement language change
-  console.log('Change language to:', code)
-  currentLanguage.value = languages.find(lang => lang.code === code)?.name || 'Tiếng Việt'
+  languageStore.setLanguage(code)
 }
 
 const contactUs = () => {
