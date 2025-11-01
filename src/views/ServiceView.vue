@@ -76,9 +76,7 @@
 
         <!-- Service 2 -->
         <div class="service-item fade-in-up">
-          <div class="service-image">
-            <img src="/src/assets/img/services/Advanced .png" alt="Advanced Service" />
-          </div>
+          
           <div class="service-content">
             <div class="service-badge">Advanced</div>
             <h3 class="service-name">{{ t('serviceView.services.packages.advanced.name') }}</h3>
@@ -103,6 +101,9 @@
                 <ArrowRight class="w-4 h-4 ml-2" />
               </v-btn>
             </div>
+          </div>
+          <div class="service-image">
+            <img src="/src/assets/img/services/Advanced .png" alt="Advanced Service" />
           </div>
         </div>
 
@@ -242,6 +243,34 @@ const addonsItems = computed(() => {
           t('serviceView.services.addons.items.2.benefits.items.0'),
           t('serviceView.services.addons.items.2.benefits.items.1'),
           t('serviceView.services.addons.items.2.benefits.items.2')
+        ]
+      }
+    },
+    {
+      title: t('serviceView.services.addons.items.3.title'),
+      description: t('serviceView.services.addons.items.3.description'),
+      benefits: {
+        title: t('serviceView.services.addons.items.3.benefits.title'),
+        items: [
+          t('serviceView.services.addons.items.3.benefits.items.0'),
+          t('serviceView.services.addons.items.3.benefits.items.1'),
+          t('serviceView.services.addons.items.3.benefits.items.2'),
+          t('serviceView.services.addons.items.3.benefits.items.3'),
+          t('serviceView.services.addons.items.3.benefits.items.4')
+        ]
+      }
+    },
+    {
+      title: t('serviceView.services.addons.items.4.title'),
+      description: t('serviceView.services.addons.items.4.description'),
+      benefits: {
+        title: t('serviceView.services.addons.items.4.benefits.title'),
+        items: [
+          t('serviceView.services.addons.items.4.benefits.items.0'),
+          t('serviceView.services.addons.items.4.benefits.items.1'),
+          t('serviceView.services.addons.items.4.benefits.items.2'),
+          t('serviceView.services.addons.items.4.benefits.items.3'),
+          t('serviceView.services.addons.items.4.benefits.items.4')
         ]
       }
     }
@@ -682,6 +711,7 @@ onMounted(async () => {
   color: var(--service-text-color);
   line-height: 1.6;
   margin-bottom: var(--spacing-md);
+  text-align: justify;  
 }
 
 .addon-benefits h4 {
@@ -792,6 +822,8 @@ onMounted(async () => {
 .addon-item:nth-child(1).fade-in-up { transition-delay: 0.1s; }
 .addon-item:nth-child(2).fade-in-up { transition-delay: 0.2s; }
 .addon-item:nth-child(3).fade-in-up { transition-delay: 0.3s; }
+.addon-item:nth-child(4).fade-in-up { transition-delay: 0.4s; }
+.addon-item:nth-child(5).fade-in-up { transition-delay: 0.5s; }
 
 /* Responsive Design */
 @media (max-width: 768px) {

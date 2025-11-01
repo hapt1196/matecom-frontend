@@ -5,7 +5,7 @@
       <v-row class="footer-main-content">
         <!-- Logo Section -->
         <v-col cols="12" md="2" class="footer-logo-section">
-          <img src="@/assets/matecom_logo_transparent.png" alt="MATECOM Logo" height="120" class="footer-logo" />
+          <img src="@/assets/matecom_logo_transparent.png" alt="MATECOM Logo" height="150" class="footer-logo" />
         </v-col>
 
         <!-- Company Description + Address Section -->
@@ -29,7 +29,7 @@
           </div>
           <div class="contact-item">
             <Phone class="contact-icon" />
-            <span class="contact-text">0339265203</span>
+            <span class="contact-text">0339.265.203</span>
           </div>
         </v-col>
 
@@ -39,7 +39,7 @@
             <v-btn icon href="https://www.facebook.com/matecommarketing" target="_blank" class="social-btn">
               <Facebook class="w-5 h-5" />
             </v-btn>
-            <v-btn icon href="https://www.linkedin.com/in/matecom-agency" target="_blank" class="social-btn">
+            <v-btn icon href="https://www.linkedin.com/in/matecom-agency-4b6259380/" target="_blank" class="social-btn">
               <Linkedin class="w-5 h-5" />
             </v-btn>
             <v-btn icon href="https://www.tiktok.com/@matecomeagency" target="_blank" class="social-btn">
@@ -260,6 +260,7 @@ const { t } = useI18n()
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   transition: transform 0.3s ease;
+  margin-top: -25px;
 }
 
 .footer-logo:hover {

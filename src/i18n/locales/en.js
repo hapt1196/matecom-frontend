@@ -441,7 +441,7 @@ export default {
       youtube: 'YouTube',
       tiktok: 'TikTok'
     },
-    copyright: '© 2024 MATECOM. All rights reserved.',
+    copyright: '© 2025 MATECOM. All rights reserved.',
     madeWith: 'Made with ❤️ in Vietnam'
   },
 

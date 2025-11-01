@@ -7,7 +7,6 @@
     :style="buttonStyle"
     @click="handleClick"
   >
-    <v-icon v-if="icon" :class="iconClass">{{ icon }}</v-icon>
     <span v-if="showText" class="btn-text">{{ buttonText }}</span>
   </v-btn>
 </template>

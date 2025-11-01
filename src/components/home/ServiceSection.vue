@@ -34,7 +34,7 @@
                 :key="feature"
                 class="service-feature"
               >
-                <CheckCircle class="w-4 h-4 text-success mr-2" />
+                <CheckCircle class="feature-check-icon mr-2 text-success" />
                 <span>{{ feature }}</span>
               </div>
             </div>
@@ -268,7 +268,7 @@ onMounted(async () => {
 
 .service-feature {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-sm);
   color: var(--service-feature-color);
@@ -277,6 +277,14 @@ onMounted(async () => {
 .feature-check {
   margin-right: var(--spacing-sm);
   flex-shrink: 0;
+}
+
+.feature-check-icon {
+  width: 24px;
+  height: 24px;
+  color: #03045e;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .service-btn {

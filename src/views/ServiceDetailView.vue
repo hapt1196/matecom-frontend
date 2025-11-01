@@ -96,14 +96,13 @@
           <p class="cta-text">
             Hãy để chúng tôi cùng bạn xây dựng chiến lược marketing đột phá
           </p>
-          <v-btn
-            color="primary"
-            size="large"
-            class="cta-btn"
-            @click="contactUs"
-          >
-            Liên hệ tư vấn ngay
-          </v-btn>
+          <div class="cta-button-wrapper">
+            <ContactButton
+              text="Liên hệ tư vấn ngay"
+              custom-class="cta-btn orange-accent"
+              icon="mdi-phone-outline"
+            />
+          </div>
         </div>
       </v-container>
     </section>
@@ -113,6 +112,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import ContactButton from '@/components/common/ContactButton.vue'
 
 const route = useRoute()
 
@@ -123,7 +123,7 @@ const servicesData = {
     subtitle: 'Điểm khởi đầu hoàn hảo cho doanh nghiệp của bạn',
     badge: 'Basic',
     badgeClass: 'badge-basic',
-    image: '/src/assets/img/services/Basic.png',
+    image: '/assets/img/services/Basic.png',
     painPoints: [
       'Cảm thấy lạc lối giữa vô vàn chiến lược marketing trên thị trường?',
       'Đổ tiền vào quảng cáo nhưng không thấy hiệu quả rõ rệt?',
@@ -152,7 +152,7 @@ const servicesData = {
     subtitle: 'Biến ý tưởng thành kết quả thực tế',
     badge: 'Advanced',
     badgeClass: 'badge-advanced',
-    image: '/src/assets/img/services/Advanced .png',
+    image: '/assets/img/services/Advanced .png',
     painPoints: [
       'Sở hữu một chiến lược tuyệt vời nhưng lại thiếu nhân sự hoặc kinh nghiệm để thực thi?',
       'Đã triển khai marketing nhưng các kênh hoạt động rời rạc, không đồng nhất?',
@@ -181,7 +181,7 @@ const servicesData = {
     subtitle: 'Giải pháp toàn diện cho sự phát triển bền vững',
     badge: 'Premium',
     badgeClass: 'badge-premium',
-    image: '/src/assets/img/services/Premium.png',
+    image: '/assets/img/services/Premium.png',
     painPoints: [
       'Bạn đang có mục tiêu tăng trưởng đột phá nhưng chưa có một lộ trình rõ ràng để đạt được?',
       'Bạn muốn tối ưu hóa mọi nguồn lực, từ ngân sách đến nhân sự, để tạo ra hiệu quả cao nhất?',
@@ -236,10 +236,7 @@ const serviceData = computed(() => {
   return servicesData[serviceType] || servicesData.basic
 })
 
-const contactUs = () => {
-  // TODO: Implement contact form or navigation
-  console.log('Contact us clicked for service:', serviceData.value.badge)
-}
+// ContactButton component handles navigation automatically
 </script>
 
 <style scoped>
@@ -251,21 +248,21 @@ const contactUs = () => {
   --hero-overlay: rgba(0, 0, 0, 0.4);
   --hero-text: #FFFFFF;
   --hero-accent: #FCD34D;
-  --content-bg: #ffffff;
-  --content-text-color: #333333;
-  --section-bg: #f8fafc;
+  --content-bg: rgb(238, 245, 254);
+  --content-text-color: #03045e;
+  --section-bg: rgb(238, 245, 254);
   --card-bg: #ffffff;
   --card-border: #e2e8f0;
   --service-badge-basic: linear-gradient(135deg, #10B981, #059669);
   --service-badge-advanced: linear-gradient(135deg, #3B82F6, #1E40AF);
   --service-badge-premium: linear-gradient(135deg, #8B5CF6, #7C3AED);
   --service-badge-text: #ffffff;
-  --title-color: #1e293b;
-  --text-color: #475569;
+  --title-color: #03045e;
+  --text-color: #03045e;
   --highlight-bg: rgba(59, 130, 246, 0.1);
   --highlight-border: #3B82F6;
-  --cta-bg: #ffffff;
-  --cta-text: #1e293b;
+  --cta-bg: rgb(238, 245, 254);
+  --cta-text: #03045e;
   --cta-btn-bg: linear-gradient(135deg, #F59E0B, #F97316);
   --cta-btn-hover: linear-gradient(135deg, #F97316, #EA580C);
 }
@@ -399,12 +396,12 @@ const contactUs = () => {
 
 /* Service Content Section */
 .service-content-section {
-  background: var(--section-bg);
+  background: rgb(238, 245, 254);
   padding: var(--spacing-4xl) 0;
 }
 
 .content-wrapper {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -421,7 +418,7 @@ const contactUs = () => {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  color: var(--title-color);
+  color: #03045e;
   margin-bottom: var(--spacing-lg);
 }
 
@@ -434,7 +431,7 @@ const contactUs = () => {
 .service-points li {
   font-family: var(--font-family-body);
   font-size: var(--font-size-base);
-  color: var(--text-color);
+  color: #03045e;
   line-height: 1.6;
   margin-bottom: var(--spacing-sm);
   padding-left: var(--spacing-lg);
@@ -464,15 +461,17 @@ const contactUs = () => {
   font-weight: 600;
   font-style: italic;
   margin: 0;
+  text-align: justify;
 }
 
 .core-value-text,
 .final-result-text {
   font-family: var(--font-family-body);
   font-size: var(--font-size-lg);
-  color: var(--text-color);
+  color: #03045e;
   line-height: 1.8;
   margin: 0;
+  text-align: justify;
 }
 
 .features-grid {
@@ -492,16 +491,17 @@ const contactUs = () => {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
   font-weight: 600;
-  color: var(--title-color);
+  color: #03045e;
   margin-bottom: var(--spacing-sm);
 }
 
 .feature-description {
   font-family: var(--font-family-body);
   font-size: var(--font-size-base);
-  color: var(--text-color);
+  color: #03045e;
   line-height: 1.6;
   margin: 0;
+  text-align: justify;
 }
 
 .steps-list {
@@ -541,16 +541,17 @@ const contactUs = () => {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
   font-weight: 600;
-  color: var(--title-color);
+  color: #03045e;
   margin-bottom: var(--spacing-sm);
 }
 
 .step-description {
   font-family: var(--font-family-body);
   font-size: var(--font-size-base);
-  color: var(--text-color);
+  color: #03045e;
   line-height: 1.6;
   margin: 0;
+  text-align: justify;
 }
 
 .deliverables-list ul {
@@ -562,7 +563,7 @@ const contactUs = () => {
 .deliverables-list li {
   font-family: var(--font-family-body);
   font-size: var(--font-size-base);
-  color: var(--text-color);
+  color: #03045e;
   line-height: 1.6;
   margin-bottom: var(--spacing-sm);
   padding-left: var(--spacing-lg);
@@ -579,10 +580,10 @@ const contactUs = () => {
 
 /* CTA Section */
 .cta-section {
-  background: var(--cta-bg);
+  background: rgb(238, 245, 254);
   padding: var(--spacing-4xl) 0;
   text-align: center;
-  color: var(--cta-text);
+  color: #03045e;
 }
 
 .cta-content {
@@ -595,19 +596,25 @@ const contactUs = () => {
   font-size: var(--font-size-4xl);
   font-weight: 700;
   margin-bottom: var(--spacing-lg);
-  color: var(--cta-text);
+  color: #03045e;
 }
 
 .cta-text {
   font-family: var(--font-family-body);
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-2xl);
-  color: var(--cta-text);
+  color: #03045e;
   opacity: 0.9;
 }
 
+.cta-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .cta-btn {
-  background: var(--cta-btn-bg) !important;
+  background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%) !important;
   border: none !important;
   color: white !important;
   font-family: var(--font-family-heading);
@@ -615,12 +622,13 @@ const contactUs = () => {
   padding: var(--spacing-lg) var(--spacing-2xl);
   border-radius: 12px;
   transition: all var(--transition-normal);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
 }
 
 .cta-btn:hover {
-  background: var(--cta-btn-hover) !important;
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4) !important;
 }
 
 /* Responsive Design */

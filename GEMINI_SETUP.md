@@ -103,8 +103,12 @@ Sử dụng file `test-api.html` để test API trực tiếp:
 
 
 
+Sửa giao diện, chuẩn hoá nội dung trang chủ theo các yêu cầu sau:
+- màu background là màu rgb(238 245 254`)
+- màu chữ là màu #03045e
+- phần servicesection sửa lại màu nền của các gói dịch vụ: basic = #90e0ef, advanced = #00b4d8 , premium #0077b6  
+- Hiệu ứng khi hover vào ô dịch vụ: ô dịch vụ được hover vào sẽ phóng to lên 
+- font chữ dùng chung  "Inter"
 
-tôi có chi tiết nội dung các dịch vụ trong file /Users/admin/Desktop/MateCom/docs/Content dịch vụ.md:
-- hãy thêm 1 view service detail để xem nội dung detail các dịch vụ, 
-- hãy thêm ảnh cho từng dịch vụ folder ảnh ở assets/img/services
 
+"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif

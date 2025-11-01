@@ -61,8 +61,8 @@
               :items="positionOptions"
               :label="t('recruitment.application.form.position')"
               variant="outlined"
-              hide-details
-              clearable
+              :rules="[v => !!v || t('recruitment.application.form.validation.required')]"
+              required
             />
           </div>
           
@@ -87,7 +87,8 @@
               variant="outlined"
               accept=".pdf,.doc,.docx"
               show-size
-              hide-details
+              :rules="[v => !!v || t('recruitment.application.form.validation.required')]"
+              required
               :prepend-icon="null"
               :prepend-inner-icon="null"
             />
@@ -198,6 +199,49 @@ const resetForm = () => {
 }
 
 const submitApplication = async () => {
+  // Validate required fields
+  if (!formData.value.fullName?.trim()) {
+    alert('Vui lòng nhập đầy đủ các thông tin trên đơn ứng tuyển')
+    return
+  }
+  
+  if (!formData.value.email?.trim()) {
+    alert('Vui lòng nhập đầy đủ các thông tin trên đơn ứng tuyển')
+    return
+  }
+  
+  if (!formData.value.phone?.trim()) {
+    alert('Vui lòng nhập đầy đủ các thông tin trên đơn ứng tuyển')
+    return
+  }
+  
+  if (!formData.value.position?.trim()) {
+    alert('Vui lòng nhập đầy đủ các thông tin trên đơn ứng tuyển')
+    return
+  }
+  
+  if (!formData.value.coverLetter?.trim()) {
+    alert('Vui lòng nhập đầy đủ các thông tin trên đơn ứng tuyển')
+    return
+  }
+  
+  if (!formData.value.cvFile) {
+    alert('Vui lòng nhập đầy đủ các thông tin trên đơn ứng tuyển')
+    return
+  }
+  
+  // Validate email format
+  if (!/.+@.+\..+/.test(formData.value.email)) {
+    alert('Vui lòng nhập đúng định dạng email')
+    return
+  }
+  
+  // Validate phone format
+  if (!/^[0-9+\-\s()]+$/.test(formData.value.phone)) {
+    alert('Vui lòng nhập đúng định dạng số điện thoại')
+    return
+  }
+  
   isSubmitting.value = true
   
   try {

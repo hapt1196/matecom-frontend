@@ -1,13 +1,13 @@
 <template>
-  <div class="ai-assistant-view">
+  <div class="ai-assistant-view fade-in-up" ref="rootEl">
     <v-container fluid class="pa-0">
       <!-- Header Section -->
-      <div class="ai-header">
+      <div class="ai-header fade-in-up">
         <v-container>
           <v-row align="center" justify="center">
             <v-col cols="12" md="8" class="text-center">
-              <h1 class="ai-title">{{ t('aiAssistant.hero.title') }}</h1>
-              <p class="ai-subtitle">
+              <h1 class="ai-title fade-in-up">{{ t('aiAssistant.hero.title') }}</h1>
+              <p class="ai-subtitle fade-in-up">
                 {{ t('aiAssistant.hero.subtitle') }}
               </p>
             </v-col>
@@ -19,7 +19,7 @@
       <v-container class="chat-container">
         <v-row justify="center">
           <v-col cols="12" lg="10" xl="8">
-            <v-card class="chat-card" elevation="8">
+            <v-card class="chat-card fade-in-up" elevation="8">
               <!-- Chat Header -->
               <div class="chat-header">
                 <div class="chat-header-content">
@@ -40,15 +40,6 @@
                   :title="t('aiAssistant.chat.buttons.clearChat')"
                 >
                   <Trash2 class="w-5 h-5" />
-                </v-btn>
-                <v-btn 
-                  icon 
-                  @click="testAPI"
-                  class="test-btn"
-                  :title="t('aiAssistant.chat.buttons.testAPI')"
-                  :disabled="!isApiConfigured"
-                >
-                  <TestTube class="w-5 h-5" />
                 </v-btn>
               </div>
 
@@ -133,7 +124,7 @@
         <v-container>
           <v-row>
             <v-col cols="12" md="4">
-              <v-card class="feature-card" elevation="4">
+              <v-card class="feature-card fade-in-up" elevation="4">
                 <div class="feature-icon">
                   <Zap class="w-12 h-12 text-primary" />
                 </div>
@@ -144,7 +135,7 @@
               </v-card>
             </v-col>
             <v-col cols="12" md="4">
-              <v-card class="feature-card" elevation="4">
+              <v-card class="feature-card fade-in-up" elevation="4">
                 <div class="feature-icon">
                   <Brain class="w-12 h-12 text-success" />
                 </div>
@@ -155,7 +146,7 @@
               </v-card>
             </v-col>
             <v-col cols="12" md="4">
-              <v-card class="feature-card" elevation="4">
+              <v-card class="feature-card fade-in-up" elevation="4">
                 <div class="feature-icon">
                   <Clock class="w-12 h-12 text-info" />
                 </div>
@@ -198,6 +189,8 @@ const isTyping = ref(false)
 const isOnline = ref(true)
 const chatContainer = ref(null)
 const isApiConfigured = ref(false)
+const rootEl = ref(null)
+let intersectionObserver
 
 const sendMessage = async () => {
   if (!newMessage.value.trim() || !isOnline.value) return
@@ -375,6 +368,34 @@ onMounted(() => {
   }, 1000)
   
   scrollToBottom()
+
+  // Kích hoạt hiệu ứng fade-in cho toàn bộ view
+  nextTick(() => {
+    if (rootEl.value) {
+      rootEl.value.classList.add('visible')
+    }
+  })
+
+  // IntersectionObserver cho các phần tử con
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  }
+
+  intersectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+        intersectionObserver.unobserve(entry.target)
+      }
+    })
+  }, observerOptions)
+
+  const animatedChildren = rootEl.value?.querySelectorAll('.fade-in-up') || []
+  animatedChildren.forEach((el, index) => {
+    el.style.transitionDelay = `${Math.min(index * 80, 600)}ms`
+    intersectionObserver.observe(el)
+  })
 })
 
 watch(messages, () => {
@@ -385,39 +406,27 @@ watch(messages, () => {
 </script>
 
 <style scoped>
-/* CSS Variables */
-:root {
-  --ai-view-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  --ai-header-bg: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
-  --chat-card-bg: #FFFFFF;
-  --chat-messages-bg: #f8fafc;
-  --message-bubble-bg: #FFFFFF;
-  --message-bubble-user-bg: #1E3A8A;
-  --message-bubble-error-bg: #fee2e2;
-  --message-bubble-warning-bg: #fef3c7;
-  --chat-input-container-bg: #FFFFFF;
-  --chat-input-border: #e2e8f0;
-  --features-section-bg: #FFFFFF;
-  --feature-card-bg: #FFFFFF;
-  --text-dark: #1F2937;
-  --text-light: #6B7280;
-  --text-white: #FFFFFF;
-  --btn-bg: rgba(255, 255, 255, 0.1);
-  --btn-color: rgba(255, 255, 255, 0.8);
-  --btn-hover-bg: rgba(255, 255, 255, 0.2);
-  --btn-hover-color: #FFFFFF;
-  --title-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --subtitle-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
 
 .ai-assistant-view {
   min-height: 100vh;
-  background: var(--ai-view-bg);
+  background: rgb(238, 245, 254);
+}
+
+/* Fade-in animation reused from About page */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ai-header {
-  background: var(--ai-header-bg);
-  color: var(--text-white);
+  background: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
+  color: #FFFFFF;
   padding: 80px 0 60px;
   text-align: center;
 }
@@ -426,16 +435,16 @@ watch(messages, () => {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: var(--text-white) !important;
-  text-shadow: var(--title-shadow);
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .ai-subtitle {
   font-size: 1.25rem;
-  color: var(--text-white) !important;
+  color: #FFFFFF !important;
   max-width: 600px;
   margin: 0 auto;
-  text-shadow: var(--subtitle-shadow);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .chat-container {
@@ -446,7 +455,7 @@ watch(messages, () => {
 .chat-card {
   border-radius: 20px;
   overflow: hidden;
-  background: var(--chat-card-bg);
+  background: #FFFFFF;
 }
 
 .chat-header {
@@ -503,32 +512,32 @@ watch(messages, () => {
 }
 
 .clear-btn {
-  color: var(--btn-color) !important;
-  background: var(--btn-bg) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   margin-left: 8px !important;
 }
 
 .clear-btn:hover {
-  color: var(--btn-hover-color) !important;
-  background: var(--btn-hover-bg) !important;
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .test-btn {
-  color: var(--btn-color) !important;
-  background: var(--btn-bg) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   margin-left: 8px !important;
 }
 
 .test-btn:hover {
-  color: var(--btn-hover-color) !important;
-  background: var(--btn-hover-bg) !important;
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .chat-messages {
   height: 500px;
   overflow-y: auto;
   padding: 24px;
-  background: var(--chat-messages-bg);
+  background: rgb(238, 245, 254);
 }
 
 .message-wrapper {
@@ -557,7 +566,7 @@ watch(messages, () => {
 }
 
 .user-message .message-avatar {
-  background: var(--primary-blue);
+  background: #1E3A8A;
 }
 
 .message-avatar-img {
@@ -570,21 +579,30 @@ watch(messages, () => {
 
 .message-bubble {
   max-width: 70%;
-  background: var(--message-bubble-bg);
+  background: #FFFFFF;
   padding: 12px 16px;
   border-radius: 18px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
+  color: #03045e;
 }
 
 .user-message .message-bubble {
-  background: var(--message-bubble-user-bg);
-  color: var(--text-white);
+  background: #1E3A8A;
+  color: #FFFFFF;
+}
+
+.user-message .message-text {
+  color: #FFFFFF !important;
+}
+
+.user-message .message-time {
+  color: #FFFFFF !important;
 }
 
 /* Tin nhắn lỗi */
 .message-bubble.error {
-  background: var(--message-bubble-error-bg);
+  background: #fee2e2;
   color: #dc2626;
   border: 1px solid #fecaca;
 }
@@ -600,7 +618,7 @@ watch(messages, () => {
 
 /* Tin nhắn cảnh báo */
 .message-bubble.warning {
-  background: var(--message-bubble-warning-bg);
+  background: #fef3c7;
   color: #d97706;
   border: 1px solid #fed7aa;
 }
@@ -617,12 +635,14 @@ watch(messages, () => {
 .message-text {
   line-height: 1.5;
   margin-bottom: 4px;
+  color: #03045e;
 }
 
 .message-time {
   font-size: 0.75rem;
   opacity: 0.7;
   text-align: right;
+  color: #03045e;
 }
 
 .typing-indicator {
@@ -655,8 +675,8 @@ watch(messages, () => {
 
 .chat-input-container {
   padding: 24px;
-  background: var(--chat-input-container-bg);
-  border-top: 1px solid var(--chat-input-border);
+  background: #FFFFFF;
+  border-top: 1px solid #e2e8f0;
 }
 
 .chat-form {
@@ -667,6 +687,14 @@ watch(messages, () => {
   border-radius: 25px;
 }
 
+.chat-input :deep(.v-field__input) {
+  color: #03045e !important;
+}
+
+.chat-input :deep(.v-field__outline) {
+  color: #1E3A8A !important;
+}
+
 .send-btn {
   border-radius: 50%;
   width: 48px;
@@ -675,7 +703,7 @@ watch(messages, () => {
 
 .features-section {
   padding: 80px 0;
-  background: var(--features-section-bg);
+  background: rgb(238, 245, 254);
 }
 
 .feature-card {
@@ -683,13 +711,13 @@ watch(messages, () => {
   padding: 40px 24px;
   border-radius: 16px;
   height: 100%;
-  transition: all var(--transition-normal);
-  background: var(--feature-card-bg);
+  transition: all 0.3s ease;
+  background: #FFFFFF;
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .feature-icon {
@@ -700,11 +728,11 @@ watch(messages, () => {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 16px;
-  color: var(--text-white);
+  color: #03045e;
 }
 
 .feature-description {
-  color: var(--text-dark);
+  color: #03045e;
   line-height: 1.6;
 }
 
@@ -738,55 +766,6 @@ watch(messages, () => {
   color: inherit;
 }
 
-/* Dark Theme Support */
-:deep(.v-theme--dark) {
-  --ai-view-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --ai-header-bg: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
-  --chat-card-bg: #1e293b;
-  --chat-messages-bg: #0f172a;
-  --message-bubble-bg: #334155;
-  --message-bubble-user-bg: #1E3A8A;
-  --message-bubble-error-bg: #7f1d1d;
-  --message-bubble-warning-bg: #92400e;
-  --chat-input-container-bg: #1e293b;
-  --chat-input-border: #334155;
-  --features-section-bg: #0f172a;
-  --feature-card-bg: #1e293b;
-  --text-dark: #F8FAFC;
-  --text-light: #CBD5E1;
-  --text-white: #FFFFFF;
-  --btn-bg: rgba(255, 255, 255, 0.15);
-  --btn-color: rgba(255, 255, 255, 0.9);
-  --btn-hover-bg: rgba(255, 255, 255, 0.25);
-  --btn-hover-color: #FFFFFF;
-  --title-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  --subtitle-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-/* Alternative dark mode selector */
-.v-theme--dark .ai-assistant-view {
-  --ai-view-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --ai-header-bg: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
-  --chat-card-bg: #1e293b;
-  --chat-messages-bg: #0f172a;
-  --message-bubble-bg: #334155;
-  --message-bubble-user-bg: #1E3A8A;
-  --message-bubble-error-bg: #7f1d1d;
-  --message-bubble-warning-bg: #92400e;
-  --chat-input-container-bg: #1e293b;
-  --chat-input-border: #334155;
-  --features-section-bg: #0f172a;
-  --feature-card-bg: #1e293b;
-  --text-dark: #F8FAFC;
-  --text-light: #CBD5E1;
-  --text-white: #FFFFFF;
-  --btn-bg: rgba(255, 255, 255, 0.15);
-  --btn-color: rgba(255, 255, 255, 0.9);
-  --btn-hover-bg: rgba(255, 255, 255, 0.25);
-  --btn-hover-color: #FFFFFF;
-  --title-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  --subtitle-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {

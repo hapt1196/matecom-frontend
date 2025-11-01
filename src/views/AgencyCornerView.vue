@@ -34,31 +34,31 @@
           >
             <v-card 
               class="blog-card fade-in-up" 
-              elevation="4" 
+              elevation="2" 
               :style="{ transitionDelay: `${index * 0.1}s` }"
               @click="goToBlogDetail(post.slug)"
             >
-              <div class="blog-image">
-                <img :src="post.featuredImage" :alt="post.title" />
-                <div class="blog-overlay">
-                  <v-btn 
-                    color="primary" 
-                    variant="elevated"
-                    class="read-more-btn"
-                  >
-                    {{ t('agency.blog.readMore') }}
-                  </v-btn>
-                </div>
-              </div>
+              <img 
+                :src="post.featuredImage" 
+                :alt="post.title"
+                height="200px" 
+                class="blog-img"
+              />
               
-              <v-card-text class="blog-content">
-                <h3 class="blog-title">{{ post.title }}</h3>
-                <p class="blog-excerpt">{{ post.excerpt }}</p>
-                <div class="blog-meta">
-                  <span class="publish-date">{{ formatDate(post.publishedAt) }}</span>
-                  <span class="read-time">{{ post.readTime }}</span>
-                </div>
+              <v-card-title class="blog-title">{{ post.title }}</v-card-title>
+              
+              <v-card-subtitle class="blog-meta">
+                <span class="publish-date">{{ formatDate(post.publishedAt) }}</span>
+                <span class="read-time">{{ post.readTime }}</span>
+              </v-card-subtitle>
+              
+              <v-card-text class="blog-excerpt">
+                {{ post.metaDescription || post.excerpt }}
               </v-card-text>
+              
+              <v-card-actions>
+                <v-btn color="primary" variant="text">{{ t('agency.blog.readMore') }}</v-btn>
+              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -88,6 +88,7 @@
 import { ref, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { allBlogPosts, getBlogData } from '@/data/blog'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -99,62 +100,25 @@ const getImageUrl = (imageName) => {
   return `/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/${imageName}`
 }
 
-const blogPosts = ref([
-  {
-    id: 1,
-    title: 'Marketing 2026 – Xu hướng mới định hình tương lai thương hiệu',
-    excerpt: 'Khám phá 6 xu hướng Marketing 2026 quan trọng: Hyper-Personalization, AI Content, Video ngắn, Social Commerce và hơn thế nữa. Năm 2026 sẽ mở ra một giai đoạn hoàn toàn mới cho ngành Marketing.',
-    slug: 'marketing-2026-xu-huong-moi-dinh-hinh-tuong-lai-thuong-hieu',
-    featuredImage: getImageUrl('image.png'),
-    publishedAt: new Date('2026-01-01'),
-    readTime: '15 phút đọc'
-  },
-  {
-    id: 2,
-    title: 'Digital Marketing Trends 2025: Những gì đã thay đổi',
-    excerpt: 'Tổng hợp những xu hướng Digital Marketing nổi bật trong năm 2025 và cách các thương hiệu đã thích ứng với những thay đổi này.',
-    slug: 'digital-marketing-trends-2025',
-    featuredImage: getImageUrl('image1.png'),
-    publishedAt: new Date('2025-12-15'),
-    readTime: '12 phút đọc'
-  },
-  {
-    id: 3,
-    title: 'AI trong Marketing: Từ Trend đến Reality',
-    excerpt: 'Cách AI đang thay đổi ngành Marketing hiện đại và những ứng dụng thực tế mà các thương hiệu đang triển khai.',
-    slug: 'ai-marketing-trend-reality',
-    featuredImage: getImageUrl('image2.png'),
-    publishedAt: new Date('2025-11-20'),
-    readTime: '10 phút đọc'
-  },
-  {
-    id: 4,
-    title: 'Social Commerce: Khi mua sắm hòa cùng giải trí',
-    excerpt: 'Khám phá xu hướng Social Commerce và cách các thương hiệu đang tận dụng mạng xã hội để tăng doanh số.',
-    slug: 'social-commerce-mua-sam-giai-tri',
-    featuredImage: getImageUrl('image3.png'),
-    publishedAt: new Date('2025-10-30'),
-    readTime: '8 phút đọc'
-  },
-  {
-    id: 5,
-    title: 'SEO 2025: Những thay đổi quan trọng cần biết',
-    excerpt: 'Cập nhật những thay đổi mới nhất trong thuật toán Google và cách tối ưu SEO cho năm 2025.',
-    slug: 'seo-2025-nhung-thay-doi-quan-trong',
-    featuredImage: getImageUrl('image4.png'),
-    publishedAt: new Date('2025-09-15'),
-    readTime: '14 phút đọc'
-  },
-  {
-    id: 6,
-    title: 'Content Marketing: Nghệ thuật kể chuyện thương hiệu',
-    excerpt: 'Làm thế nào để tạo ra những nội dung thu hút và xây dựng mối quan hệ bền vững với khách hàng.',
-    slug: 'content-marketing-nghe-thuat-ke-chuyen',
-    featuredImage: getImageUrl('image5.png'),
-    publishedAt: new Date('2025-08-25'),
-    readTime: '11 phút đọc'
+const blogPosts = ref([])
+
+// Load blog posts with full data
+const loadBlogPosts = async () => {
+  const posts = []
+  for (const post of allBlogPosts) {
+    const fullPost = await getBlogData(post.slug)
+    if (fullPost) {
+      posts.push({
+        ...post,
+        title: fullPost.title,
+        metaDescription: fullPost.metaDescription,
+        featuredImage: fullPost.featuredImage,
+        readTime: fullPost.readTime
+      })
+    }
   }
-])
+  blogPosts.value = posts
+}
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('vi-VN', {
@@ -196,6 +160,9 @@ const subscribeNewsletter = async () => {
 }
 
 onMounted(async () => {
+  // Load blog posts first
+  await loadBlogPosts()
+  
   await nextTick()
   
   // Add scroll animations
@@ -223,29 +190,23 @@ onMounted(async () => {
 .agency-corner-view {
   min-height: 100vh;
   
-  /* Gradient background for entire view */
-  background: linear-gradient(180deg, 
-    #060F2A 0%, 
-    #072845 25%, 
-    #0D4496 50%, 
-    #1E3A8A 75%, 
-    #0F172A 100%
-  );
+  /* Light blue background for entire view */
+  background: rgb(238, 245, 254);
   
-  /* CSS Variables - MarcomMate Inspired Dark Theme */
+  /* CSS Variables - Light Theme */
   --agency-header-bg: transparent;
-  --agency-text: #F8FAFC;
+  --agency-text: #03045e;
   --agency-accent: #F59E0B;  /* MarcomMate accent orange */
   --blog-posts-bg: transparent;
-  --blog-card-bg: rgba(30, 41, 59, 0.6);
-  --blog-card-border: rgba(51, 65, 85, 0.5);
+  --blog-card-bg: rgba(255, 255, 255, 0.9);
+  --blog-card-border: rgba(3, 4, 94, 0.2);
   --blog-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --blog-card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-  --text-primary: #F8FAFC;
-  --text-secondary: #CBD5E1;
-  --text-muted: #94A3B8;
+  --text-primary: #03045e;
+  --text-secondary: #1e40af;
+  --text-muted: #64748b;
   --newsletter-bg: transparent;
-  --newsletter-text: #F8FAFC;
+  --newsletter-text: #03045e;
   --newsletter-accent: #F59E0B;  /* MarcomMate accent orange */
 }
 
@@ -301,98 +262,81 @@ onMounted(async () => {
   transition: all 0.3s ease;
   border-radius: 16px;
   overflow: hidden;
-  background: var(--blog-card-bg) !important;
-  border: 1px solid var(--blog-card-border);
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(3, 4, 94, 0.2) !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--blog-card-hover-shadow) !important;
-  border-color: var(--agency-accent);
-}
-
-.blog-image {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.blog-image img {
-  width: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.blog-card:hover .blog-image img {
-  transform: scale(1.05);
-}
-
-.blog-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(30, 58, 138, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.blog-card:hover .blog-overlay {
-  opacity: 1;
-}
-
-.read-more-btn {
-  color: white !important;
-  background: transparent !important;
-  border: 2px solid white !important;
-}
-
-.read-more-btn:hover {
-  background: var(--agency-accent) !important;
-  color: white !important;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   border-color: var(--agency-accent) !important;
 }
 
-.blog-content {
-  padding: var(--spacing-xl);
+.blog-img {
+  width: 100%;
 }
 
 .blog-title {
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-lg);
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: var(--spacing-md);
-  color: var(--text-primary);
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.4;
+  color: #03045e;
+  margin-bottom: 8px;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
 }
 
-.blog-excerpt {
-  font-family: var(--font-family-body);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-md);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+/* Override Vuetify v-card-title styles */
+.blog-card :deep(.v-card-title) {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
 }
 
 .blog-meta {
   display: flex;
   justify-content: space-between;
-  font-size: var(--font-size-sm);
-  color: var(--text-muted);
-  font-family: var(--font-family-body);
+  align-items: center;
+  font-size: 0.85rem;
+  color: #03045e;
+  margin-bottom: 12px;
+}
+
+.publish-date {
+  color: #03045e;
+}
+
+.read-time {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.blog-excerpt {
+  color: #03045e !important;
+  line-height: 1.6 !important;
+  font-size: 0.95rem !important;
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+
+/* Override Vuetify v-card-text styles */
+.blog-card :deep(.v-card-text) {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: normal !important;
+  word-break: break-word !important;
 }
 
 /* Load More Button */
@@ -508,7 +452,22 @@ onMounted(async () => {
 .blog-card:nth-child(5).fade-in-up { transition-delay: 0.5s; }
 .blog-card:nth-child(6).fade-in-up { transition-delay: 0.6s; }
 
-/* Single Theme - No Dark/Light Mode */
+/* Light mode support */
+:deep(.v-theme--light) .blog-card {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+:deep(.v-theme--light) .blog-title {
+  color: #03045e;
+}
+
+:deep(.v-theme--light) .blog-meta {
+  color: #03045e;
+}
+
+:deep(.v-theme--light) .blog-excerpt {
+  color: #03045e;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -529,7 +488,15 @@ onMounted(async () => {
   }
   
   .blog-title {
-    font-size: 1.125rem;
+    font-size: 1rem;
+  }
+  
+  .blog-excerpt {
+    font-size: 0.9rem;
+  }
+  
+  .blog-meta {
+    font-size: 0.8rem;
   }
   
   .newsletter-input-group {

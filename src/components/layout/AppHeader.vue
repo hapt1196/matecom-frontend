@@ -249,10 +249,7 @@ onUnmounted(() => {
   background-repeat: no-repeat;
   background-position: center;
   transition: transform 0.3s ease;
-}
-
-.logo-image:hover {
-  transform: scale(1.05);
+  margin-top: 10px;
 }
 
 /* Mobile Menu Button */

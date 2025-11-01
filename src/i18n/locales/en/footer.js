@@ -1,6 +1,6 @@
 export default {
   company: {
-    description: 'MateCom - Your trusted digital marketing partner, helping businesses build strong digital brands.',
+    description: 'MATECOM - Your trusted digital marketing partner, helping businesses build strong digital brands.',
     contact: 'Contact Information'
   },
   info: {
@@ -8,5 +8,5 @@ export default {
     email: 'Email',
     address: 'Address'
   },
-  copyright: '© 2024 MateCom. All rights reserved.'
+  copyright: '© 2025 MATECOM. All rights reserved.'
 }

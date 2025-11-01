@@ -105,6 +105,34 @@ export default {
               'Nội dung đào tạo tùy chỉnh: Các buổi đào tạo được thiết kế dựa trên chính dữ liệu và tình hình thực tế của doanh nghiệp bạn.'
             ]
           }
+        },
+        3: {
+          title: '4. Training In-house (SEO, GA4, Performance, CRM)',
+          description: 'Trang bị kiến thức và kỹ năng thực chiến cho đội ngũ marketing nội bộ, giúp doanh nghiệp tự vận hành và tối ưu hiệu quả dài hạn.',
+          benefits: {
+            title: 'Giá trị bạn nhận được:',
+            items: [
+              'SEO Training: Hướng dẫn nghiên cứu từ khóa, tối ưu website (onpage, offpage, technical), xây dựng content chuẩn SEO.',
+              'Google Analytics 4 (GA4): Thiết lập tracking, phân tích funnel, đọc & giải thích báo cáo hành vi người dùng.',
+              'Performance Marketing: Thiết lập và tối ưu chiến dịch quảng cáo (Google Ads, Meta, LinkedIn Ads), đo lường ROI.',
+              'CRM & Automation: Quản lý pipeline, phân loại lead, xây dựng workflow tự động chăm sóc khách hàng.',
+              'Workshop thực hành: Đào tạo qua case study của chính doanh nghiệp, cầm tay chỉ việc, hướng dẫn theo dự án thực tế.'
+            ]
+          }
+        },
+        4: {
+          title: '5. Market Entry (Mở thị trường mới)',
+          description: 'Hỗ trợ doanh nghiệp thâm nhập và phát triển bền vững tại thị trường mới, giảm thiểu rủi ro và tăng tốc độ thành công.',
+          benefits: {
+            title: 'Giá trị bạn nhận được:',
+            items: [
+              'Nghiên cứu thị trường & đối thủ: Phân tích quy mô, nhu cầu, thói quen tiêu dùng, đối thủ cạnh tranh, rào cản pháp lý.',
+              'Chiến lược định vị & thông điệp: Xác định giá trị khác biệt (USP), điều chỉnh thông điệp phù hợp văn hóa & hành vi địa phương.',
+              'Kế hoạch go-to-market: Lộ trình tiếp cận thị trường theo từng giai đoạn (Awareness – Engagement – Conversion).',
+              'Thiết lập kênh phân phối & truyền thông: Đề xuất mix kênh (offline/online, direct/indirect), xây dựng chiến lược digital và PR bản địa hóa.',
+              'Pilot & Scaling: Thử nghiệm chiến dịch nhỏ để đo lường phản ứng thị trường trước khi nhân rộng.'
+            ]
+          }
         }
       },
       conclusion: 'Với những dịch vụ mở rộng này, chúng tôi cam kết trở thành đối tác chiến lược, đồng hành cùng bạn trên mọi chặng đường phát triển.'
@@ -113,6 +141,50 @@ export default {
       title: 'Sẵn sàng bắt đầu hành trình marketing của bạn?',
       description: 'Hãy để chúng tôi giúp bạn xây dựng chiến lược marketing hiệu quả và đạt được mục tiêu kinh doanh.',
       contactButton: 'Liên hệ ngay'
+    },
+    detail: {
+      breadcrumb: 'Quay lại dịch vụ',
+      painPoints: {
+        title: 'Bạn có đang...'
+      },
+      coreValue: {
+        title: 'Giá trị cốt lõi'
+      },
+      features: {
+        title: 'Chúng tôi sẽ cùng bạn'
+      },
+      finalResult: {
+        title: 'Kết quả cuối cùng'
+      },
+      additionalContent: {
+        research: {
+          title: 'Nghiên cứu & Phân tích chuyên sâu',
+          steps: {
+            dataCollection: {
+              title: 'Thu thập dữ liệu',
+              description: 'Phân tích dữ liệu sẵn có của bạn (GA4, CRM, ad accounts...) để tìm ra những "điểm nghẽn" và cơ hội.'
+            },
+            research: {
+              title: 'Nghiên cứu chuyên sâu',
+              description: 'Thực hiện phỏng vấn khách hàng/bên mua để thấu hiểu Jobs-to-be-done và xây dựng bản đồ hành trình khách hàng (Customer Journey Map) chi tiết.'
+            }
+          }
+        },
+        deliverables: {
+          title: 'Kết quả cuối cùng',
+          items: [
+            'Marketing Strategy Blueprint (PDF/Slides): Tổng quan về thị trường, khách hàng, định vị và chiến lược.',
+            '12-month Marketing Plan (Excel/Sheets): Lịch trình, ngân sách và KPI chi tiết.',
+            'Execution Roadmap (kanban/Gantt): Kế hoạch triển khai theo sprint.',
+            'Tracking & Analytics Pack: Hướng dẫn theo dõi và đo lường hiệu quả.'
+          ]
+        }
+      },
+      cta: {
+        title: 'Sẵn sàng bắt đầu với',
+        description: 'Hãy để chúng tôi cùng bạn xây dựng chiến lược marketing đột phá',
+        button: 'Liên hệ tư vấn ngay'
+      }
     }
   }
 }

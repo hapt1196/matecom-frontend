@@ -105,6 +105,34 @@ export default {
               'Customized training content: Training sessions are designed based on your actual business data and situation.'
             ]
           }
+        },
+        3: {
+          title: '4. Training In-house (SEO, GA4, Performance, CRM)',
+          description: 'Equip your internal marketing team with practical knowledge and skills, helping businesses self-operate and optimize long-term effectiveness.',
+          benefits: {
+            title: 'Value you receive:',
+            items: [
+              'SEO Training: Guide keyword research, website optimization (onpage, offpage, technical), create SEO-compliant content.',
+              'Google Analytics 4 (GA4): Set up tracking, analyze funnels, read & interpret user behavior reports.',
+              'Performance Marketing: Set up and optimize advertising campaigns (Google Ads, Meta, LinkedIn Ads), measure ROI.',
+              'CRM & Automation: Manage pipeline, classify leads, build automated customer care workflows.',
+              'Practical Workshops: Training through your own business case studies, hands-on guidance, project-based instruction.'
+            ]
+          }
+        },
+        4: {
+          title: '5. Market Entry (New Market Expansion)',
+          description: 'Support businesses to penetrate and sustainably develop in new markets, minimize risks and accelerate success.',
+          benefits: {
+            title: 'Value you receive:',
+            items: [
+              'Market & Competitor Research: Analyze market size, demand, consumption habits, competitors, legal barriers.',
+              'Positioning & Messaging Strategy: Identify unique value proposition (USP), adjust messages to fit local culture & behavior.',
+              'Go-to-Market Plan: Market approach roadmap by stages (Awareness – Engagement – Conversion).',
+              'Distribution & Communication Channel Setup: Propose channel mix (offline/online, direct/indirect), build localized digital strategy and PR.',
+              'Pilot & Scaling: Test small campaigns to measure market response before scaling up.'
+            ]
+          }
         }
       },
       conclusion: 'With these extended services, we commit to becoming your strategic partner, accompanying you on every development journey.'
@@ -113,6 +141,50 @@ export default {
       title: 'Ready to start your marketing journey?',
       description: 'Let us help you build an effective marketing strategy and achieve your business goals.',
       contactButton: 'Contact Now'
+    },
+    detail: {
+      breadcrumb: 'Back to Services',
+      painPoints: {
+        title: 'Are you...'
+      },
+      coreValue: {
+        title: 'Core Value'
+      },
+      features: {
+        title: 'We will work with you to'
+      },
+      finalResult: {
+        title: 'Final Result'
+      },
+      additionalContent: {
+        research: {
+          title: 'In-depth Research & Analysis',
+          steps: {
+            dataCollection: {
+              title: 'Data Collection',
+              description: 'Analyze your existing data (GA4, CRM, ad accounts...) to identify "bottlenecks" and opportunities.'
+            },
+            research: {
+              title: 'In-depth Research',
+              description: 'Conduct customer/buyer interviews to understand Jobs-to-be-done and build detailed Customer Journey Maps.'
+            }
+          }
+        },
+        deliverables: {
+          title: 'Final Deliverables',
+          items: [
+            'Marketing Strategy Blueprint (PDF/Slides): Market overview, customers, positioning and strategy.',
+            '12-month Marketing Plan (Excel/Sheets): Detailed timeline, budget and KPIs.',
+            'Execution Roadmap (kanban/Gantt): Sprint-based implementation plan.',
+            'Tracking & Analytics Pack: Guide for monitoring and measuring effectiveness.'
+          ]
+        }
+      },
+      cta: {
+        title: 'Ready to start with',
+        description: 'Let us work together to build a breakthrough marketing strategy',
+        button: 'Contact for Consultation'
+      }
     }
   }
 }

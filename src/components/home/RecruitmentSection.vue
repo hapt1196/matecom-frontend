@@ -2,14 +2,14 @@
   <section class="recruitment-section">
     <v-container>
       <h2 class="section-title text-center">{{ t('home.recruitment.title') }}</h2>
-      <v-list lines="two" class="recruitment-list">
+      <!-- <v-list lines="two" class="recruitment-list">
         <v-list-item
           v-for="job in jobs"
           :key="job.title"
           :title="job.title"
           :subtitle="job.description"
         ></v-list-item>
-      </v-list>
+      </v-list> -->
       <div class="text-center mt-8">
         <v-btn 
           outlined 

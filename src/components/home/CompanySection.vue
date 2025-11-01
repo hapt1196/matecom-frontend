@@ -151,7 +151,7 @@ const { t } = useI18n()
   padding: var(--spacing-xl);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(3, 4, 94, 0.2);
+  border: 1px solid #F59E0B;
   border-left: 4px solid #F59E0B;
   height: 100%;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -196,7 +196,7 @@ const { t } = useI18n()
 /* Organizational Chart Styles */
 .org-chart {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .ceo-level {
@@ -217,12 +217,14 @@ const { t } = useI18n()
   margin: 0 auto;
   border: 2px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .ceo-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px) scale(1.05);
   border-color: #3B82F6;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .ceo-avatar {
@@ -233,6 +235,12 @@ const { t } = useI18n()
   margin-bottom: 16px;
   border: 3px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.ceo-avatar:hover {
+  transform: scale(1.1);
 }
 
 .ceo-avatar img {
@@ -287,15 +295,17 @@ const { t } = useI18n()
   align-items: center;
   text-align: center;
   max-width: 280px;
-  margin: 0 auto;
+  margin: 0;
   border: 2px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .department-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px) scale(1.05);
   border-color: #3B82F6;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .department-avatar {
@@ -306,6 +316,12 @@ const { t } = useI18n()
   margin-bottom: 12px;
   border: 3px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.department-avatar:hover {
+  transform: scale(1.1);
 }
 
 .department-avatar img {

@@ -56,6 +56,7 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { allBlogPosts } from '@/data/blog'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -65,63 +66,8 @@ const getImageUrl = (imageName) => {
   return `/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/${imageName}`
 }
 
-// Dữ liệu blog posts từ AgencyCornerView
-const blogPosts = ref([
-  {
-    id: 1,
-    title: 'Marketing 2026 – Xu hướng mới định hình tương lai thương hiệu',
-    excerpt: 'Khám phá 6 xu hướng Marketing 2026 quan trọng: Hyper-Personalization, AI Content, Video ngắn, Social Commerce và hơn thế nữa. Năm 2026 sẽ mở ra một giai đoạn hoàn toàn mới cho ngành Marketing.',
-    slug: 'marketing-2026-xu-huong-moi-dinh-hinh-tuong-lai-thuong-hieu',
-    featuredImage: getImageUrl('image.png'),
-    publishedAt: new Date('2025-07-15'),
-    readTime: '15 phút đọc'
-  },
-  {
-    id: 2,
-    title: 'Digital Marketing Trends 2025: Những gì đã thay đổi',
-    excerpt: 'Tổng hợp những xu hướng Digital Marketing nổi bật trong năm 2025 và cách các thương hiệu đã thích ứng với những thay đổi này.',
-    slug: 'digital-marketing-trends-2025',
-    featuredImage: getImageUrl('image1.png'),
-    publishedAt: new Date('2025-08-15'),
-    readTime: '12 phút đọc'
-  },
-  {
-    id: 3,
-    title: 'AI trong Marketing: Từ Trend đến Reality',
-    excerpt: 'Cách AI đang thay đổi ngành Marketing hiện đại và những ứng dụng thực tế mà các thương hiệu đang triển khai.',
-    slug: 'ai-marketing-trend-reality',
-    featuredImage: getImageUrl('image2.png'),
-    publishedAt: new Date('2025-09-10'),
-    readTime: '10 phút đọc'
-  },
-  {
-    id: 4,
-    title: 'Social Commerce: Khi mua sắm hòa cùng giải trí',
-    excerpt: 'Khám phá xu hướng Social Commerce và cách các thương hiệu đang tận dụng mạng xã hội để tăng doanh số.',
-    slug: 'social-commerce-mua-sam-giai-tri',
-    featuredImage: getImageUrl('image3.png'),
-    publishedAt: new Date('2025-09-12'),
-    readTime: '8 phút đọc'
-  },
-  {
-    id: 5,
-    title: 'SEO 2025: Những thay đổi quan trọng cần biết',
-    excerpt: 'Cập nhật những thay đổi mới nhất trong thuật toán Google và cách tối ưu SEO cho năm 2025.',
-    slug: 'seo-2025-nhung-thay-doi-quan-trong',
-    featuredImage: getImageUrl('image4.png'),
-    publishedAt: new Date('2025-09-15'),
-    readTime: '14 phút đọc'
-  },
-  {
-    id: 6,
-    title: 'Content Marketing: Nghệ thuật kể chuyện thương hiệu',
-    excerpt: 'Làm thế nào để tạo ra những nội dung thu hút và xây dựng mối quan hệ bền vững với khách hàng.',
-    slug: 'content-marketing-nghe-thuat-ke-chuyen',
-    featuredImage: getImageUrl('image5.png'),
-    publishedAt: new Date('2025-08-25'),
-    readTime: '11 phút đọc'
-  }
-])
+// Dữ liệu blog posts từ data files
+const blogPosts = ref(allBlogPosts)
 
 // Chỉ hiển thị 3 bài viết mới nhất
 const featuredPosts = computed(() => {

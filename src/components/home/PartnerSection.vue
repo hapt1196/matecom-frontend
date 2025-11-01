@@ -68,11 +68,6 @@ const partners = ref([
     logo: tiktokLogo
   },
   {
-    id: 4,
-    name: 'Bing Ads',
-    logo: bingAdsLogo
-  },
-  {
     id: 5,
     name: 'Zalo Business',
     logo: zaloBusinessLogo
@@ -140,14 +135,13 @@ const partners = ref([
   align-items: center;
   justify-content: center;
   height: 120px;
-  min-width: 200px;
+  width: 350px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
 .partner-logo:hover {
-  transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   border-color: #F59E0B;
 }

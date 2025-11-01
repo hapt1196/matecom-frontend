@@ -10,12 +10,14 @@
         <div class="hero-text">
           <span class="hero-subtitle">{{ t('recruitment.hero.subtitle') }}</span>
           <h1 class="hero-title">{{ t('recruitment.hero.title') }}</h1>
-          <ContactButton
-            :text="t('recruitment.hero.ctaButton')"
-            custom-class="hero-cta-btn"
+          <v-btn
+            class="hero-cta-btn"
+            variant="elevated"
             size="large"
             @click="openApplicationForm"
-          />
+          >
+            {{ t('recruitment.hero.ctaButton') }}
+          </v-btn>
         </div>
       </div>
     </section>
@@ -198,7 +200,6 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ApplicationFormPopup from '@/components/common/ApplicationFormPopup.vue'
-import ContactButton from '@/components/common/ContactButton.vue'
 
 const { t, locale } = useI18n()
 
@@ -263,7 +264,7 @@ const onApplicationSubmitted = (formData) => {
     rgba(30, 58, 138, 0.7) 100%
   );
   --values-section-bg: rgb(238, 245, 254);
-  --value-item-bg: rgba(15, 23, 42, 0.85);
+  --value-item-bg: rgb(30, 41, 59);
   --value-item-border: rgba(71, 85, 105, 0.3);
   --value-item-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   --value-item-hover-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
@@ -383,6 +384,7 @@ const onApplicationSubmitted = (formData) => {
   color: #03045e;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-align: center;
 }
 
 .values-divider {
@@ -404,7 +406,7 @@ const onApplicationSubmitted = (formData) => {
   display: flex;
   gap: 3rem;
   padding: 3rem;
-  background: var(--value-item-bg);
+  background: #05113b !important;
   border-radius: 20px;
   box-shadow: var(--value-item-shadow);
   transition: all 0.3s ease;
@@ -417,23 +419,11 @@ const onApplicationSubmitted = (formData) => {
   z-index: 1;
 }
 
-.value-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(15, 23, 42, 0.9);  
-  border-radius: 20px;
-  z-index: -1;
-}
 
 .value-item:hover {
   transform: translateY(-6px);
   box-shadow: var(--value-item-hover-shadow);
   border-color: var(--value-item-hover-border);
-  
 }
 
 .value-content-left,
@@ -468,7 +458,7 @@ const onApplicationSubmitted = (formData) => {
 .value-number {
   font-size: 3rem;
   font-weight: 800;
-  color: #3B82F6;
+  color: #FFFFFF;
   line-height: 1;
   min-width: 80px;
   text-align: center;
@@ -481,19 +471,21 @@ const onApplicationSubmitted = (formData) => {
 .value-subtitle {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: #FFFFFF;
   margin-bottom: 1rem;
   line-height: 1.3;
 }
 
 .value-description {
-  color: var(--text-light);
+  color: #FFFFFF;
   line-height: 1.7;
 }
 
 .value-description p {
   margin-bottom: 1rem;
   font-size: 1.0625rem;
+  color: #FFFFFF;
+  text-align: justify;
 }
 
 .value-description p:last-child {
@@ -672,6 +664,7 @@ const onApplicationSubmitted = (formData) => {
   
   .value-subtitle {
     font-size: 1.25rem;
+    text-align: justify;
   }
   
   .value-img {

@@ -4,7 +4,7 @@
     <section class="hero-section">
       <!-- Hero Content -->
       <div class="hero-content">
-        <p class="hero-subtitle">{{ t('about.hero.subtitle') }}</p>
+        <p class="hero-subtitle fade-in-up">{{ t('about.hero.subtitle') }}</p>
       </div>
     </section>
 
@@ -330,6 +330,7 @@ onMounted(async () => {
   line-height: 1.8;
   color: #03045e;
   margin: 0 0 24px 0;
+  text-align: justify;
 }
 
 .about-image img {
@@ -343,7 +344,7 @@ onMounted(async () => {
 /* Mission & Vision Section */
 .mission-vision-section {
   padding: 80px 0;
-  background: var(--mission-vision-bg);
+  background: var(--about-section-bg);
 }
 
 .mission-vision-grid {
@@ -360,12 +361,16 @@ onMounted(async () => {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease;
-  border: 1px solid var(--card-border);
+  border: 1px solid #F59E0B;
+  border-left: 4px solid #F59E0B;
+  transform-origin: center;
 }
 
 .mission-card:hover,
 .vision-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.08) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-color: #F59E0B;
 }
 
 .card-image {
@@ -399,6 +404,7 @@ onMounted(async () => {
   color: #03045e;
   margin: 0;
   font-style: italic;
+  text-align: justify;
 }
 
 /* Team Section */
@@ -413,8 +419,8 @@ onMounted(async () => {
 
 /* Sơ đồ tổ chức */
 .org-chart {
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 0;
   text-align: center;
 }
 
@@ -431,14 +437,14 @@ onMounted(async () => {
   align-items: center;
   gap: 32px;
   transition: all 0.3s ease;
-  border: 1px solid var(--team-member-border);
+  border: 2px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .ceo-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.08);
   box-shadow: 0 15px 40px rgba(3, 4, 94, 0.15);
-  border-color: #03045e;
+  border-color: #3B82F6;
 }
 
 .ceo-avatar {
@@ -521,7 +527,7 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  align-items: start;
+  align-items: center;
 }
 
 .department-card {
@@ -529,14 +535,15 @@ onMounted(async () => {
   padding: 24px;
   border-radius: 16px;
   transition: all 0.3s ease;
-  border: 1px solid var(--team-member-border);
+  border: 2px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform-origin: center;
 }
 
 .department-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.08) !important;
   box-shadow: 0 12px 30px rgba(3, 4, 94, 0.15);
-  border-color: #03045e;
+  border-color: #3B82F6;
 }
 
 .department-avatar {
@@ -607,7 +614,7 @@ onMounted(async () => {
 .fade-in-up {
   opacity: 0;
   transform: translateY(50px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in-up.visible {

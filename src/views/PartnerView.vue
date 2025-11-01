@@ -144,11 +144,6 @@ const router = useRouter()
 
 const partners = [
   {
-    id: 1,
-    name: 'Bing Ads',
-    logo: bingadsLogo
-  },
-  {
     id: 2,
     name: 'Google Partner',
     logo: googlepartnerLogo
@@ -244,39 +239,33 @@ onMounted(async () => {
 .partner-view {
   min-height: 100vh;
   
-  /* Gradient background for entire view */
-  background: linear-gradient(180deg, 
-    #060F2A 0%, 
-    #072845 25%, 
-    #0D4496 50%, 
-    #1E3A8A 75%, 
-    #0F172A 100%
-  );
+  /* Light background for entire view */
+  background: rgb(238, 245, 254);
   
-  /* CSS Variables - Dark Theme like ServiceView */
+  /* CSS Variables - Light Theme */
   --hero-bg: transparent;
   --hero-overlay: transparent;
-  --hero-text: #F8FAFC;
+  --hero-text: #03045e;
   --hero-accent: #F59E0B;  /* MarcomMate accent orange */
   --intro-bg: transparent;
-  --intro-text-color: #F8FAFC;
+  --intro-text-color: #03045e;
   --partners-bg: transparent;
-  --partners-title-color: #F8FAFC;
-  --partners-subtitle-color: #CBD5E1;
+  --partners-title-color: #03045e;
+  --partners-subtitle-color: #03045e;
   --partner-logo-bg: #ffffff;
   --partner-logo-border: #e5e7eb;
   --tech-partners-bg: transparent;
   --tech-partner-logo-bg: #ffffff;
   --tech-partner-logo-border: #e5e7eb;
   --benefits-bg: transparent;
-  --benefit-item-bg: rgba(30, 41, 59, 0.6);
-  --benefit-item-border: rgba(51, 65, 85, 0.5);
+  --benefit-item-bg: rgba(255, 255, 255, 0.8);
+  --benefit-item-border: rgba(59, 130, 246, 0.3);
   --benefit-number-bg: linear-gradient(135deg, #1E3A8A, #3B82F6);  /* MarcomMate primary colors */
   --benefit-number-color: #ffffff;
-  --benefit-title-color: #F8FAFC;
-  --benefit-description-color: #CBD5E1;
+  --benefit-title-color: #03045e;
+  --benefit-description-color: #03045e;
   --cta-bg: transparent;
-  --cta-text: #F8FAFC;
+  --cta-text: #03045e;
   --cta-btn-bg: linear-gradient(135deg, #F59E0B, #F97316);  /* MarcomMate accent orange */
   --cta-btn-hover: linear-gradient(135deg, #F97316, #EA580C);  /* MarcomMate accent orange hover */
 }
@@ -313,7 +302,7 @@ onMounted(async () => {
   font-weight: 300;
   font-style: italic;
   font-size: var(--font-size-xl);
-  color: var(--hero-accent);
+  color: #03045e;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -385,17 +374,14 @@ onMounted(async () => {
   align-items: center;
   justify-content: center;
   height: 120px;
-  min-width: 200px;
+  width: 350px;
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
 }
 
 .partner-image {
-  max-width: 100%;
-  max-height: 80px;
+  height: 80px;
   width: auto;
-  height: auto;
-  object-fit: contain;
 }
 
 /* Technology Partners Section */
