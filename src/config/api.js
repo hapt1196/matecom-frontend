@@ -1,7 +1,7 @@
 // Cấu hình API
 export const API_CONFIG = {
   // Thay thế bằng API key thực của bạn
-  GEMINI_API_KEY: 'AIzaSyDRbmB1j6idm_H4RzUxi3F3JsbA-wgJjdw',
+  GEMINI_API_KEY: 'AIzaSyC85znrd1_FbBZ-f-58PjU-fJzOH3XvrGk',
   
   // URL API (nếu cần)
   BASE_URL: import.meta.env.VITE_API_BASE_URL || '',

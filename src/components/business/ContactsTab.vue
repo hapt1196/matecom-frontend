@@ -170,6 +170,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { getContacts, markAsRead, updateStatus, exportContacts } from '@/services/contactService'
+import { handleApiError } from '@/utils/errorHandler'
 import { Eye, MessageSquare, FileSpreadsheet } from 'lucide-vue-next'
 
 // Reactive data
@@ -231,7 +232,9 @@ const fetchContactsList = async () => {
     totalCount.value = result.totalCount
     totalPages.value = result.totalPages
   } catch (err) {
-    error.value = 'Lỗi khi tải danh sách khách hàng: ' + err.message
+    // Hiển thị thông báo lỗi chi tiết hơn
+    const errorMessage = err.message || 'Lỗi khi tải danh sách khách hàng'
+    error.value = errorMessage
     console.error('Error fetching contacts:', err)
   } finally {
     loading.value = false
@@ -257,7 +260,9 @@ const markContactAsRead = async (contactId) => {
     }
   } catch (err) {
     console.error('Error marking as read:', err)
-    alert('Lỗi khi đánh dấu đã đọc')
+    // Hiển thị thông báo lỗi chi tiết
+    const errorMessage = err.message || 'Lỗi khi đánh dấu đã đọc'
+    alert(`❌ ${errorMessage}`)
   } finally {
     updatingContact.value = null
   }
@@ -275,7 +280,9 @@ const updateContactStatus = async (contactId, newStatus) => {
     }
   } catch (err) {
     console.error('Error updating status:', err)
-    alert('Lỗi khi cập nhật trạng thái')
+    // Hiển thị thông báo lỗi chi tiết
+    const errorMessage = err.message || 'Lỗi khi cập nhật trạng thái'
+    alert(`❌ ${errorMessage}`)
   } finally {
     updatingContact.value = null
   }
@@ -339,23 +346,14 @@ const exportContactsList = async () => {
     await exportContacts(filter)
     
     // Show success message
-    alert('Đã xuất dữ liệu thành công! File Excel đã được tải về.')
+    alert('✅ Đã xuất dữ liệu thành công! File Excel đã được tải về.')
     
   } catch (error) {
     console.error('Export error:', error)
     
-    // Hiển thị thông báo lỗi chi tiết hơn
-    let errorMessage = 'Có lỗi xảy ra khi xuất dữ liệu. Vui lòng thử lại sau.'
-    
-    if (error.message.includes('quyền')) {
-      errorMessage = 'Bạn không có quyền xuất dữ liệu Excel. Vui lòng liên hệ quản trị viên.'
-    } else if (error.message.includes('Unauthorized')) {
-      errorMessage = 'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.'
-    } else if (error.message.includes('network')) {
-      errorMessage = 'Lỗi kết nối mạng. Vui lòng kiểm tra kết nối internet.'
-    }
-    
-    alert(errorMessage)
+    // Sử dụng error message từ service (đã được xử lý bởi errorHandler)
+    const errorMessage = error.message || 'Có lỗi xảy ra khi xuất dữ liệu. Vui lòng thử lại sau.'
+    alert(`❌ ${errorMessage}`)
   } finally {
     isExporting.value = false
   }

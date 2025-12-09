@@ -292,7 +292,13 @@
             <div class="form-group full-width">
               <label class="form-label">Nội dung</label>
               <div class="content-editor-wrapper">
-                <QuillEditor
+                <div v-if="!quillLoaded" class="editor-loading">
+                  <div class="loading-spinner"></div>
+                  <p>Đang tải editor...</p>
+                </div>
+                <component
+                  v-else-if="QuillEditor"
+                  :is="QuillEditor"
                   ref="quillEditor"
                   v-model:content="formData.content"
                   content-type="html"
@@ -360,7 +366,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed, watch, shallowRef } from 'vue'
 import { 
   Plus, 
   RefreshCw, 
@@ -372,8 +378,7 @@ import {
   ChevronRight, 
   X 
 } from 'lucide-vue-next'
-import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css'
+// Quill will be loaded dynamically on client-side only
 import { 
   getPages, 
   createPage, 
@@ -495,9 +500,11 @@ const deletingPage = ref(null)
 const saving = ref(false)
 const deleting = ref(false)
 
-// Quill Editor ref
+// Quill Editor ref (loaded dynamically)
+const QuillEditor = shallowRef(null)
 const quillEditor = ref(null)
 const isUploadingImage = ref(false)
+const quillLoaded = ref(false)
 
 // Form data
 const formData = ref({
@@ -686,11 +693,23 @@ watch(filters, () => {
 
 // Components
 const components = {
-  QuillEditor
+  // QuillEditor loaded dynamically
 }
 
 // Lifecycle
-onMounted(() => {
+onMounted(async () => {
+  // Load Quill editor on client-side only
+  if (typeof window !== 'undefined') {
+    try {
+      const quillModule = await import('@vueup/vue-quill')
+      await import('@vueup/vue-quill/dist/vue-quill.snow.css')
+      QuillEditor.value = quillModule.QuillEditor
+      quillLoaded.value = true
+    } catch (error) {
+      console.error('Failed to load Quill editor:', error)
+    }
+  }
+  
   loadPages()
 })
 </script>

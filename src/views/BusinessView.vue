@@ -6,7 +6,7 @@
         <div class="header-left">
           <div class="logo-section">
             <img src="@/assets/matecom_logo_transparent.png" alt="MATECOM" class="logo" />
-            <span class="app-title">Business CRM</span>
+            <span class="app-title">Biểu đồ hoạt động</span>
           </div>
         </div>
         
@@ -65,35 +65,20 @@
           <div v-if="activeTab === 'dashboard'" class="tab-content">
             <DashboardTab />
           </div>
-          
-          <!-- Leads Tab -->
           <div v-if="activeTab === 'leads'" class="tab-content">
             <LeadsTab />
           </div>
-          
           <!-- Contacts Tab -->
           <div v-if="activeTab === 'contacts'" class="tab-content">
             <ContactsTab />
           </div>
-          
-          <!-- Projects Tab -->
-          <div v-if="activeTab === 'projects'" class="tab-content">
-            <ProjectsTab />
-          </div>
-          
           <!-- CMS Pages Tab -->
           <div v-if="activeTab === 'cms-pages'" class="tab-content">
             <CmsPagesTab />
           </div>
-          
           <!-- Analytics Tab -->
           <div v-if="activeTab === 'analytics'" class="tab-content">
             <AnalyticsTab />
-          </div>
-          
-          <!-- Settings Tab -->
-          <div v-if="activeTab === 'settings'" class="tab-content">
-            <SettingsTab />
           </div>
         </div>
       </div>
@@ -133,12 +118,12 @@ const userInfo = ref(null)
 
 const navigationItems = [
   { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
-  { id: 'leads', label: 'Leads', icon: Users },
+  { id: 'leads', label: 'Danh sách ứng tuyển', icon: Users },
   { id: 'contacts', label: 'Khách hàng tiềm năng', icon: Phone },
-  { id: 'projects', label: 'Projects', icon: FolderOpen },
-  { id: 'cms-pages', label: 'CMS Pages', icon: FileText },
-  { id: 'analytics', label: 'Analytics', icon: TrendingUp },
-  { id: 'settings', label: 'Settings', icon: Settings }
+  //{ id: 'projects', label: 'Projects', icon: FolderOpen },
+  //{ id: 'cms-pages', label: 'CMS Pages', icon: FileText },
+  //{ id: 'analytics', label: 'Analytics', icon: TrendingUp },
+  //{ id: 'settings', label: 'Settings', icon: Settings }
 ]
 
 // Đóng dropdown khi click ra ngoài

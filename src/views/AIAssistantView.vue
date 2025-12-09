@@ -406,10 +406,13 @@ watch(messages, () => {
 </script>
 
 <style scoped>
-
 .ai-assistant-view {
   min-height: 100vh;
-  background: rgb(238, 245, 254);
+  width: 100%;
+  background-image: url('@/assets/img/AIbackground.JPG');
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 /* Fade-in animation reused from About page */
@@ -425,7 +428,7 @@ watch(messages, () => {
 }
 
 .ai-header {
-  background: linear-gradient(135deg, #1E3A8A 0%, #1e40af 100%);
+  background: transparent;
   color: #FFFFFF;
   padding: 80px 0 60px;
   text-align: center;
@@ -703,7 +706,7 @@ watch(messages, () => {
 
 .features-section {
   padding: 80px 0;
-  background: rgb(238, 245, 254);
+  background: transparent;
 }
 
 .feature-card {

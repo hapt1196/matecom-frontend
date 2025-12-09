@@ -24,33 +24,6 @@
 
     <!-- Contact Buttons (Visible when open) -->
     <transition-group name="slide-fade" tag="div" class="buttons-wrapper">
-      <div v-if="isOpen" key="link2" class="contact-item">
-        <v-btn
-          icon
-          size="large"
-          color="#8B5CF6"
-          elevation="4"
-          class="floating-btn"
-          href="#"
-          target="_blank"
-        >
-          <Link :size="24" color="white" />
-        </v-btn>
-      </div>
-
-      <div v-if="isOpen" key="link1" class="contact-item">
-        <v-btn
-          icon
-          size="large"
-          color="#3B82F6"
-          elevation="4"
-          class="floating-btn"
-          href="#"
-          target="_blank"
-        >
-          <Link :size="24" color="white" />
-        </v-btn>
-      </div>
 
       <div v-if="isOpen" key="email" class="contact-item">
         <v-btn

@@ -1,7 +1,8 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
+import { ViteSSG } from 'vite-ssg'
 import { createPinia } from 'pinia'
+import { createHead } from '@vueuse/head'
 
 // Vuetify
 import 'vuetify/styles'
@@ -13,7 +14,7 @@ import * as directives from 'vuetify/directives'
 import i18n from './i18n'
 
 import App from './App.vue'
-import router from './router'
+import { routes } from './router'
 
 const vuetify = createVuetify({
   components,
@@ -48,11 +49,39 @@ const vuetify = createVuetify({
   }
 })
 
-const app = createApp(App)
+export const createApp = ViteSSG(
+  App,
+  { 
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      return { top: 0 }
+    }
+  },
+  ({ app, router, initialState }) => {
+    const pinia = createPinia()
+    const head = createHead()
+    
+    // Navigation guard cho business routes
+    router.beforeEach(async (to, from, next) => {
+      if (to.meta.requiresAuth || to.name === 'business-login') {
+        const { isAuthenticated } = await import('@/services/authService')
+        
+        if (to.meta.requiresAuth && !isAuthenticated()) {
+          next('/business/login')
+        } else if (to.name === 'business-login' && isAuthenticated()) {
+          next('/business')
+        } else {
+          next()
+        }
+      } else {
+        next()
+      }
+    })
+    
+    app.use(pinia)
+    app.use(vuetify)
+    app.use(i18n)
+    app.use(head)
+  }
+)
 
-app.use(createPinia())
-app.use(router)
-app.use(vuetify)
-app.use(i18n)
-
-app.mount('#app')

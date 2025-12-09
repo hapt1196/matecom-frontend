@@ -4,10 +4,10 @@ export const COMPANY_CONTEXT = {
   companyName: "MATECOM",
   companyFullName: "Công ty TNHH MATECOM",
   website: "https://matecom.vn",
-  
+
   // Mô tả công ty
   description: "MATECOM là công ty chuyên cung cấp và triển khai các giải pháp Marketing toàn diện, giúp doanh nghiệp xây dựng chiến lược marketing hiệu quả và tăng trưởng bền vững.",
-  
+
   // Sản phẩm và dịch vụ chính
   products: {
     marketingStrategy: {
@@ -23,21 +23,21 @@ export const COMPANY_CONTEXT = {
         "Tracking, Analytics và tối ưu hóa"
       ]
     },
-    
+
     marketResearch: {
       name: "Nghiên cứu Thị trường",
       description: "Phân tích sâu về thị trường, khách hàng và đối thủ cạnh tranh",
       features: [
         "TAM-SAM-SOM Analysis",
         "PESTEL Analysis",
-        "Five Forces Analysis", 
+        "Five Forces Analysis",
         "SWOT Analysis",
         "3Cs Analysis",
         "Desk Research và Field Research",
         "Data Analysis từ GA4, CRM, Ads"
       ]
     },
-    
+
     brandPositioning: {
       name: "Định vị Thương hiệu",
       description: "Xây dựng định vị thương hiệu mạnh mẽ và khác biệt",
@@ -51,7 +51,7 @@ export const COMPANY_CONTEXT = {
         "Brand Guidelines"
       ]
     },
-    
+
     digitalMarketing: {
       name: "Digital Marketing",
       description: "Triển khai các chiến dịch digital marketing hiệu quả",
@@ -66,7 +66,7 @@ export const COMPANY_CONTEXT = {
       ]
     }
   },
-  
+
   // Các gói dịch vụ Marketing Strategy
   packages: {
     basic: {
@@ -91,9 +91,9 @@ export const COMPANY_CONTEXT = {
         "Cần định hướng marketing cơ bản"
       ]
     },
-    
+
     advanced: {
-      name: "Marketing Tích hợp (Integrated Marketing Solution) - Advanced", 
+      name: "Marketing Tích hợp (Integrated Marketing Solution) - Advanced",
       price: "90.000.000 VNĐ",
       description: "Gói cân bằng giữa chiến lược và triển khai, dành cho doanh nghiệp đang trong giai đoạn tăng trưởng",
       coreValue: "Khách hàng nhận được kế hoạch IMC hoàn hảo và được thực hiện với đội ngũ của MATECOM. Kết quả chiến lược đạt được objectives 3 cấp độ ban đầu đã đặt ra",
@@ -116,10 +116,10 @@ export const COMPANY_CONTEXT = {
         "Cần giải pháp chuyên sâu"
       ]
     },
-    
+
     premium: {
       name: "Marketing Strategy & Execution Plan - Premium",
-      price: "120.000.000 VNĐ", 
+      price: "120.000.000 VNĐ",
       description: "Gói toàn diện, cung cấp giải pháp đầy đủ cùng các công cụ quản trị và quản lý rủi ro, phù hợp với doanh nghiệp lớn",
       coreValue: "Tư vấn, hoạch định chiến lược và xây dựng Marketing Plan 4-12 tháng với mục tiêu SMART, ngân sách, KPI, lịch triển khai và cơ chế đo lường rõ ràng. Doanh nghiệp có bộ chiến lược & kế hoạch hành động có thể dùng ngay, kèm dashboard theo dõi và quy trình triển khai theo sprint. Đạt mục tiêu 3 cấp độ - doanh thu mà khách hàng đặt ra",
       features: [
@@ -158,26 +158,26 @@ export const COMPANY_CONTEXT = {
       ]
     }
   },
-  
+
   // Thông tin liên hệ
   contact: {
     phone: "0339265203",
-    email: "info@matecom.vn", 
+    email: "info@matecom.vn",
     address: "283 Khuất Duy Tiến, Hanoi, Vietnam",
     workingHours: "Thứ 2 - Thứ 6: 8:00 - 17:30",
     support: "Hỗ trợ 24/7 qua hotline và email"
   },
-  
+
   // Đối tác và chứng nhận
   partners: [
     "Google Partner",
-    "Meta Business Partner", 
+    "Meta Business Partner",
     "TikTok Business Partner",
     "Zalo Business Partner",
     "Zoho Partner",
     "Bing Ads Partner"
   ],
-  
+
   // Ưu điểm cạnh tranh
   competitiveAdvantages: [
     "Đội ngũ kỹ thuật giàu kinh nghiệm",
@@ -201,7 +201,7 @@ export const COMPANY_CONTEXT = {
         "Đo lường & tối ưu: theo mô hình Marketing Funnel (AIDA, See-Think-Do-Care)"
       ]
     },
-    
+
     customerCentric: {
       name: "Customer-Centric (Khách hàng là trung tâm)",
       description: "Marketing hiệu quả phải bắt nguồn từ customer insight và gắn liền với customer journey. Cách tiếp cận này phù hợp với lý thuyết CX (Customer Experience Management) và Jobs To Be Done (JTBD)",
@@ -212,7 +212,7 @@ export const COMPANY_CONTEXT = {
         "Ứng dụng personalization (cá nhân hóa content & offer)"
       ]
     },
-    
+
     balanceBrandGrowth: {
       name: "Balance of Brand & Growth (Cân bằng thương hiệu và tăng trưởng)",
       description: "Vừa xây dựng thương hiệu dài hạn (PR, Community, Thought Leadership), vừa mang lại tăng trưởng ngắn hạn (Ads, SEO, Activation)",
@@ -225,7 +225,7 @@ export const COMPANY_CONTEXT = {
         "Xây dựng Brand Funnel song song với Performance Funnel để bổ trợ lẫn nhau"
       ]
     },
-    
+
     dataDrivenTech: {
       name: "Data-Driven + Tech-enabled (Ứng dụng công nghệ và dữ liệu)",
       description: "Tận dụng martech, tracking, dashboard KPI để đo lường chính xác và tối ưu theo thời gian thực. Dữ liệu là 'nhiên liệu' của marketing hiện đại. Công nghệ martech giúp tracking, automation, real-time optimization. Đây là cơ sở của Growth Marketing",
@@ -236,7 +236,7 @@ export const COMPANY_CONTEXT = {
         "AI & Machine Learning: Chatbot, Recommendation engine, Predictive Analytics"
       ]
     },
-    
+
     agileSustainable: {
       name: "Agile & Sustainable Growth (Tính linh hoạt và tăng trưởng bền vững)",
       description: "Trong bối cảnh thị trường thay đổi nhanh, cần một mô hình marketing Agile: thử nghiệm nhanh, đo lường, cải tiến liên tục. Đồng thời, vẫn duy trì chiến lược dài hạn bền vững",
@@ -278,14 +278,14 @@ THÔNG TIN CÔNG TY:
 - Email: ${COMPANY_CONTEXT.contact.email}
 
 SẢN PHẨM VÀ DỊCH VỤ:
-${Object.values(COMPANY_CONTEXT.products).map(product => 
-  `- ${product.name}: ${product.description}`
-).join('\n')}
+${Object.values(COMPANY_CONTEXT.products).map(product =>
+    `- ${product.name}: ${product.description}`
+  ).join('\n')}
 
 CÁC GÓI DỊCH VỤ MARKETING STRATEGY:
-${Object.values(COMPANY_CONTEXT.packages).map(pkg => 
-  `- ${pkg.name} (${pkg.price}): ${pkg.description}`
-).join('\n')}
+${Object.values(COMPANY_CONTEXT.packages).map(pkg =>
+    `- ${pkg.name} (${pkg.price}): ${pkg.description}`
+  ).join('\n')}
 
 CHI TIẾT CÁC GÓI:
 - Gói Basic (50 triệu): Tư vấn & Xây dựng Chiến lược Marketing - Phân tích thị trường & đối thủ, ICP/Persona, Định vị thương hiệu, Chiến lược trọng tâm, IMC, Marketing Strategy Blueprint
@@ -327,5 +327,8 @@ LƯU Ý:
 - Luôn sử dụng tiếng Việt
 - Trả lời chi tiết, rõ ràng và dễ hiểu
 - Nhấn mạnh giá trị và lợi ích của từng gói dịch vụ
-- Giải thích các thuật ngữ chuyên môn khi cần thiết`
+- Giải thích các thuật ngữ chuyên môn khi cần thiết
+- Không trả lời giá dịch vụ trong bất kỳ câu hỏi nào, nếu hỏi thì báo gửi thông tin liên hệ để tư vấn, gửi thông tin liên hệ ở địa chỉ facebook, số điện thoại, email hoặc https://matecom.vn/contact
+- Tư vấn sử dụng gói nào phù hợp nhất có thể dựa thêm vào thông tin khách hàng, ngân sách của KH gần với dữ liệu các gói hiện tại.
+`
 }

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-ssg build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
@@ -16,10 +16,13 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@vueup/vue-quill": "^1.2.0",
+    "@vueuse/head": "^2.0.0",
+    "chart.js": "^4.5.1",
     "lucide-vue-next": "^0.540.0",
     "pinia": "^3.0.3",
     "quill": "^2.0.3",
     "vue": "^3.5.18",
+    "vue-chartjs": "^5.3.3",
     "vue-i18n": "^9.14.5",
     "vue-router": "^4.5.1",
     "vuetify": "^3.9.4"
@@ -34,6 +37,7 @@
     "prettier": "3.6.2",
     "vite": "^7.0.6",
     "vite-plugin-static-copy": "^3.1.2",
-    "vite-plugin-vue-devtools": "^8.0.0"
+    "vite-plugin-vue-devtools": "^8.0.0",
+    "vite-ssg": "^28.2.2"
   }
 }

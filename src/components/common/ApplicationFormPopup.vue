@@ -121,6 +121,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { submitApplication as submitApplicationAPI } from '@/services/applicationService'
 
 const props = defineProps({
   modelValue: {
@@ -245,14 +246,20 @@ const submitApplication = async () => {
   isSubmitting.value = true
   
   try {
-    // TODO: Implement actual form submission
-    console.log('Submitting application:', formData.value)
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Call API service
+    const result = await submitApplicationAPI(
+      {
+        fullName: formData.value.fullName,
+        email: formData.value.email,
+        phone: formData.value.phone,
+        position: formData.value.position,
+        coverLetter: formData.value.coverLetter
+      },
+      formData.value.cvFile
+    )
     
     // Emit success event
-    emit('submitted', formData.value)
+    emit('submitted', result)
     
     // Close dialog and reset form
     closeDialog()
@@ -261,7 +268,7 @@ const submitApplication = async () => {
     alert(t('recruitment.application.form.success'))
   } catch (error) {
     console.error('Error submitting application:', error)
-    alert(t('recruitment.application.form.error'))
+    alert(error.message || t('recruitment.application.form.error'))
   } finally {
     isSubmitting.value = false
   }

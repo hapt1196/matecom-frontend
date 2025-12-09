@@ -91,8 +91,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useHead } from '@vueuse/head'
 import { getBlogData } from '@/data/blog'
 
 const route = useRoute()
@@ -145,13 +146,11 @@ const formatDate = (date) => {
 
 const shareOnFacebook = () => {
   const url = encodeURIComponent(window.location.href)
-  const title = encodeURIComponent(page.value.title)
   window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank')
 }
 
 const shareOnLinkedIn = () => {
   const url = encodeURIComponent(window.location.href)
-  const title = encodeURIComponent(page.value.title)
   window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank')
 }
 
@@ -184,6 +183,77 @@ const loadBlogData = async (slug) => {
     console.error('Error loading blog data:', error)
   }
 }
+
+// Setup dynamic meta tags for SEO and social sharing
+const siteUrl = computed(() => window.location.origin)
+const currentUrl = computed(() => window.location.href)
+const featuredImage = computed(() => {
+  // Get first image from related posts or use a default
+  if (relatedPosts.value.length > 0 && relatedPosts.value[0].featuredImage) {
+    return `${siteUrl.value}${relatedPosts.value[0].featuredImage}`
+  }
+  return `${siteUrl.value}/assets/img/c0c4fb70-567c-40ad-8e0f-c1985f66063e/image.png`
+})
+
+useHead({
+  title: computed(() => page.value.title),
+  meta: [
+    {
+      name: 'description',
+      content: computed(() => page.value.metaDescription || page.value.title)
+    },
+    // Open Graph / Facebook
+    {
+      property: 'og:type',
+      content: 'article'
+    },
+    {
+      property: 'og:url',
+      content: currentUrl
+    },
+    {
+      property: 'og:title',
+      content: computed(() => page.value.title)
+    },
+    {
+      property: 'og:description',
+      content: computed(() => page.value.metaDescription || page.value.title)
+    },
+    {
+      property: 'og:image',
+      content: featuredImage
+    },
+    {
+      property: 'og:site_name',
+      content: 'MATECOM'
+    },
+    {
+      property: 'article:published_time',
+      content: computed(() => page.value.publishedAt ? new Date(page.value.publishedAt).toISOString() : '')
+    },
+    // Twitter Card
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:url',
+      content: currentUrl
+    },
+    {
+      name: 'twitter:title',
+      content: computed(() => page.value.title)
+    },
+    {
+      name: 'twitter:description',
+      content: computed(() => page.value.metaDescription || page.value.title)
+    },
+    {
+      name: 'twitter:image',
+      content: featuredImage
+    }
+  ]
+})
 
 onMounted(async () => {
   // Load blog data từ resource files

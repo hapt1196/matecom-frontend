@@ -1,6 +1,9 @@
-// Contact API Service
-//const API_BASE_URL = 'https://localhost:7265/api/contact';
-const API_BASE_URL = 'https://api.MATECOM.org/api/contact';
+
+import { handle401Error, handleApiError } from '@/utils/errorHandler'
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+    ? `${import.meta.env.VITE_API_BASE_URL}/api/contact`
+    : 'https://api.MATECOM.org/api/contact';
 
 /**
  * Lấy token từ localStorage
@@ -11,26 +14,16 @@ const getAuthToken = () => {
 };
 
 /**
- * Kiểm tra xác thực và chuyển hướng nếu cần
- */
-const checkAuthAndRedirect = () => {
-  const token = getAuthToken();
-  if (!token) {
-    window.location.href = '/business/login';
-    throw new Error('Unauthorized');
-  }
-};
-
-/**
  * Tạo headers với token xác thực
  * @returns {Object} - Headers object
  */
 const getAuthHeaders = () => {
   const token = getAuthToken();
   if (!token) {
-    checkAuthAndRedirect();
+    handle401Error();
+    throw new Error('Unauthorized');
   }
-  
+
   return {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
@@ -49,7 +42,7 @@ export const createContact = async (contactData) => {
   try {
     const response = await fetch(API_BASE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(contactData)
     });
     return await response.json();
@@ -74,10 +67,8 @@ export const createContact = async (contactData) => {
  */
 export const getContacts = async (filter = {}) => {
   try {
-    checkAuthAndRedirect();
-    
     const params = new URLSearchParams();
-    
+
     if (filter.fullName) params.append('fullName', filter.fullName);
     if (filter.phoneNumber) params.append('phoneNumber', filter.phoneNumber);
     if (filter.isRead !== undefined) params.append('isRead', filter.isRead.toString());
@@ -86,18 +77,19 @@ export const getContacts = async (filter = {}) => {
     if (filter.toDate) params.append('toDate', filter.toDate);
     if (filter.page) params.append('page', filter.page.toString());
     if (filter.pageSize) params.append('pageSize', filter.pageSize.toString());
-    
+
     const response = await fetch(`${API_BASE_URL}?${params}`, {
       headers: getAuthHeaders()
     });
-    
+
     if (!response.ok) {
       if (response.status === 401) {
-        checkAuthAndRedirect();
+        handle401Error();
       }
-      throw new Error('Lỗi khi lấy danh sách liên hệ');
+      const errorMessage = handleApiError(new Error('Lỗi khi lấy danh sách liên hệ'), response);
+      throw new Error(errorMessage);
     }
-    
+
     return await response.json();
   } catch (error) {
     console.error('Error fetching contacts:', error);
@@ -112,18 +104,17 @@ export const getContacts = async (filter = {}) => {
  */
 export const markAsRead = async (id) => {
   try {
-    checkAuthAndRedirect();
-    
     const response = await fetch(`${API_BASE_URL}/${id}/mark-as-read`, {
       method: 'PATCH',
       headers: getAuthHeaders()
     });
-    
+
     if (!response.ok) {
       if (response.status === 401) {
-        checkAuthAndRedirect();
+        handle401Error();
       }
-      throw new Error('Lỗi khi đánh dấu đã đọc');
+      const errorMessage = handleApiError(new Error('Lỗi khi đánh dấu đã đọc'), response);
+      throw new Error(errorMessage);
     }
   } catch (error) {
     console.error('Error marking as read:', error);
@@ -139,19 +130,18 @@ export const markAsRead = async (id) => {
  */
 export const updateStatus = async (id, status) => {
   try {
-    checkAuthAndRedirect();
-    
     const response = await fetch(`${API_BASE_URL}/${id}/status`, {
       method: 'PATCH',
       headers: getAuthHeaders(),
       body: JSON.stringify({ status })
     });
-    
+
     if (!response.ok) {
       if (response.status === 401) {
-        checkAuthAndRedirect();
+        handle401Error();
       }
-      throw new Error('Lỗi khi cập nhật trạng thái');
+      const errorMessage = handleApiError(new Error('Lỗi khi cập nhật trạng thái'), response);
+      throw new Error(errorMessage);
     }
   } catch (error) {
     console.error('Error updating status:', error);
@@ -167,19 +157,19 @@ const hasExportPermission = () => {
   try {
     const userInfo = localStorage.getItem('userInfo');
     if (!userInfo) return false;
-    
+
     const user = JSON.parse(userInfo);
-    
+
     // Kiểm tra role hoặc permissions
     if (user.role === 'Admin' || user.role === 'Manager') {
       return true;
     }
-    
+
     // Kiểm tra permissions array nếu có
     if (user.permissions && Array.isArray(user.permissions)) {
       return user.permissions.includes('crm.read');
     }
-    
+
     return false;
   } catch (error) {
     console.error('Error checking export permission:', error);
@@ -201,73 +191,74 @@ const hasExportPermission = () => {
 export const exportContacts = async (filter = {}) => {
   try {
     checkAuthAndRedirect();
-    
+
     // Kiểm tra quyền xuất Excel
     if (!hasExportPermission()) {
       throw new Error('Bạn không có quyền xuất dữ liệu Excel');
     }
-    
+
     const params = new URLSearchParams();
-    
+
     if (filter.fullName) params.append('fullName', filter.fullName);
     if (filter.phoneNumber) params.append('phoneNumber', filter.phoneNumber);
     if (filter.isRead !== undefined) params.append('isRead', filter.isRead.toString());
     if (filter.status) params.append('status', filter.status);
     if (filter.fromDate) params.append('fromDate', filter.fromDate);
     if (filter.toDate) params.append('toDate', filter.toDate);
-    
+
     const response = await fetch(`${API_BASE_URL}/export?${params}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${getAuthToken()}`
       }
     });
-    
+
     if (!response.ok) {
       if (response.status === 401) {
-        checkAuthAndRedirect();
+        handle401Error();
       }
-      throw new Error('Lỗi khi xuất dữ liệu Excel');
+      const errorMessage = handleApiError(new Error('Lỗi khi xuất dữ liệu Excel'), response);
+      throw new Error(errorMessage);
     }
-    
+
     // Tạo blob từ response
     const blob = await response.blob();
-    
+
     // Tạo URL để download
     const url = window.URL.createObjectURL(blob);
-    
+
     // Tạo element <a> để download
     const a = document.createElement('a');
     a.href = url;
-    
+
     // Lấy tên file từ header hoặc tạo tên mặc định
     const contentDisposition = response.headers.get('content-disposition');
     let filename = 'contacts_export.xlsx';
-    
+
     if (contentDisposition) {
       const filenameMatch = contentDisposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
       if (filenameMatch && filenameMatch[1]) {
         filename = filenameMatch[1].replace(/['"]/g, '');
       }
     }
-    
+
     // Nếu không có tên file từ server, tạo tên file với timestamp
     if (filename === 'contacts_export.xlsx') {
       const now = new Date();
-      const timestamp = now.toISOString().slice(0, 10).replace(/-/g, '') + '_' + 
-                       now.getHours().toString().padStart(2, '0') + 
-                       now.getMinutes().toString().padStart(2, '0');
+      const timestamp = now.toISOString().slice(0, 10).replace(/-/g, '') + '_' +
+        now.getHours().toString().padStart(2, '0') +
+        now.getMinutes().toString().padStart(2, '0');
       filename = `contacts_export_${timestamp}.xlsx`;
     }
-    
+
     a.download = filename;
     document.body.appendChild(a);
     a.click();
-    
+
     // Cleanup
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
-    
+
   } catch (error) {
     console.error('Error exporting contacts:', error);
     throw error;

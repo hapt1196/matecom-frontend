@@ -3,127 +3,341 @@
     <!-- Dashboard Header -->
     <div class="dashboard-header">
       <h1 class="dashboard-title">Dashboard</h1>
-      <p class="dashboard-subtitle">Tổng quan hoạt động kinh doanh</p>
+      <p class="dashboard-subtitle">Tổng quan hoạt động kinh doanh từ Google Analytics</p>
     </div>
 
-    <!-- Stats Cards -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon">
-          <Users class="w-8 h-8 text-blue-600" />
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">1,234</div>
-          <div class="stat-label">Total Leads</div>
-          <div class="stat-change positive">+12% from last month</div>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">
-          <DollarSign class="w-8 h-8 text-green-600" />
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">$45,678</div>
-          <div class="stat-label">Revenue</div>
-          <div class="stat-change positive">+8% from last month</div>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">
-          <FolderOpen class="w-8 h-8 text-purple-600" />
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">89</div>
-          <div class="stat-label">Active Projects</div>
-          <div class="stat-change negative">-3% from last month</div>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">
-          <TrendingUp class="w-8 h-8 text-orange-600" />
-        </div>
-        <div class="stat-content">
-          <div class="stat-value">23.5%</div>
-          <div class="stat-label">Conversion Rate</div>
-          <div class="stat-change positive">+2.1% from last month</div>
-        </div>
-      </div>
+    <!-- Loading State -->
+    <div v-if="loading" class="loading-state">
+      <div class="loading-spinner"></div>
+      <p>Đang tải dữ liệu từ Google Analytics...</p>
     </div>
 
-    <!-- Charts and Tables -->
-    <div class="dashboard-content">
-      <!-- Revenue Chart -->
-      <div class="chart-section">
-        <div class="section-header">
-          <h3 class="section-title">Revenue Trend</h3>
-          <div class="section-actions">
-            <button class="action-btn">Last 30 days</button>
-          </div>
-        </div>
-        <div class="chart-container">
-          <div class="chart-placeholder">
-            <BarChart3 class="w-16 h-16 text-gray-400" />
-            <p>Revenue Chart</p>
-          </div>
-        </div>
-      </div>
+    <!-- Error State -->
+    <div v-else-if="error" class="error-state">
+      <div class="error-icon">⚠️</div>
+      <h3>Lỗi khi tải dữ liệu</h3>
+      <p>{{ error }}</p>
+      <button class="btn-retry" @click="loadAnalyticsData">Thử lại</button>
+    </div>
 
-      <!-- Recent Leads -->
-      <div class="leads-section">
-        <div class="section-header">
-          <h3 class="section-title">Recent Leads</h3>
-          <button class="action-btn">View All</button>
-        </div>
-        <div class="leads-table">
-          <div class="table-header">
-            <div class="table-cell">Name</div>
-            <div class="table-cell">Email</div>
-            <div class="table-cell">Status</div>
-            <div class="table-cell">Date</div>
+    <!-- Dashboard Content -->
+    <template v-else>
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <Users class="w-8 h-8 text-blue-600" />
           </div>
-          <div class="table-body">
-            <div v-for="lead in recentLeads" :key="lead.id" class="table-row">
-              <div class="table-cell">
-                <div class="lead-info">
-                  <div class="lead-avatar">{{ lead.name.charAt(0) }}</div>
-                  <span>{{ lead.name }}</span>
-                </div>
-              </div>
-              <div class="table-cell">{{ lead.email }}</div>
-              <div class="table-cell">
-                <span :class="['status-badge', lead.status.toLowerCase()]">
-                  {{ lead.status }}
-                </span>
-              </div>
-              <div class="table-cell">{{ lead.date }}</div>
+          <div class="stat-content">
+            <div class="stat-value">{{ formatNumber(stats.totalUsers) }}</div>
+            <div class="stat-label">Total Users</div>
+            <div :class="['stat-change', getChangeClass(stats.usersChange)]">
+              {{ stats.usersChange > 0 ? '+' : '' }}{{ stats.usersChange }}% from last period
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <Activity class="w-8 h-8 text-green-600" />
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ formatNumber(stats.totalSessions) }}</div>
+            <div class="stat-label">Sessions</div>
+            <div :class="['stat-change', getChangeClass(stats.sessionsChange)]">
+              {{ stats.sessionsChange > 0 ? '+' : '' }}{{ stats.sessionsChange }}% from last period
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <FileText class="w-8 h-8 text-purple-600" />
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ formatNumber(stats.pageViews) }}</div>
+            <div class="stat-label">Page Views</div>
+            <div :class="['stat-change', getChangeClass(stats.pageViewsChange)]">
+              {{ stats.pageViewsChange > 0 ? '+' : '' }}{{ stats.pageViewsChange }}% from last period
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <TrendingUp class="w-8 h-8 text-orange-600" />
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ stats.engagementRate }}%</div>
+            <div class="stat-label">Engagement Rate</div>
+            <div :class="['stat-change', getChangeClass(stats.engagementChange)]">
+              {{ stats.engagementChange > 0 ? '+' : '' }}{{ stats.engagementChange }}% from last period
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Charts and Tables -->
+      <div class="dashboard-content">
+        <!-- Analytics Chart -->
+        <div class="chart-section">
+          <div class="section-header">
+            <h3 class="section-title">Analytics Trend (Last 30 Days)</h3>
+            <div class="chart-legend">
+              <span class="legend-item">
+                <span class="legend-dot sessions"></span>
+                Sessions
+              </span>
+              <span class="legend-item">
+                <span class="legend-dot users"></span>
+                Users
+              </span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <Line :data="chartData" :options="chartOptions" />
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="quick-stats-section">
+          <div class="section-header">
+            <h3 class="section-title">Quick Stats</h3>
+          </div>
+          <div class="quick-stats-list">
+            <div class="quick-stat-item">
+              <div class="quick-stat-icon">
+                <Eye class="w-5 h-5 text-blue-500" />
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-label">Avg. Session Duration</div>
+                <div class="quick-stat-value">3m 24s</div>
+              </div>
+            </div>
+            
+            <div class="quick-stat-item">
+              <div class="quick-stat-icon">
+                <MousePointer class="w-5 h-5 text-green-500" />
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-label">Pages per Session</div>
+                <div class="quick-stat-value">2.4</div>
+              </div>
+            </div>
+            
+            <div class="quick-stat-item">
+              <div class="quick-stat-icon">
+                <UserCheck class="w-5 h-5 text-purple-500" />
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-label">New Users</div>
+                <div class="quick-stat-value">{{ formatNumber(Math.round(stats.totalUsers * 0.42)) }}</div>
+              </div>
+            </div>
+            
+            <div class="quick-stat-item">
+              <div class="quick-stat-icon">
+                <BarChart3 class="w-5 h-5 text-orange-500" />
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-label">Bounce Rate</div>
+                <div class="quick-stat-value">{{ (100 - stats.engagementRate).toFixed(1) }}%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { Line } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+} from 'chart.js'
 import { 
   Users, 
-  DollarSign, 
-  FolderOpen, 
+  Activity,
+  FileText,
   TrendingUp, 
-  BarChart3 
+  Eye,
+  MousePointer,
+  UserCheck,
+  BarChart3
 } from 'lucide-vue-next'
+import { fetchAnalyticsData, calculateChange, formatNumber } from '@/config/analytics.js'
 
-const recentLeads = ref([
-  { id: 1, name: 'Nguyễn Văn A', email: 'nguyenvana@email.com', status: 'New', date: '2024-01-15' },
-  { id: 2, name: 'Trần Thị B', email: 'tranthib@email.com', status: 'Contacted', date: '2024-01-14' },
-  { id: 3, name: 'Lê Văn C', email: 'levanc@email.com', status: 'Qualified', date: '2024-01-13' },
-  { id: 4, name: 'Phạm Thị D', email: 'phamthid@email.com', status: 'Won', date: '2024-01-12' },
-  { id: 5, name: 'Hoàng Văn E', email: 'hoangvane@email.com', status: 'Lost', date: '2024-01-11' }
-])
+// Register Chart.js components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+)
+
+// State
+const loading = ref(true)
+const error = ref(null)
+const analyticsData = ref(null)
+
+// Computed stats
+const stats = computed(() => {
+  if (!analyticsData.value) return {}
+  
+  const current = analyticsData.value.stats
+  const previous = analyticsData.value.stats.previousPeriod
+  
+  return {
+    totalUsers: current.totalUsers,
+    totalSessions: current.totalSessions,
+    pageViews: current.pageViews,
+    engagementRate: current.engagementRate,
+    usersChange: calculateChange(current.totalUsers, previous.totalUsers),
+    sessionsChange: calculateChange(current.totalSessions, previous.totalSessions),
+    pageViewsChange: calculateChange(current.pageViews, previous.pageViews),
+    engagementChange: calculateChange(current.engagementRate, previous.engagementRate)
+  }
+})
+
+// Chart data
+const chartData = computed(() => {
+  if (!analyticsData.value) return { labels: [], datasets: [] }
+  
+  const data = analyticsData.value.chartData
+  
+  return {
+    labels: data.labels,
+    datasets: [
+      {
+        label: 'Sessions',
+        data: data.sessions,
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+        tension: 0.4,
+        fill: true,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        pointBackgroundColor: '#3b82f6',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2
+      },
+      {
+        label: 'Users',
+        data: data.users,
+        borderColor: '#10b981',
+        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+        tension: 0.4,
+        fill: true,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        pointBackgroundColor: '#10b981',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2
+      }
+    ]
+  }
+})
+
+// Chart options
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  interaction: {
+    mode: 'index',
+    intersect: false
+  },
+  plugins: {
+    legend: {
+      display: false
+    },
+    tooltip: {
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      padding: 12,
+      titleFont: {
+        size: 13,
+        weight: '600'
+      },
+      bodyFont: {
+        size: 12
+      },
+      borderColor: 'rgba(255, 255, 255, 0.1)',
+      borderWidth: 1,
+      displayColors: true,
+      callbacks: {
+        label: function(context) {
+          return context.dataset.label + ': ' + formatNumber(context.parsed.y)
+        }
+      }
+    }
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false
+      },
+      ticks: {
+        font: {
+          size: 11
+        },
+        maxRotation: 0,
+        autoSkipPadding: 20
+      }
+    },
+    y: {
+      beginAtZero: true,
+      grid: {
+        color: 'rgba(0, 0, 0, 0.05)'
+      },
+      ticks: {
+        font: {
+          size: 11
+        },
+        callback: function(value) {
+          return formatNumber(value)
+        }
+      }
+    }
+  }
+}
+
+// Methods
+const loadAnalyticsData = async () => {
+  loading.value = true
+  error.value = null
+  
+  try {
+    const data = await fetchAnalyticsData()
+    analyticsData.value = data
+  } catch (err) {
+    error.value = err.message || 'Không thể tải dữ liệu analytics'
+    console.error('Error loading analytics:', err)
+  } finally {
+    loading.value = false
+  }
+}
+
+const getChangeClass = (change) => {
+  return change >= 0 ? 'positive' : 'negative'
+}
+
+// Load data on mount
+onMounted(() => {
+  loadAnalyticsData()
+})
 </script>
 
 <style scoped>
@@ -149,6 +363,79 @@ const recentLeads = ref([
   margin: 0;
 }
 
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-state p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Error State */
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 16px;
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 48px;
+}
+
+.error-state h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #dc2626;
+  margin: 0;
+}
+
+.error-state p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+.btn-retry {
+  padding: 10px 24px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-retry:hover {
+  background: #2563eb;
+}
+
+/* Stats Grid */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -215,6 +502,7 @@ const recentLeads = ref([
   color: #dc2626;
 }
 
+/* Dashboard Content */
 .dashboard-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -222,7 +510,7 @@ const recentLeads = ref([
 }
 
 .chart-section,
-.leads-section {
+.quick-stats-section {
   background: #ffffff;
   border-radius: 16px;
   padding: 24px;
@@ -244,126 +532,86 @@ const recentLeads = ref([
   margin: 0;
 }
 
-.action-btn {
-  padding: 8px 16px;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #475569;
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* Chart Legend */
+.chart-legend {
+  display: flex;
+  gap: 16px;
 }
 
-.action-btn:hover {
-  background: #e2e8f0;
-  color: #334155;
-}
-
-.chart-container {
-  height: 300px;
+.legend-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.chart-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  color: #94a3b8;
-}
-
-.leads-table {
-  width: 100%;
-}
-
-.table-header {
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr 1fr;
-  gap: 16px;
-  padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
-  font-size: 14px;
-  font-weight: 600;
+  gap: 6px;
+  font-size: 13px;
   color: #64748b;
 }
 
-.table-body {
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-dot.sessions {
+  background: #3b82f6;
+}
+
+.legend-dot.users {
+  background: #10b981;
+}
+
+/* Chart Container */
+.chart-container {
+  height: 320px;
+  position: relative;
+}
+
+/* Quick Stats */
+.quick-stats-list {
   display: flex;
   flex-direction: column;
-}
-
-.table-row {
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr 1fr;
   gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid #f1f5f9;
-  align-items: center;
 }
 
-.table-row:last-child {
-  border-bottom: none;
-}
-
-.table-cell {
-  font-size: 14px;
-  color: #475569;
-}
-
-.lead-info {
+.quick-stat-item {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
-.lead-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #1e3a8a;
-  color: #ffffff;
+.quick-stat-item:hover {
+  background: #f1f5f9;
+}
+
+.quick-stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.quick-stat-content {
+  flex: 1;
+}
+
+.quick-stat-label {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.quick-stat-value {
+  font-size: 18px;
   font-weight: 600;
-}
-
-.status-badge {
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.status-badge.new {
-  background: #dbeafe;
-  color: #1e40af;
-}
-
-.status-badge.contacted {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.status-badge.qualified {
-  background: #d1fae5;
-  color: #059669;
-}
-
-.status-badge.won {
-  background: #d1fae5;
-  color: #059669;
-}
-
-.status-badge.lost {
-  background: #fee2e2;
-  color: #dc2626;
+  color: #1e293b;
 }
 
 /* Responsive Design */
@@ -378,14 +626,8 @@ const recentLeads = ref([
     grid-template-columns: 1fr;
   }
   
-  .table-header,
-  .table-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  
-  .table-cell {
-    padding: 4px 0;
+  .chart-container {
+    height: 250px;
   }
 }
 </style>

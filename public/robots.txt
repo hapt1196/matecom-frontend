@@ -1,0 +1,17 @@
+# Cho phép tất cả các bot
+User-agent: *
+Allow: /
+
+# Cho phép Facebook crawler
+User-agent: facebookexternalhit
+Allow: /
+
+# Cho phép các bot mạng xã hội khác
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap (nếu có)
+# Sitemap: https://matecom.vn/sitemap.xml
