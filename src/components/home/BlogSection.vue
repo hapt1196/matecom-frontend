@@ -71,7 +71,7 @@ const blogPosts = ref(allBlogPosts)
 
 // Chỉ hiển thị 3 bài viết mới nhất
 const featuredPosts = computed(() => {
-  return blogPosts.value.slice(0, 3)
+  return blogPosts.value.slice(1, 4)
 })
 
 const formatDate = (date) => {

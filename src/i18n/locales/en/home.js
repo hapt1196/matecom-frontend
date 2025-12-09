@@ -48,12 +48,12 @@ export default {
     visionText: 'Become the leading digital marketing partner in Vietnam, trusted by thousands of businesses.',
     team: {
       ceo: {
-        name: 'Chu Thi Quynh',
+        name: 'Khuat Duy Anh',
         position: 'CEO - Chief Executive Officer',
         title: 'Chief Executive Officer'
       },
       cfo: {
-        name: 'Khuat Duy Anh',
+        name: 'Chu Thi Quynh',
         position: 'CFO - Chief Financial Officer',
         title: 'Chief Financial Officer'
       },

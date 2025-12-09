@@ -18,5 +18,6 @@ export default {
   error: 'Lỗi',
   success: 'Thành công',
   warning: 'Cảnh báo',
-  info: 'Thông tin'
+  info: 'Thông tin',
+  register: "Đăng ký" 
 }

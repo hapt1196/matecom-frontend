@@ -3,7 +3,8 @@ export default {
     title: 'MateCom - Đối tác Marketing Digital đáng tin cậy',
     description: 'Chúng tôi giúp doanh nghiệp phát triển thương hiệu số mạnh mẽ thông qua các giải pháp marketing toàn diện, từ chiến lược đến thực thi.',
     ctaButton: 'Khám phá dịch vụ',
-    learnMore: 'Tìm hiểu thêm'
+    learnMore: 'Tìm hiểu thêm',
+    talkshow: 'Đăng ký tham gia talkshow',
   },
   services: {
     title: 'Dịch vụ của chúng tôi',
@@ -48,12 +49,12 @@ export default {
     visionText: 'Trở thành đối tác marketing digital hàng đầu tại Việt Nam, được tin tưởng bởi hàng nghìn doanh nghiệp.',
     team: {
       ceo: {
-        name: 'Chu Thị Quỳnh',
+        name: 'Khuất Duy Anh',
         position: 'CEO - Chief Executive Officer',
         title: 'Giám đốc điều hành'
       },
       cfo: {
-        name: 'Khuất Duy Anh',
+        name: 'Chu Thị Quỳnh',
         position: 'CFO - Chief Financial Officer',
         title: 'Giám đốc Tài chính'
       },

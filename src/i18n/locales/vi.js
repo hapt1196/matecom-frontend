@@ -55,12 +55,12 @@ export default {
       visionText: 'Trở thành công ty marketing digital hàng đầu Việt Nam',
       team: {
         ceo: {
-          name: 'Chu Thị Quỳnh',
+          name: 'Khuất Duy Anh',
           position: 'CEO - Chief Executive Officer',
           title: 'Giám đốc điều hành'
         },
         cfo: {
-          name: 'Khuất Duy Anh',
+          name: 'Chu Thị Quỳnh',
           position: 'CFO - Chief Financial Officer',
           title: 'Giám đốc Tài chính'
         },

@@ -57,21 +57,30 @@
     <div class="scroll-indicator">
       <div class="scroll-arrow"></div>
     </div>
+
+    <!-- <TalkshowRegistrationPopup v-model="isTalkshowPopupOpen" /> -->
   </section>
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Rocket, Info } from 'lucide-vue-next'
+import { Rocket, Info, Mic, MicIcon } from 'lucide-vue-next'
+import TalkshowRegistrationPopup from '@/components/common/TalkshowRegistrationPopup.vue'
 
 const { t } = useI18n()
+const isTalkshowPopupOpen = ref(false)
 
 const scrollToServices = () => {
   const servicesSection = document.querySelector('.service-section')
   if (servicesSection) {
     servicesSection.scrollIntoView({ behavior: 'smooth' })
   }
+}
+
+//hàm xử lý thực hiện đăng ký tham gia talk show
+const registerTalkshow = () => {
+   window.location.href = "https://matecom.zoholandingpage.com/talkshow-the-gap/?fbclid=IwY2xjawN26HBleHRuA2FlbQIxMABicmlkETFaQTUwZGRUUlozSHNiZXZMAR7snCMurS-alWGjfEhRIswcfUhK05o25_BxycYPdNbs6z26k4zth3EgeTTrpA_aem_Of9-WTMS321AiuTQjKHyLA"
 }
 
 const scrollToAbout = () => {
@@ -260,6 +269,16 @@ onMounted(async () => {
   background: var(--hero-btn-secondary-hover-bg);
   border-color: var(--hero-btn-secondary-hover-border);
   color: var(--hero-btn-secondary-hover-color);
+}
+
+.talkshow-btn {
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+  color: var(--hero-text);
+  font-weight: 700;
+}
+
+.talkshow-btn:hover {
+  background: linear-gradient(135deg, #DC2626, #B91C1C);
 }
 
 /* Stats Section */

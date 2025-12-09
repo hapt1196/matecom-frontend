@@ -20,12 +20,12 @@ export default {
     title: 'Expert Team',
     subtitle: 'Talented and passionate people',
     ceo: {
-      name: 'Chu Thi Quynh',
+      name: 'Khuat Duy Anh',
       position: 'CEO - Chief Executive Officer',
       title: 'Chief Executive Officer'
     },
     cfo: {
-      name: 'Khuat Duy Anh',
+      name: 'Chu Thi Quynh',
       position: 'CFO - Chief Financial Officer',
       title: 'Chief Financial Officer'
     },

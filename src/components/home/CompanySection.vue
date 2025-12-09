@@ -46,7 +46,7 @@
             <div class="ceo-level">
               <div class="ceo-card">
                 <div class="ceo-avatar">
-                  <img src="@/assets/img/aboutmatecom/Chu Thị Quỳnh.jpg" :alt="t('home.company.team.ceo.name') || 'Chu Thị Quỳnh'" />
+                  <img src="@/assets/img/aboutmatecom/Khuất Duy Anh.jpg" :alt="t('home.company.team.ceo.name') || 'Khuất Duy Anh'" />
                 </div>
                 <div class="ceo-info">
                   <h4 class="ceo-name">{{ t('home.company.team.ceo.name') }}</h4>
@@ -60,7 +60,7 @@
             <div class="departments-level">
               <div class="department-card">
                 <div class="department-avatar">
-                  <img src="@/assets/img/aboutmatecom/Khuất Duy Anh.jpg" :alt="t('home.company.team.cfo.name') || 'Khuất Duy Anh'" />
+                  <img src="@/assets/img/aboutmatecom/Chu Thị Quỳnh.jpg" :alt="t('home.company.team.cfo.name') || 'Chu Thị Quỳnh'" />
                 </div>
                 <div class="department-info">
                   <h4 class="department-name">{{ t('home.company.team.cfo.name') }}</h4>

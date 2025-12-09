@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 import AppHeader from './components/layout/AppHeader.vue'
 import AppFooter from './components/layout/AppFooter.vue'
+import FloatingContactButtons from './components/common/FloatingContactButtons.vue'
 
 const route = useRoute()
 
@@ -19,6 +20,7 @@ const isBusinessRoute = computed(() => {
       <RouterView />
     </v-main>
     <AppFooter />
+    <FloatingContactButtons />
   </v-app>
 </template>
 
